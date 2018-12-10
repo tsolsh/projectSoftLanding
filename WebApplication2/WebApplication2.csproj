@@ -148,6 +148,11 @@
     <Content Include="images\images.jpg" />
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
+    <Content Include="Quizes\app.js" />
+    <Content Include="Quizes\index.html" />
+    <Content Include="Quizes\question.js" />
+    <Content Include="Quizes\quiz_controller.js" />
+    <Content Include="Quizes\style.css" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="scripts\bootstrap.js" />
