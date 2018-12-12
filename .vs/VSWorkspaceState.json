@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WebApplication2",
-    "\\WebApplication2\\Views",
+    "\\WebApplication2\\App_Start",
     "\\WebApplication2\\Views\\First"
   ],
+  "SelectedNode": "\\WebApplication2.sln",
   "PreviewInSolutionExplorer": false
 }

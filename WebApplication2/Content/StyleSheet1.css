@@ -1,84 +1,210 @@
 ﻿body {
-    align-items: stretch;
-    background-color: #202020;
-    background-image: radial-gradient(10% 100% ellipse at bottom center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 100%);
-    display: flex;
-    height: 100vh;
-    justify-content: center;
     margin: 0;
     padding: 0;
-    transition: background-color 2s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: #222;
 }
 
-.button {
-    border: 2px solid #2e2e2e;
-    cursor: pointer;
-    letter-spacing: 0.2125rem;
-    overflow: hidden;
-    padding: 20px 10px;
-    position: relative;
+* {
+    font-family: Helvetica, sans-serif;
+    color: #f44336;
+}
+
+header {
     text-align: center;
-    text-transform: uppercase;
-    transition: background 5s cubic-bezier(0.19, 1, 0.22, 1), border 1s cubic-bezier(0.19, 1, 0.22, 1), color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    user-select: none;
 }
 
-    .button a {
-        color: #969696;
-        font-family: "Varela Round";
-        text-decoration: none;
+    header h1 {
+        text-transform: uppercase;
     }
 
-    .button .mask {
+.myButt {
+    outline: none;
+    border: none;
+    padding: 20px;
+    display: block;
+    margin: 50px auto;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    position: relative;
+    border: 2px solid #fff;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+
+.one {
+    border-color: #fff;
+    overflow: hidden;
+    color: #fff;
+}
+
+    .one .insider {
         background-color: #fff;
-        background-color: rgba(255, 255, 255, 0.5);
-        height: 100px;
+        width: 100%;
+        height: 20px;
         position: absolute;
-        transform: translate3d(-120%, -50px, 0) rotate3d(0, 0, 1, 45deg);
-        transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
-        width: 200px;
+        left: -135px;
+        transform: rotateZ(45deg);
+        -webkit-transform: rotateZ(45deg);
+        -moz-transform: rotateZ(45deg);
+        -o-transform: rotateZ(45deg);
+        -ms-transform: rotateZ(45deg);
     }
 
-    .button .shift {
-        display: inline-block;
-        transition: all 1.1s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    .button:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+    .one:hover {
+        background-color: #f44336;
         border-color: #fff;
-        box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
-        transition: background 0s;
+        color: #fff;
     }
 
-        .button:hover a {
-            color: #fff;
+        .one:hover .insider {
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            left: 135px;
         }
 
-        .button:hover .mask {
-            background-color: #fff;
-            transform: translate3d(120%, -100px, 0) rotate3d(0, 0, 1, 90deg);
-        }
-
-        .button:hover .shift {
-            transform: translateX(5px);
-        }
-
-    .button:active {
-        background-color: #fff;
-    }
-
-        .button:active a {
-            color: #202020;
-        }
-
-body.show {
-    background-color: #282828;
+.two {
+    color: #fff;
 }
 
-/* .button:hover {
-	background-image: url('http://cuinine.com/img/codepen/savvy.jpg');
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-} */
+    .two:hover {
+        border-color: #f44336;
+        color: #f44336;
+        animation: shakeThatBooty 0.3s linear 1;
+        -webkit-animation: shakeThatBooty 0.3s linear 1;
+        -moz-animation: shakeThatBooty 0.3s linear 1;
+        -o-animation: shakeThatBooty 0.3s linear 1;
+        -ms-animation: shakeThatBooty 0.3s linear 1;
+    }
+
+@keyframes shakeThatBooty {
+    33% {
+        transform: rotateZ(10deg);
+        -webkit-transform: rotateZ(10deg);
+        -moz-transform: rotateZ(10deg);
+        -o-transform: rotateZ(10deg);
+        -ms-transform: rotateZ(10deg);
+    }
+
+    67% {
+        transform: rotateZ(-10deg);
+        -webkit-transform: rotateZ(-10deg);
+        -moz-transform: rotateZ(-10deg);
+        -o-transform: rotateZ(-10deg);
+        -ms-transform: rotateZ(-10deg);
+    }
+
+    100% {
+        transform: rotateZ(10deg);
+        -webkit-transform: rotateZ(10deg);
+        -moz-transform: rotateZ(10deg);
+        -o-transform: rotateZ(10deg);
+        -ms-transform: rotateZ(10deg);
+    }
+}
+
+.three {
+    color: #fff;
+    border-color: transparent;
+}
+
+    .three:before, .three:after {
+        width: 0;
+        height: 3px;
+        content: " ";
+        background-color: #f44336;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+    }
+
+    .three:after {
+        top: 100%;
+    }
+
+    .three:hover {
+        letter-spacing: 8px;
+        color: #f44336;
+    }
+
+        .three:hover:before, .three:after:hover {
+            width: 100%;
+            left: 0;
+        }
+
+        .three:hover:after {
+            width: 100%;
+            left: 0;
+        }
+
+.four {
+    overflow: hidden;
+}
+
+    .four span {
+        color: #fff;
+        display: inline-block;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+    }
+
+    .four .icon {
+        position: absolute;
+        left: -60px;
+        top: 0;
+        color: #fff;
+        padding: 20px;
+        background-color: #f44336;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+    }
+
+    .four:hover .icon {
+        left: 0px;
+    }
+
+    .four:hover span {
+        color: #f44336;
+        margin-left: 50px;
+    }
+
+.five {
+    overflow: hidden;
+    color: #fff;
+}
+
+    .five .layer {
+        color: #fff;
+        position: absolute;
+        top: -70px;
+        width: 100%;
+        left: 0;
+        padding: 20px 0;
+        background-color: #f44336;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+    }
+
+    .five:hover .layer {
+        top: 0;
+    }
