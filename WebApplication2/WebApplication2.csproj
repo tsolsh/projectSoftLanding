@@ -142,6 +142,16 @@
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
+    <Content Include="Games\Snake\audio\dead.mp3" />
+    <Content Include="Games\Snake\audio\down.mp3" />
+    <Content Include="Games\Snake\audio\eat.mp3" />
+    <Content Include="Games\Snake\audio\left.mp3" />
+    <Content Include="Games\Snake\audio\right.mp3" />
+    <Content Include="Games\Snake\audio\up.mp3" />
+    <Content Include="Games\Snake\img\food.png" />
+    <Content Include="Games\Snake\img\ground.png" />
+    <Content Include="Games\Snake\index.html" />
+    <Content Include="Games\Snake\snake.js" />
     <Content Include="Global.asax" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />
