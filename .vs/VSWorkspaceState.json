@@ -3,6 +3,8 @@
     "",
     "\\WebApplication2",
     "\\WebApplication2\\App_Start",
+    "\\WebApplication2\\Controllers",
+    "\\WebApplication2\\Views",
     "\\WebApplication2\\Views\\First"
   ],
   "SelectedNode": "\\WebApplication2.sln",

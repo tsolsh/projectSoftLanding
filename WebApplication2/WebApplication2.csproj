@@ -141,6 +141,7 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Games\simpleDice.html" />
+    <Content Include="Games\snakeTesting.html" />
     <Content Include="Global.asax" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />
