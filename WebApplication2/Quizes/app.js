@@ -40,6 +40,7 @@ function showScores() {
     element.innerHTML = gameOverHtml;
 }
 
+
 var questions = [
     new Question("Which one is not an object oriented programming language?", ["java", "C#", "C++", "C"], "C"),
     new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
