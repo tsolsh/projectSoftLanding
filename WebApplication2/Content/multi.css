@@ -1,6 +1,6 @@
 ﻿:root {
     --bg: #1a1e24;
-    --color: #eee;
+    --color: #00ced1;
     --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -14,14 +14,13 @@
     text-align: center;
     background: var(--color);
     color: var(--bg);
-    font-weight: bold;
     padding: 1.18em 1.32em 1.03em;
     line-height: 1;
     border-radius: 1em;
     position: relative;
     min-width: 8.23em;
     text-decoration: none;
-    font-family: var(--font);
+    font-family: Marker Felt, fantasy;
     font-size: 1.25rem;
 }
 
