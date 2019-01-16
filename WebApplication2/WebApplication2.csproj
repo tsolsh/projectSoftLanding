@@ -146,6 +146,7 @@
     <Content Include="Games\Mathcing\img\snippet.png" />
     <Content Include="Games\Mathcing\index.html" />
     <Content Include="Games\Mathcing\js\app.js" />
+    <Content Include="Games\Mathcing\Level2.html" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
     <Content Include="Games\Snake\audio\dead.mp3" />

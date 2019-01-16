@@ -17,9 +17,9 @@ body {
 }
 
 body {
-	background: #ffffff;
-	font-family: 'Permanent Marker', cursive;
-	font-size: 16px;
+    background: #ffffff;
+    font-family: Georgia, serif;
+    font-size: 16px;
 }
 
 .container {
@@ -27,6 +27,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+    height:110%;
 }
 
 h1 {

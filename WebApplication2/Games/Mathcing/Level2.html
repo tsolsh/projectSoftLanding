@@ -7,79 +7,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker" >
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1>Memory Game</h1>
         </header>
-
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-        	<span class="moves">0</span> Move(s)
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
+            <span class="moves">0</span> Move(s)
 
             <div class="timer">
             </div>
-
             <div class="restart" onclick=startGame()>
-        		<i class="fa fa-repeat"></i>
-        	</div>
+                <i class="fa fa-repeat"></i>
+            </div>
         </section>
-
         <ul class="deck" id="card-deck">
+            <li class="card" type="plane">
+                <i>/t</i>
+            </li>
+            <li class="card match" type="anchor">
+                <i>%</i>
+            </li>
             <li class="card" type="diamond">
-                <i>input</i>
+                <i>/n</i>
             </li>
             <li class="card" type="plane">
-                <i >output</i>
-            </li>
-            <li class="card match" type="anchor">
-                <i>%s</i>
-            </li>
-            <li class="card" type="bolt" >
-                <i>%d</i>
-            </li>
-            <li class="card match" type="anchor">
-                <i>string</i>
+                <i>tab</i>
             </li>
             <li class="card" type="leaf">
-                <i>%c</i>
+                <i>[ ]</i>
             </li>
             <li class="card" type="bicycle">
-                <i>%u</i>
+                <i> ++ </i>
             </li>
-            <li class="card" type="diamond">
-                <i>scanf</i>
-            </li>
-
-            <li class="card" type="leaf">
-                <i>Char</i>
-            </li>
-
             <li class="card open show" type="bolt">
-                <i>Integer</i>
+                <i>Function</i>
+            </li>
+            <li class="card" type="diamond">
+                <i>New line</i>
             </li>
             <li class="card" type="bicycle">
-                <i>unsigned int</i>
+                <i>Increment 1</i>
             </li>
-            <li class="card" type="plane">
-                <i>printf</i>
+            <li class="card" type="leaf">
+                <i>Array</i>
             </li>
-
+            <li class="card match" type="anchor">
+                <i>Modolu</i>
+            </li>
+            <li class="card" type="bolt">
+                <i>F(X)</i>
+            </li>
         </ul>
 
         <div id="popup1" class="overlay">
             <div class="popup">
                 <h2>Congratulations 🎉</h2>
-                <a class="close" href=# >×</a>
+                <a class="close" href=#>×</a>
                 <div class="content-1">
                     Congratulations you're a winner 🎉🎉
                 </div>
@@ -93,7 +85,6 @@
                 </button>
             </div>
         </div>
-
     </div>
     <script src="js/app.js"></script>
 </body>
