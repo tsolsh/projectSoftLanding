@@ -13,17 +13,17 @@ body {
   text-align: center;
 }
 .arrow-btn {
-  position: relative;
-  display: inline-block;
-  border-radius: 0;
-  color: #b2876f;
-  margin-top: 2rem;
-  font-weight: bold;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  text-decoration: none;
-  transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
-  padding-right: 2.5em;
+	position: relative;
+	display: inline-block;
+	border-radius: 0;
+	color: #561972;
+	margin-top: 2rem;
+	font-weight: bold;
+	font-size: 5px;
+	letter-spacing: 2px;
+	text-decoration: none;
+	transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+	padding-right: 2.5em;
 }
 .arrow-btn:hover {
   transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -57,33 +57,33 @@ body {
   width:300px;
   display: inline-block;
   padding: 25px 30px;
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 3px;
   text-decoration: none;
   position: relative;
 }
 .frame-btn__text {
-    color: #b2876f;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 300ms ease;
-    position: relative;
+	color: #cc6a6a;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: 300ms ease;
+	position: relative;
 }
 .frame-btn:hover .frame-btn__text {
   color: white;
 }
 .frame-btn__solid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  background-color: #b2876f;
-  width: calc(100% - (5px * 4));
-  height: calc(100% - (5px * 4));
-  transform-origin: 50%;
-  transform: scale(0.85);
-  opacity: 0;
-  transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 10px;
+	background-color: #a17fb1;
+	width: calc(100% - (5px * 4));
+	height: calc(100% - (5px * 4));
+	transform-origin: 50%;
+	transform: scale(0.85);
+	opacity: 0;
+	transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .frame-btn:hover .frame-btn__solid {
   opacity: 1;
@@ -148,11 +148,11 @@ body {
   bottom: 0;
 }
 .frame-btn__line:before, .frame-btn__line:after {
-  content: '';
-  display: block;
-  position: absolute;
-  background-color: #b2876f;
-  transition: 800ms cubic-bezier(0.165, 0.84, 0.44, 1);
+	content: '';
+	display: block;
+	position: absolute;
+	background-color: #c6a3a3;
+	transition: 800ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .frame-btn:hover .frame-btn__line:before, .frame-btn:hover .frame-btn__line:after {
   transition: 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
