@@ -163,6 +163,12 @@
     <Content Include="Quizes\index.html" />
     <Content Include="Quizes\question.js" />
     <Content Include="Quizes\questions.txt" />
+    <Content Include="Quizes\Quiz1\img\lose.gif" />
+    <Content Include="Quizes\Quiz1\img\meh.jpeg" />
+    <Content Include="Quizes\Quiz1\img\win.gif" />
+    <Content Include="Quizes\Quiz1\index.html" />
+    <Content Include="Quizes\Quiz1\main.js" />
+    <Content Include="Quizes\Quiz1\style.css" />
     <Content Include="Quizes\quiz_controller.js" />
     <Content Include="Quizes\style.css" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
