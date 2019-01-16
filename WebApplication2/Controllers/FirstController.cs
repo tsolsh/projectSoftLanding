@@ -18,6 +18,10 @@ namespace WebApplication2.Controllers
           new Employee   { FirstName = "Dor", LastName = "Nisim", Email = "Stam@stam", Salary = 20, Phone = "08-8888888" },
           new Employee   { FirstName = "Dor", LastName = "Nisim", Email = "Stam@stam", Salary = 700, Phone = "08-8888888" }
         };
+        public ActionResult MultiGames()
+        {
+            return View();
+        }
         public ActionResult Signup()
         {
             return View();

@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\factsMenu.css" />
     <Content Include="Content\Leader.css" />
+    <Content Include="Content\multi.css" />
     <Content Include="Content\util.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\MenuBackground.css" />
@@ -140,6 +141,11 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Games\Mathcing\css\app.css" />
+    <Content Include="Games\Mathcing\img\geometry2.png" />
+    <Content Include="Games\Mathcing\img\snippet.png" />
+    <Content Include="Games\Mathcing\index.html" />
+    <Content Include="Games\Mathcing\js\app.js" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
     <Content Include="Games\Snake\audio\dead.mp3" />
@@ -316,6 +322,8 @@
     <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Views\First\Signup.cshtml" />
+    <Content Include="Views\First\MultiGames.cshtml" />
+    <Content Include="Views\First\MatchingGame.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
