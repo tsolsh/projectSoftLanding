@@ -11,39 +11,39 @@
 
 
 <body>
-<h2>Questionnaire</h2>
+    <h2>Questionnaire</h2>
 
     <form id="quiz" name="quiz">
 
 
-    <p class="questions">
-        write the output of the following program: <br /><br />
+        <p class="questions">
+            write the output of the following program: <br /><br />
 
-        int main()<br />
-        { <br />
+            int main()<br />
+            { <br />
             char str[10]="Hello"; <br />
             printf("%d,%d\n",strlen(str),sizeof(str)); <br />
             return 0; <br />
-        } <br />
-    </p>
-<input id = "textbox" type = "text" name = "question1">
+            } <br />
+        </p>
+        <input id="textbox" type="text" name="question1">
 
-<p class="questions"> In Java, a method is a container that holds classes.</p>
-<input type = "radio" id = "mc" name = "question3" value = "True">True<br>
-<input type = "radio" id = "mc" name = "question3" value = "False">False<br>
+        <p class="questions"> In Java, a method is a container that holds classes.</p>
+        <input type="radio" id="mc" name="question3" value="True">True<br>
+        <input type="radio" id="mc" name="question3" value="False">False<br>
 
-<p class = "questions"> HTML stands for Hyper Text Markup Language.</p>
-<input type = "radio" id = "mc" name = "question4" value = "True"> True<br>
-<input type = "radio" id = "mc" name = "question4" value = "False"> False<br>
+        <p class="questions"> HTML stands for Hyper Text Markup Language.</p>
+        <input type="radio" id="mc" name="question4" value="True"> True<br>
+        <input type="radio" id="mc" name="question4" value="False"> False<br>
 
-<p class="questions" >Which language is used for web apps?</p>
-<select id="selectQuestions" type="text" name="question5">
-	<option value="PHP">PHP</option>
-	<option value="Python">Python</option>
-	<option value="JavaScript">JavaScript</option>
-	<option value="All">All</option>
-</select> 
-<input id = "button" type = "button" value = "I'm finished!" onclick = "check();">
+        <p class="questions">Which language is used for web apps?</p>
+        <select id="selectQuestions" type="text" name="question5">
+            <option value="PHP">PHP</option>
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="All">All</option>
+        </select>
+        <input id="button" type="button" value="I'm finished!" onclick="check();">
 
     </form>
 
