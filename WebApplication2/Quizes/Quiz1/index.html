@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Questionnaire</title>
+<title>Variable Quiz</title>
 <link href ="style.css" rel ="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <script src = "main.js"></script>
@@ -11,37 +11,31 @@
 
 
 <body>
-<h2>Questionnaire</h2>
+<h2>GOOD LUCK!, ENJOY THIS MIRACULOUS QUIZ!</h2>
 
 <form id = "quiz" name = "quiz">
 
 
-    <p class="questions">
-        write the output of the following program: <br /><br />
-
-        int main()<br />
-        { <br />
-            char str[10]="Hello"; <br />
-            printf("%d,%d\n",strlen(str),sizeof(str)); <br />
-            return 0; <br />
-        } <br />
-    </p>
+<p class = "questions">what is the name of the project?</p>
 <input id = "textbox" type = "text" name = "question1">
 
-<p class="questions"> In Java, a method is a container that holds classes.</p>
-<input type = "radio" id = "mc" name = "question3" value = "True">True<br>
-<input type = "radio" id = "mc" name = "question3" value = "False">False<br>
+<p class = "questions">write yes or no, hard work always pays off?</p>
+<input id = "textbox" type = "text" name = "question2">
 
-<p class = "questions"> HTML stands for Hyper Text Markup Language.</p>
-<input type = "radio" id = "mc" name = "question4" value = "True"> True<br>
-<input type = "radio" id = "mc" name = "question4" value = "False"> False<br>
+<p class = "questions">which is better?</p>
+<input type = "radio" id = "mc" name = "question3" value = "Nintendo"> Nintendo Games<br>
+<input type = "radio" id = "mc" name = "question3" value = "Mortal Combat"> Mortal Combat<br>
 
-<p class="questions" >Which language is used for web apps?</p>
+<p class = "questions">oh i forgot to write the 4th question?</p>
+<input type = "radio" id = "mc" name = "question4" value = "yes"> yes<br>
+<input type = "radio" id = "mc" name = "question4" value = "no"> no<br>
+
+<p class="questions" >what do u like to do in life?</p>
 <select id="selectQuestions" type="text" name="question5">
-	<option value="PHP">PHP</option>
-	<option value="Python">Python</option>
-	<option value="JavaScript">JavaScript</option>
-	<option value="All">All</option>
+	<option value="reading">Reading stories and books</option>
+	<option value="watching">Watching Romance n Action Movies!</option>
+	<option value="friends">going with friends is the happiness bro</option>
+	<option value="coding">CODING IS LIFE MAN !!! (For Real! dude T_T)</option>
 </select> 
 <input id = "button" type = "button" value = "I'm finished!" onclick = "check();">
 

@@ -2,20 +2,24 @@
 function check(){
 
 	var question1 = document.quiz.question1.value;
+	var question2 = document.quiz.question2.value;
 	var question3 = document.quiz.question3.value;
 	var question4 = document.quiz.question4.value;
 	var question5 = document.quiz.question5.value;
 	var correct = 0;
-	if (question1 == "5,10") {
+	if (question1 == "soft landing") {
 		correct++;
 	}
-	if (question3 == "False") {
-		correct++;
-	}
-	if (question4 == "True") {
+	if (question2 == "yes") {
 		correct++;
 	}	
-	if (question5 == "All") {
+	if (question3 == "Nintendo") {
+		correct++;
+	}
+	if (question4 == "yes") {
+		correct++;
+	}	
+	if (question5 == "coding") {
 		correct++;
 	}
 	
