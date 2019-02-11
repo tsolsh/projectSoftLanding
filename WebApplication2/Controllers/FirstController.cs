@@ -25,7 +25,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult Signup()
         {
-            return View();
+            return View(player);
         }
 
         public ActionResult Read()
