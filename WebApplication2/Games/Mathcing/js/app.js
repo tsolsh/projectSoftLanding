@@ -67,7 +67,7 @@ function startGame(){
     counter.innerHTML = moves;
     // reset rating
     for (var j= 0; j < stars.length; j++){
-        stars[j].style.color = "#0000FF";
+        stars[j].style.color = "#FFD700";
         stars[j].style.visibility = "visible";
     }
     //reset timer
