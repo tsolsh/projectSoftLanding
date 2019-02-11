@@ -6,19 +6,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication2.Models
 {
-    public class Employee
+    public class Player
     {
         static int count = 0;
-        public Employee() {
+        public Player() {
             count++;
             ID = count;
         }
-        public void copy(Employee emp) {
-            FirstName = emp.FirstName;
-            Email = emp.Email;
-            Phone = emp.Phone;
-            Salary = emp.Salary;
-            LastName = emp.LastName;
+        public void copy(Player player) {
+            FirstName = player.FirstName;
+            Email = player.Email;
+            LastName = player.LastName;
+            Score = player.Score;
         }
         [Required]
         [Display(Name = "ID")]
@@ -35,13 +34,9 @@ namespace WebApplication2.Models
 
         [Required]
         [DataType(DataType.Currency)]
-        [Display(Name = "Salary")]
-        public int Salary { get; set; }
+        [Display(Name = "Score")]
+        public int Score { get; set; }
 
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone")]
-        public string Phone { get; set; }
 
         [Required]
         [EmailAddress]

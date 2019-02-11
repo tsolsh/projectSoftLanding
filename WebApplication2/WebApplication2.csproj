@@ -284,7 +284,6 @@
     <Content Include="Views\First\JavaScript.js" />
     <Content Include="Web.config" />
     <Content Include="Views\First\Create.cshtml" />
-    <Content Include="Views\First\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -292,7 +291,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -303,13 +302,12 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\First\Edit.cshtml" />
     <Content Include="Views\First\Error.cshtml" />
     <Content Include="scripts\jquery-3.0.0.min.map" />
     <Content Include="scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Views\First\Home.cshtml" />
     <Content Include="Views\First\Leaderboard.cshtml" />
-    <Content Include="Views\First\Play.cshtml" />
+    <EmbeddedResource Include="Views\First\Play.cshtml" />
     <Content Include="Views\First\Login.cshtml" />
     <Content Include="Views\First\facts.cshtml" />
     <Content Include="Views\First\Read.cshtml" />
