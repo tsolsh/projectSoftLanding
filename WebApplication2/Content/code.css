@@ -63,11 +63,12 @@ body {
   position: relative;
 }
 .frame-btn__text {
-	color: #cc6a6a;
-	font-weight: bold;
-	text-transform: uppercase;
-	transition: 300ms ease;
-	position: relative;
+    color: #cc6a6a;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 300ms ease;
+    position: relative;
+    font-family: Luminari, fantasy;
 }
 .frame-btn:hover .frame-btn__text {
   color: white;

@@ -28,6 +28,11 @@ namespace WebApplication2.Controllers
             return View(player);
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         public ActionResult Read()
         {
             return View();

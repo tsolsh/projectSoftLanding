@@ -127,6 +127,7 @@
     <Content Include="Content\factsMenu.css" />
     <Content Include="Content\Leader.css" />
     <Content Include="Content\multi.css" />
+    <Content Include="Content\nav.css" />
     <Content Include="Content\util.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\MenuBackground.css" />
@@ -321,6 +322,7 @@
     <Content Include="Views\First\Signup.cshtml" />
     <Content Include="Views\First\MultiGames.cshtml" />
     <Content Include="Views\First\MatchingGame.cshtml" />
+    <Content Include="Views\First\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
