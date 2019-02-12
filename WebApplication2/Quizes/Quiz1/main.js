@@ -6,16 +6,16 @@ function check() {
     var question4 = document.quiz.question4.value;
     var question5 = document.quiz.question5.value;
     var correct = 0;
-    if (question1 == "5,10") {
+    if (question1 === "5,10") {
         correct++;
     }
-    if (question3 == "False") {
+    if (question3 === "False") {
         correct++;
     }
-    if (question4 == "True") {
+    if (question4 === "True") {
         correct++;
     }
-    if (question5 == "All") {
+    if (question5 === "All") {
         correct++;
     }
 
@@ -23,7 +23,7 @@ function check() {
     var messages = ["Great job!", "That's just okay", "You really need to do better"];
     var score;
 
-    if (correct == 0) {
+    if (correct === 0) {
         score = 2;
     }
 
@@ -31,7 +31,7 @@ function check() {
         score = 1;
     }
 
-    if (correct == 5) {
+    if (correct === 5) {
         score = 0;
     }
 

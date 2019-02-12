@@ -16,10 +16,15 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        
-        // GET: First/Create
+
         public ActionResult Login()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(Player p)
+        {
+            p = new Player();
             return View();
         }
 

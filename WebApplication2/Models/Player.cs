@@ -8,10 +8,11 @@ namespace WebApplication2.Models
 {
     public class Player
     {
+        public string First;
+        public 
         static int count = 0;
         public Player() {
             count++;
-            ID = count;
         }
         public void copy(Player player) {
             FirstName = player.FirstName;
@@ -21,7 +22,8 @@ namespace WebApplication2.Models
         }
         [Required]
         [Display(Name = "ID")]
-        public int ID { get; set; }
+        public int Password { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "FirstName")]
@@ -31,6 +33,12 @@ namespace WebApplication2.Models
         [DataType(DataType.Text)]
         [Display(Name = "LastName")]
         public string LastName { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "LastName")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
