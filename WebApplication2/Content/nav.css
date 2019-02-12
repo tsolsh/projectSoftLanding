@@ -29,12 +29,12 @@
 #cssmenu {
     width: auto;
     border-bottom: 3px solid #1f2815;
-    font-family: Raleway, sans-serif;
+    font-family: Luminari, fantasy;
     line-height: 1;
 }
 
     #cssmenu ul {
-        background: #888278;
+        background: #817990;
     }
 
     #cssmenu > ul > li {
@@ -66,7 +66,7 @@
         font-size: 15px;
         font-weight: 400;
         text-decoration: none;
-        color: #564c67;
+        color: #905160;
         -webkit-transition: all .2s ease;
         -moz-transition: all .2s ease;
         -ms-transition: all .2s ease;
