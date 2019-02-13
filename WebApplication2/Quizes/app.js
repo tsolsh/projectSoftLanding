@@ -10,8 +10,8 @@
         // show choices
         var choices = quiz.getQuestionIndex().choices;
         for (var i = 0; i < choices.length; i++) {
-            var element = document.getElementById("choice" + i);
-            element.innerHTML = choices[i];
+            var element2 = document.getElementById("choice" + i);
+            element2.innerHTML = choices[i];
             guess("btn" + i, choices[i]);
         }
 
