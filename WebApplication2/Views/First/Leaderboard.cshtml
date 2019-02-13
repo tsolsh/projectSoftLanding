@@ -1,5 +1,7 @@
-﻿@{
-   Layout = null;
+﻿@model WebApplication2.Models.Player
+
+@{
+    Layout = null;
 }
 <!DOCTYPE html>
 <html>
@@ -7,21 +9,23 @@
     <link rel="stylesheet" type="text/css" href="~/Content/Leader.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
+    @{ 
+        if (Model != null)
+        {
     <div class="wrapper">
         <div class="title">
-            Chart.js Infobox
+        @Model.UserName - This is your score!
         </div>
+
         <div class="chart" id="p1">
             <canvas id="c1"></canvas>
         </div>
-        <div class="footer">
-            
-        </div>
     </div>
-
-
+            }
+        }
     <script src="~/js/leader.js"></script>
 </body>
 </html>

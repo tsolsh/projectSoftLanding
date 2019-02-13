@@ -284,7 +284,7 @@
     <Content Include="vendor\select2\select2.min.js" />
     <Content Include="Views\First\JavaScript.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\First\Create.cshtml" />
+    <Content Include="Views\First\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

@@ -8,11 +8,9 @@ namespace WebApplication2.Models
 {
     public class Player
     {
-        public string First;
-        public 
-        static int count = 0;
+
         public Player() {
-            count++;
+
         }
         public void copy(Player player) {
             FirstName = player.FirstName;
@@ -21,7 +19,7 @@ namespace WebApplication2.Models
             Score = player.Score;
         }
         [Required]
-        [Display(Name = "ID")]
+        [Display(Name = "password")]
         public int Password { get; set; }
 
         [Required]
@@ -37,7 +35,7 @@ namespace WebApplication2.Models
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "LastName")]
+        [Display(Name = "username")]
         public string UserName { get; set; }
 
         [Required]

@@ -10,13 +10,13 @@ namespace WebApplication2.Controllers
 {
     public class FirstController : Controller
     {
-        Player player = new Player();
+        static Player player = new Player();
 
         public ActionResult MultiGames()
         {
             return View();
         }
-
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -24,8 +24,9 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Login(Player p)
         {
-            p = new Player();
-            return View();
+            player.UserName = p.UserName;
+            player.Password = p.Password;
+            return RedirectToAction("Menu");
         }
 
         public ActionResult Signup()
@@ -49,14 +50,18 @@ namespace WebApplication2.Controllers
         }
 
         // GET: First/Create
-        public ActionResult Create()
+        public ActionResult Menu()
         {
             return View();
         }
        
         public ActionResult Leaderboard()
         {
-            return View();
+            if (player.UserName != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Error");
         }
         public ActionResult Play()
         {
@@ -67,6 +72,11 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-       
+
+        public ActionResult Error()
+        {
+            return View();
+        }
+
     }
 }
