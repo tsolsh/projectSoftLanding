@@ -11,6 +11,7 @@ namespace WebApplication2.Controllers
     public class FirstController : Controller
     {
         static Player player = new Player();
+        static List<Player> playersList = new List<Player>();
 
         public ActionResult MultiGames()
         {
@@ -24,16 +25,52 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Login(Player p)
         {
-            player.UserName = p.UserName;
-            player.Password = p.Password;
+            if(playersList == null)
+            {
+                ModelState.AddModelError("username", "username not found or matched");
+                return View();
+            }
+            bool user_exists = false;
+            bool pass_right = false;
+
+            foreach (Player pl in playersList)
+            {
+                if(p.UserName == pl.UserName) {
+                    user_exists = true;
+                }
+            }
+            foreach (Player pl in playersList)
+            {
+                if (p.Password == pl.Password)
+                {
+                    pass_right = true;
+                }
+            }
+            if (!user_exists || !pass_right)
+            {
+                ModelState.AddModelError("username", "username not found or matched");
+                return View();
+            }
             return RedirectToAction("Menu");
         }
 
+        [HttpGet]
         public ActionResult Signup()
         {
-            return View(player);
+            return View();
         }
-
+        [HttpPost]
+        public ActionResult Signup(Player p)
+        {
+            player.UserName = p.UserName;
+            player.Password = p.Password;
+            player.Email = p.Email;
+            player.FirstName = p.FirstName;
+            player.LastName = p.LastName;
+            player.Date = p.Date;
+            playersList.Add(player);
+            return RedirectToAction("Menu");
+        }
         public ActionResult Contact()
         {
             return View();
@@ -52,14 +89,14 @@ namespace WebApplication2.Controllers
         // GET: First/Create
         public ActionResult Menu()
         {
-            return View();
+            return View(player);
         }
        
         public ActionResult Leaderboard()
         {
             if (player.UserName != null)
             {
-                return View();
+                return View(player);
             }
             return RedirectToAction("Error");
         }

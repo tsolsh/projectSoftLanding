@@ -39,6 +39,11 @@ namespace WebApplication2.Models
         public string UserName { get; set; }
 
         [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Date")]
+        public string Date { get; set; }
+
+        [Required]
         [DataType(DataType.Currency)]
         [Display(Name = "Score")]
         public int Score { get; set; }

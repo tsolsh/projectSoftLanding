@@ -29,12 +29,12 @@
 #cssmenu {
     width: auto;
     border-bottom: 3px solid #1f2815;
-    font-family: Luminari, fantasy;
+    font-family: Blippo, fantasy;
     line-height: 1;
 }
 
     #cssmenu ul {
-        background: #817990;
+        background: #afbec4;
     }
 
     #cssmenu > ul > li {
@@ -78,7 +78,7 @@
         #cssmenu > ul > li.active > a,
         #cssmenu > ul > li:hover > a,
         #cssmenu > ul > li > a:hover {
-            color: #b3aebc;
+            color: #afbec4;
         }
 
         #cssmenu > ul > li > a:after {
@@ -106,5 +106,5 @@
         #cssmenu > ul > li.active > a:after,
         #cssmenu > ul > li:hover > a:after,
         #cssmenu > ul > li > a:hover:after {
-            background: #1f2815;
+            background: #54455c;
         }

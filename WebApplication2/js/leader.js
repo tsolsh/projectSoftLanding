@@ -27,4 +27,4 @@ var options1 = {
     scaleStartValue: 500
 }
 
-new Chart(c1.getContext("2d")).Line(data1, options1)
+new Chart(c1.getContext("2d")).Line(data1, options1);
