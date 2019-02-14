@@ -133,7 +133,7 @@
     <Content Include="Content\MenuBackground.css" />
     <Content Include="Content\PlayOptions.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\home.css" />
     <Content Include="Content\title.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -165,6 +165,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />
+    <Content Include="js\home.js" />
     <Content Include="js\leader.js" />
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />

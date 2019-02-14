@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="~/Content/StyleSheet1.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/home.css">
 	<title>Soft Landing</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,13 +17,13 @@
 		}
 
 		/* Header/Logo Title */
-		.header {
-			padding: 80px;
-			text-align: center;
-			color: #cc6a6a;
-			font-size: 50px;
-			font-family: Luminari, fantasy;
-		}
+        .header {
+            padding: 80px;
+            text-align: center;
+            color: #207068;
+            font-size: 50px;
+            font-family: Luminari, fantasy;
+        }
 
 		/* Page Content */
 		.content {
@@ -33,25 +33,23 @@
 </head>
 <body style="background-image: url(https://nmswp.azureedge.net/app/uploads/2018/12/Screenshot-177.jpg); width:100%; height:100%;">
 
-	<div class="header">
-		<h1>Soft Landing</h1>
-		<link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,900' rel='stylesheet' type='text/css'>
-		<div class="container">
-			<a href="~/First/Menu" class="btn">
-				<svg width="277" height="62">
-					<defs>
-						<linearGradient id="grad1">
-							<stop offset="0%" stop-color="#FF8282" />
-							<stop offset="100%" stop-color="#E178ED" />
-						</linearGradient>
-					</defs>
-					<rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-				</svg>
-				<span>Enter</span>
-			</a>
-		</div>
-	</div>
+    <div class="header">
+        <h1>Soft Landing</h1>
+        <link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,900' rel='stylesheet' type='text/css'>
+        <div class="container">
+            <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 
+            <div class="button">
+                <a href="~/First/Menu">
+                    &nbsp;Enter&nbsp;
+                    <span class="shift">›</span>
+                </a>
+                <div class="mask"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/home.js"></script>
 
 </body>
 </html>
