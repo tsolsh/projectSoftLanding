@@ -13,7 +13,27 @@ namespace WebApplication2.Controllers
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
 
+        public ActionResult startQuiz()
+        {
+            return View();
+        }
+
         public ActionResult MultiGames()
+        {
+            return View();
+        }
+
+        public ActionResult localGames()
+        {
+            return View();
+        }
+
+        public ActionResult singleGames()
+        {
+            return View();
+        }
+
+        public ActionResult LogOut()
         {
             return View();
         }
@@ -73,7 +93,13 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Contact()
         {
-            return View();
+            try {
+                return View(player);
+            }
+            catch
+            {
+                return RedirectToAction("Menu");
+            }
         }
 
         public ActionResult Read()
@@ -81,9 +107,9 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        public ActionResult facts()
+        public ActionResult facts(Player p)
         {
-            return View();
+            return View(p);
         }
 
         // GET: First/Create
@@ -92,14 +118,17 @@ namespace WebApplication2.Controllers
             return View(player);
         }
        
-        public ActionResult Leaderboard()
+
+        public ActionResult Leaderboard(Player p)
         {
-            if (player.UserName != null)
+            if (p.UserName != null)
             {
-                return View(player);
+                return View(p);
             }
             return RedirectToAction("Error");
         }
+
+
         public ActionResult Play()
         {
             return View();
@@ -110,9 +139,14 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        public ActionResult Error()
+        public ActionResult Error(Player p)
         {
-            return View();
+            return View(p);
+        }
+
+        public ActionResult Settings(Player p)
+        {
+            return View(p);
         }
 
     }

@@ -10,7 +10,7 @@ namespace WebApplication2.Models
     {
 
         public Player() {
-
+            this.UserName = null;
         }
         public void copy(Player player) {
             FirstName = player.FirstName;

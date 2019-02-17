@@ -7,16 +7,39 @@
             width: 32px;
             background: #F5F5F5;
             border: dotted 1px solid;
-            padding: 10px;
-            font-size: 24px;
+            padding: 20px;
+            font-size: 40px;
             text-align: center;
             margin: 5px;
+            color: white;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUGzptxJxJM_iWBRT7nlPKW6FdttzDYRQAz2t-i_YfmIBN8zbF)
+        }
+
+        .game {
+            position: absolute;
+            top: 20%;
+            left: 40%;
+        }
+        .roll {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+            font-family: sans-serif;
+            font-size:large;
+        }
+        .answer {
+            clear: left;
+            position: absolute;
+            top: 55%;
+            left: 41%;
+            color: darkcyan;
+            font-family: Avantgarde, TeX;
         }
     </style>
     <script>
         function rollDice() {
-            var die1 = document.getElementById("die1");
-            var die2 = document.getElementById("die2");
+            var die1 = document.getElementById("dice1");
+            var die2 = document.getElementById("dice2");
             var status = document.getElementById("status");
             var d1 = Math.floor(Math.random() * 6) + 1;
             var d2 = Math.floor(Math.random() * 6) + 1;
@@ -33,10 +56,14 @@
     <title></title>
     <meta charset="utf-8" />
 </head>
-<body>
-    <div id="die1" class="dice">0</div>
-    <div id="die2" class="dice">0</div>
-    <button onclick="rollDice()">Roll Dice</button>
-    <h2 id="status" style="clear:left"></h2>
+<body style="background-image: url();height:100%;
+  background-repeat: no-repeat;
+  background-size: cover;">
+    <div class="game">
+        <div id="dice1" class="dice">0</div>
+        <div id="dice2" class="dice">0</div>
+    </div>
+    <button onclick="rollDice()" class="roll">Roll Dice</button>
+    <h2 id="status" class="answer"></h2>
 </body>
 </html>

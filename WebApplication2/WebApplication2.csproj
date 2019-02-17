@@ -324,6 +324,10 @@
     <Content Include="Views\First\MultiGames.cshtml" />
     <Content Include="Views\First\MatchingGame.cshtml" />
     <Content Include="Views\First\Contact.cshtml" />
+    <Content Include="Views\First\Settings.cshtml" />
+    <Content Include="Views\First\singleGames.cshtml" />
+    <Content Include="Views\First\localGames.cshtml" />
+    <Content Include="Views\First\startQuiz.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
