@@ -160,6 +160,8 @@
     <Content Include="Games\Snake\img\ground.png" />
     <Content Include="Games\Snake\index.html" />
     <Content Include="Games\Snake\snake.js" />
+    <Content Include="Games\TetrisCode\index.html" />
+    <Content Include="Games\TetrisCode\tetris.js" />
     <Content Include="Games\Tetris\index.html" />
     <Content Include="Games\Tetris\tetris.js" />
     <Content Include="Global.asax" />
