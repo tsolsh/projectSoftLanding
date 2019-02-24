@@ -12,7 +12,10 @@ namespace WebApplication2.Controllers
     {
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
-
+        public ActionResult quizMenu()
+        {
+            return View();
+        }
         public ActionResult startQuiz()
         {
             return View();

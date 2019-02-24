@@ -330,6 +330,7 @@
     <Content Include="Views\First\singleGames.cshtml" />
     <Content Include="Views\First\localGames.cshtml" />
     <Content Include="Views\First\startQuiz.cshtml" />
+    <Content Include="Views\First\quizMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
