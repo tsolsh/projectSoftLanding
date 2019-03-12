@@ -145,9 +145,7 @@
     <Content Include="Games\Mathcing\css\app.css" />
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
-    <Content Include="Games\Mathcing\index.html" />
     <Content Include="Games\Mathcing\js\app.js" />
-    <Content Include="Games\Mathcing\Level2.html" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
     <Content Include="Games\Snake\audio\dead.mp3" />
@@ -331,6 +329,9 @@
     <Content Include="Views\First\localGames.cshtml" />
     <Content Include="Views\First\startQuiz.cshtml" />
     <Content Include="Views\First\quizMenu.cshtml" />
+    <Content Include="Views\First\Matching1.cshtml" />
+    <Content Include="Views\First\Matching2.cshtml" />
+    <Content Include="Views\First\check.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

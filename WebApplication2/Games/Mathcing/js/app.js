@@ -22,10 +22,16 @@ let starsList = document.querySelectorAll(".stars li");
 let closeicon = document.querySelector(".close");
 
 // declare modal
-let modal = document.getElementById("popup1")
+let modal = document.getElementById("popup1");
 
 // array for opened cards
 var openedCards = [];
+
+
+///////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
 
 
 // @description shuffles cards
@@ -181,7 +187,7 @@ var timer = document.querySelector(".timer");
 var interval;
 function startTimer() {
     interval = setInterval(function () {
-        timer.innerHTML = minute + "mins " + second + "secs";
+        timer.innerHTML = minute + " mins " + second + " secs";
         second++;
         if (second === 60) {
             minute++;
@@ -208,7 +214,7 @@ function congratulations() {
         var starRating = document.querySelector(".stars").innerHTML;
 
         //showing move, rating, time on modal
-        document.getElementById("finalMove").innerHTML = moves;
+        document.getElementById("move").innerHTML = moves;
         document.getElementById("starRating").innerHTML = starRating;
         document.getElementById("totalTime").innerHTML = finalTime;
 

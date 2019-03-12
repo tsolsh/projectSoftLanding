@@ -2,7 +2,7 @@
 <html >
 	<head>
 		<title>TETRIS</title>
-	</head>
+
 	<style>
 		body{
 			background: #202028;
@@ -27,6 +27,18 @@
             height : 65vh;
 			border: 3px dashed white;
 		}
+        .exp {
+            top: 20%;
+            left: 5%;
+            background: #202028;
+            position: absolute;
+            color: white;
+            font-family: FreeMono, monospace;
+            font-size: 20px;
+            padding: 10px;
+            height: 65vh;
+            border: 3px dashed white;
+        }
 		#enterCode{
 			position:absolute;
 			top :15%;
@@ -48,8 +60,10 @@
 			color: black;
 			cursor: pointer;
 		}
+        
 		
 	</style>
+        	</head>
 	<body>
 		<button> Close </button>
 		<div id="score" font-size="2em"></div>
@@ -60,6 +74,19 @@
 		<button id="doneButton" onClick="getInput()"> Done </button>
 		<p id="tryMe" font-size="2px">whateverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
 		<script src="tetris.js"></script>
+        <div class="exp">
+            <p>
+                you can write operations like:
+            </p>
+            <p>   MoveLeft()        </p>
+            <p>   Moveright()        </p>
+            <p>    DropDown()        </p>
+            <p>   Rotate()        </p>
+            <p></p>
+            <p>
+                Add numbers if you like !
+            </p>
+        </div>
 	</body>
 		
 </html>

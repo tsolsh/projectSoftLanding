@@ -44,7 +44,7 @@ namespace WebApplication2.Models
         public string Date { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
+        [DataType(DataType.Text)]
         [Display(Name = "Score")]
         public int Score { get; set; }
 

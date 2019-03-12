@@ -12,6 +12,8 @@ namespace WebApplication2.Controllers
     {
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
+        static int level = 0;
+        //static int again2 = 0;
         public ActionResult quizMenu()
         {
             return View();
@@ -151,6 +153,38 @@ namespace WebApplication2.Controllers
         {
             return View(p);
         }
+        public ActionResult close()
+        {
+            level = 0;
+            return RedirectToAction("Menu");
+        }
 
+
+        [HttpGet]
+        public ActionResult Matching1()
+        {
+            if (level == 0)
+            {
+                level++;
+                return View();
+            }
+
+            player.Score = 10;
+            return RedirectToAction("Matching2");
+
+        }
+
+        [HttpGet]
+        public ActionResult Matching2()
+        {
+            if (level == 1)
+            {
+                level++;
+                return View();
+            }
+
+            player.Score += 20;
+            return RedirectToAction("Menu");
+        }
     }
 }
