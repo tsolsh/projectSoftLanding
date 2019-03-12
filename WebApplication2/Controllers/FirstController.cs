@@ -5,16 +5,39 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
 
 namespace WebApplication2.Controllers
 {
     public class FirstController : Controller
     {
+       
+        static int level = 0;
+
+        string FileName = @"SavedPlayers.bin";
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
-        static int level = 0;
-        //static int again2 = 0;
-        public ActionResult quizMenu()
+        Stream SaveFileStream;
+        BinaryFormatter serializer;
+
+        public FirstController()
+        {
+            
+            string dirPath = Path.GetDirectoryName(
+            System.Reflection.Assembly.GetExecutingAssembly().Location);
+            FileName = dirPath + FileName;
+            if (!System.IO.File.Exists(FileName))
+            {            
+                Stream SaveFileStream = System.IO.File.Create(FileName);
+                BinaryFormatter serializer = new BinaryFormatter();
+                SaveFileStream.Close();
+            }
+        }
+
+
+    public ActionResult quizMenu()
         {
             return View();
         }
@@ -40,7 +63,9 @@ namespace WebApplication2.Controllers
 
         public ActionResult LogOut()
         {
-            return View();
+            player.UserName = null;
+            return RedirectToAction("Menu");
+
         }
         [HttpGet]
         public ActionResult Login()
@@ -50,32 +75,40 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Login(Player p)
         {
-            if(playersList == null)
+            if (System.IO.File.Exists(FileName))
+            {
+                Stream openFileStream = System.IO.File.OpenRead(FileName);
+                if (openFileStream.Length != 0)
+                {
+                    BinaryFormatter deserializer = new BinaryFormatter();
+                    playersList = (List<Player>)deserializer.Deserialize(openFileStream);
+                }
+                openFileStream.Close();
+            }
+
+            if (playersList.Count == 0)
             {
                 ModelState.AddModelError("username", "username not found or matched");
                 return View();
             }
             bool user_exists = false;
-            bool pass_right = false;
-
+            //bool pass_right = false;
+            int i = 0; 
             foreach (Player pl in playersList)
             {
-                if(p.UserName == pl.UserName) {
+                if(p.UserName == pl.UserName && p.Password == pl.Password) {
                     user_exists = true;
+                    break;
                 }
+                i++;
             }
-            foreach (Player pl in playersList)
-            {
-                if (p.Password == pl.Password)
-                {
-                    pass_right = true;
-                }
-            }
-            if (!user_exists || !pass_right)
+
+            if (!user_exists)
             {
                 ModelState.AddModelError("username", "username not found or matched");
                 return View();
             }
+            player = playersList[i];
             return RedirectToAction("Menu");
         }
 
@@ -94,8 +127,15 @@ namespace WebApplication2.Controllers
             player.LastName = p.LastName;
             player.Date = p.Date;
             playersList.Add(player);
+
+            Stream SaveFileStream = System.IO.File.Create(FileName);
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(SaveFileStream, playersList);
+            SaveFileStream.Close();
+
             return RedirectToAction("Menu");
         }
+
         public ActionResult Contact()
         {
             try {
