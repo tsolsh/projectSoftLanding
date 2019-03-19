@@ -14,5 +14,6 @@ namespace WebApplication2
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+        
     }
 }
