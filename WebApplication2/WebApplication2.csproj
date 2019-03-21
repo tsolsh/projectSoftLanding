@@ -142,6 +142,15 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Games\Flappy Bird\flappyBird.js" />
+    <Content Include="Games\Flappy Bird\images\bg.png" />
+    <Content Include="Games\Flappy Bird\images\bird.png" />
+    <Content Include="Games\Flappy Bird\images\fg.png" />
+    <Content Include="Games\Flappy Bird\images\pipeNorth.png" />
+    <Content Include="Games\Flappy Bird\images\pipeSouth.png" />
+    <Content Include="Games\Flappy Bird\index.html" />
+    <Content Include="Games\Flappy Bird\sounds\fly.mp3" />
+    <Content Include="Games\Flappy Bird\sounds\score.mp3" />
     <Content Include="Games\Mathcing\css\app.css" />
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
