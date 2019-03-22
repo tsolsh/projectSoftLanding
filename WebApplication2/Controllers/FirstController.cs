@@ -15,7 +15,7 @@ namespace WebApplication2.Controllers
     {
        
         static int level = 0;
-
+        static int quizNum = 0;
         string FileName = @"SavedPlayers.bin";
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
@@ -42,6 +42,25 @@ namespace WebApplication2.Controllers
             return View();
         }
         public ActionResult startQuiz()
+        {
+            return RedirectToAction("quiz1");
+        }
+
+        public ActionResult quiz1(int result)
+        {
+            if (result == 0)
+            {
+                return View();
+            }
+            else
+            {
+                player.Score += 10;
+                return RedirectToAction("quiz2");
+
+            }
+        }
+
+        public ActionResult quiz2()
         {
             return View();
         }

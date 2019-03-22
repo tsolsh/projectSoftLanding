@@ -170,13 +170,11 @@
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
     <Content Include="Quizes\app.js" />
-    <Content Include="Quizes\index.html" />
     <Content Include="Quizes\question.js" />
     <Content Include="Quizes\questions.txt" />
     <Content Include="Quizes\Quiz1\img\lose.gif" />
     <Content Include="Quizes\Quiz1\img\meh.jpeg" />
     <Content Include="Quizes\Quiz1\img\win.gif" />
-    <Content Include="Quizes\Quiz1\index.html" />
     <Content Include="Quizes\Quiz1\main.js" />
     <Content Include="Quizes\Quiz1\style.css" />
     <Content Include="Quizes\quiz_controller.js" />
@@ -332,6 +330,8 @@
     <Content Include="Views\First\Matching1.cshtml" />
     <Content Include="Views\First\Matching2.cshtml" />
     <Content Include="Views\First\check.cshtml" />
+    <Content Include="Views\First\quiz1.cshtml" />
+    <Content Include="Views\First\quiz2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
