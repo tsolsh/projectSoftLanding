@@ -254,5 +254,11 @@ namespace WebApplication2.Controllers
             player.Score += 20;
             return RedirectToAction("Menu");
         }
+
+        [HttpGet]
+        public ActionResult snake()
+        {
+            return View();
+        }
     }
 }

@@ -151,10 +151,10 @@
     <Content Include="Games\Flappy Bird\index.html" />
     <Content Include="Games\Flappy Bird\sounds\fly.mp3" />
     <Content Include="Games\Flappy Bird\sounds\score.mp3" />
-    <Content Include="Games\Mathcing\css\app.css" />
+    <Content Include="Games\Mathcing\css\matching.css" />
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
-    <Content Include="Games\Mathcing\js\app.js" />
+    <Content Include="Games\Mathcing\js\matching.js" />
     <Content Include="Games\Pong\pong.html" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
@@ -166,8 +166,8 @@
     <Content Include="Games\Snake\audio\up.mp3" />
     <Content Include="Games\Snake\img\food.png" />
     <Content Include="Games\Snake\img\ground.png" />
-    <Content Include="Games\Snake\index.html" />
     <Content Include="Games\Snake\snake.js" />
+    <Content Include="Games\Snake\snakecss.css" />
     <Content Include="Games\TetrisCode\index.html" />
     <Content Include="Games\TetrisCode\tetris.js" />
     <Content Include="Games\Tetris\index.html" />
@@ -342,6 +342,7 @@
     <Content Include="Views\First\check.cshtml" />
     <Content Include="Views\First\quiz1.cshtml" />
     <Content Include="Views\First\quiz2.cshtml" />
+    <Compile Include="Views\First\snake.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

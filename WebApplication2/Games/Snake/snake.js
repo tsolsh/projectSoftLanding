@@ -1,5 +1,9 @@
 ﻿const cvs = document.getElementById("snake");
 const ctx = cvs.getContext("2d");
+// declare modal
+let modal = document.getElementById("popup1");
+// close icon in modal
+let closeicon = document.querySelector(".close");
 
 // create the unit
 const box = 32;
@@ -136,6 +140,10 @@ function draw() {
         || snakeY > 17 * box || collision(newHead, snake)) {
         clearInterval(game);
         dead.play();
+        // show congratulations modal
+        modal.classList.add("show");
+        //closeicon on modal
+        closeModal();
     }
 
     snake.unshift(newHead);
@@ -148,3 +156,18 @@ function draw() {
 // call the draw function every 100 ms
 
 let game = setInterval(draw, 100);
+
+// @description close icon on modal
+function closeModal() {
+    closeicon.addEventListener("click", function (e) {
+        modal.classList.remove("show");
+        startGame();
+    });
+}
+
+
+// @desciption for user to play Again 
+function playAgain() {
+    modal.classList.remove("show");
+    startGame();
+}
