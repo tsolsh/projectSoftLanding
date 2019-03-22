@@ -88,6 +88,12 @@ namespace WebApplication2.Controllers
 
         public ActionResult LogOut()
         {
+            //save player to file
+            Stream SaveFileStream = System.IO.File.Create(FileName);
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(SaveFileStream, playersList);
+            SaveFileStream.Close();
+
             player.UserName = null;
             return RedirectToAction("Menu");
 
@@ -153,10 +159,7 @@ namespace WebApplication2.Controllers
             player.Date = p.Date;
             playersList.Add(player);
 
-            Stream SaveFileStream = System.IO.File.Create(FileName);
-            BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(SaveFileStream, playersList);
-            SaveFileStream.Close();
+           
 
             return RedirectToAction("Menu");
         }

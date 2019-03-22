@@ -24,7 +24,7 @@ function arenaSweep(){
 const matrix = [
 	[0,0,0],
 	[1,1,1],
-	[0,1,0],
+	[0,1,0]
 ];
 function collide(arena, player){
 	const [m, o] = [player.matrix, player.pos];
@@ -49,43 +49,43 @@ function createPiece(type){
 		return [
 				[0,0,0],
 				[1,1,1],
-				[0,1,0],
+				[0,1,0]
 			];
 	}else if(type === 'O'){
 		return [
 			[2,2],
-			[2,2],
+			[2,2]
 			];
 	}else if(type === 'L'){
 		return [
 			[0,3,0],
 			[0,3,0],
-			[0,3,3],
+			[0,3,3]
 			];
 	}else if(type === 'J'){
 		return [
 			[0,4,0],
 			[0,4,0],
-			[4,4,0],
+			[4,4,0]
 			];
 	}else if(type === 'I'){
 		return [
 			[0,5,0,0],
 			[0,5,0,0],
 			[0,5,0,0],
-			[0,5,0,0],
+			[0,5,0,0]
 			];
 	}else if(type === 'S'){
 		return [
 			[0,6,6],
 			[6,6,0],
-			[0,0,0],
+			[0,0,0]
 			];
 	}
 	return [
 		[7,7,0],
 		[0,7,7],
-		[0,0,0],
+		[0,0,0]
 		];
 }
 
@@ -121,10 +121,10 @@ function drawMatrix(matrix ,offset){
 	});
 }
 var player = {
-	pos: {x:0,y:0},
-	matrix: null,
-	score:0,
-}
+    pos: { x: 0, y: 0 },
+    matrix: null,
+    score: 0
+};
 
 const arena = createMatrix(12,20);
 
@@ -204,7 +204,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
 					if(numOfLeftParenthesis > 1) {
 						alert("dont put more than one left Parenthesis");
 						i++;
-						requestAnimationFrame(function(){getInp(seconds, i, lines, 0)})	
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0); });
 					}
 				}
 				if(lines[i].charAt(j) === ')'){
@@ -212,8 +212,8 @@ function getInp(seconds = 0, i, lines, numOfTimes){
 					numOfRightParenthesis++;
 					if(numOfRightParenthesis > 1) {
 						alert("dont put more than one right Parenthesis");
-						i++;
-						requestAnimationFrame(function(){getInp(seconds, i, lines, 0)})	
+                        i++;
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0); });
 					}
 				}
 				if(begin !== 0){
@@ -230,7 +230,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
 						alert("please enter numbers only as arguments on line " + lineOfError);
 						i++;
 						numOfTimes = 0;
-						requestAnimationFrame(function(){getInp(seconds, i, lines, 0)})	
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0); });
 					}
 				}
 				if (begin !== 0 && endIndex !== 0){
@@ -244,7 +244,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
 									alert("Dont put anything after ';' (line " + lineOfError + ")");
 									i++;
 									draw();
-									requestAnimationFrame(function(){getInp(seconds, i, lines, 0)});					
+                                    requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});					
 								}
 							}
 							break;
@@ -256,29 +256,29 @@ function getInp(seconds = 0, i, lines, numOfTimes){
 						}
 						i++;
 						draw();
-						requestAnimationFrame(function(){getInp(seconds, i, lines, 0)});
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});
 					}
 				}
 			}
 			
 			if(numOfSpaces === endIndex - begin) {
-				numOfTimes = 1
+                numOfTimes = 1;
 			} else {
 				numOfTimes = parseInt(lines[i].substring(begin, endIndex));
 			}
 			lines[i] = lines[i].replace(lines[i].substring(begin - 1, lines[i].length), "");
 		}
 		lastTimeLoop = (new Date()).getSeconds();
-		if(lastTimeLoop != seconds){
+		if(lastTimeLoop !== seconds){
 			//alert(lastTimeLoop +" "+ seconds);
 			seconds = lastTimeLoop;
-			if (lines[i] == "MoveLeft"){
+			if (lines[i] === "MoveLeft"){
 				playerMove(-1);
-			} else if( lines[i] == "MoveRight"){
+			} else if( lines[i] === "MoveRight"){
 				playerMove(1);
-			} else if ( lines[i] == "DropDown"){
+			} else if ( lines[i] === "DropDown"){
 				playerDrop();
-			} else if (lines[i] == "Rotate"){
+			} else if (lines[i] === "Rotate"){
 				playerRotate(-1);	
 			}
 			if(numOfTimes !== 0){
@@ -291,7 +291,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
 			}
 		}
 		draw();
-		requestAnimationFrame(function(){getInp(seconds, i, lines, numOfTimes)})
+        requestAnimationFrame(function () { getInp(seconds, i, lines, numOfTimes);});
 	}
 }
 
@@ -321,7 +321,7 @@ const colors = [
 	'blue',
 	'aqua',
 	'green',
-	'red',
+	'red'
 ];
 
 
@@ -365,15 +365,15 @@ function rotate(matrix,dir){
 			//switching the values.
 			[
 			matrix[x][y],
-			matrix[y][x],
+			matrix[y][x]
 			] = [
 				matrix[y][x],
-				matrix[x][y],
+				matrix[x][y]
 				];
 		}
 	}
 	if(dir > 0 ){
-		matrix.forEach((row => row.reverse()))	;
+		matrix.forEach((row => row.reverse()));
 	} else {
 		matrix.reverse();
 	}
