@@ -8,12 +8,13 @@ using WebApplication2.Models;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
+using System.Web.UI;
 
 namespace WebApplication2.Controllers
 {
     public class FirstController : Controller
     {
-       
+        public event EventHandler Unload;
         static int level = 0;
         static int quizNum = 0;
         string FileName = @"SavedPlayers.bin";
@@ -24,7 +25,7 @@ namespace WebApplication2.Controllers
 
         public FirstController()
         {
-            
+            this.Unload += new System.EventHandler(this.Page_UnLoad);
             string dirPath = Path.GetDirectoryName(
             System.Reflection.Assembly.GetExecutingAssembly().Location);
             FileName = dirPath + FileName;
@@ -36,8 +37,13 @@ namespace WebApplication2.Controllers
             }
         }
 
+        protected void Page_UnLoad(object sender, EventArgs e)
+        {
+            // code to be executed on user leaves the page    
+            int i = 0;
+        }
 
-    public ActionResult quizMenu()
+        public ActionResult quizMenu()
         {
             return View();
         }
