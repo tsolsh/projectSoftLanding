@@ -142,15 +142,6 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
-    <Content Include="Games\Flappy Bird\flappyBird.js" />
-    <Content Include="Games\Flappy Bird\images\bg.png" />
-    <Content Include="Games\Flappy Bird\images\bird.png" />
-    <Content Include="Games\Flappy Bird\images\fg.png" />
-    <Content Include="Games\Flappy Bird\images\pipeNorth.png" />
-    <Content Include="Games\Flappy Bird\images\pipeSouth.png" />
-    <Content Include="Games\Flappy Bird\index.html" />
-    <Content Include="Games\Flappy Bird\sounds\fly.mp3" />
-    <Content Include="Games\Flappy Bird\sounds\score.mp3" />
     <Content Include="Games\Mathcing\css\matching.css" />
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
@@ -249,6 +240,7 @@
     <Content Include="fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Games\Snake\snake.html" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\JavaScript.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -342,7 +334,7 @@
     <Content Include="Views\First\check.cshtml" />
     <Content Include="Views\First\quiz1.cshtml" />
     <Content Include="Views\First\quiz2.cshtml" />
-    <Compile Include="Views\First\snake.cshtml" />
+    <Content Include="Views\First\Snake.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

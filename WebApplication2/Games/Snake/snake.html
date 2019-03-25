@@ -1,10 +1,4 @@
-﻿@model WebApplication2.Models.Player
-
-@{
-    Layout = null;
-}
-
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <title>Snake Game</title>
@@ -24,14 +18,12 @@
     <div id="popup1" class="overlay">
         <div class="popup">
             <h2>too bad!</h2>
-            <a class="close" href=#>X</a>
+            <a class="close" href=#>×</a>
 
-            <button type="submit" onclick="click()">
-                @Html.ActionLink("Try again", "Snake.cshtml")
-            </button>
+            <button type="submit" onclick="click()"></button>
 
         </div>
     </div>
-    <script src="~/Games/Snake/snake.js"></script>
+    <script src="snake.js"></script>
 </body>
 </html>

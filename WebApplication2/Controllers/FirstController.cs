@@ -255,8 +255,8 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Menu");
         }
 
-        [HttpGet]
-        public ActionResult snake()
+
+        public ActionResult Snake()
         {
             return View();
         }
