@@ -22,6 +22,16 @@
         flex-direction: column;
         height: 110%;
     }
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
 </style>
 </head>
 
@@ -30,9 +40,11 @@
             <header>
                 <h1>Memory Game</h1>
             </header>
-            <a>
-                @Html.ActionLink("Close", "close")
-            </a>
+            <div class="close">
+                <a>
+                    @Html.ActionLink("X", "close")
+                </a>
+            </div>
             <section class="score-panel">
                 <ul class="stars">
                     <li><i class="fa fa-star"></i></li>
@@ -110,7 +122,6 @@
                 </div>
             </div>
     </div>
-
     <script src="~/Games/Mathcing/js/matching.js"></script>
 
 </body>

@@ -52,7 +52,13 @@ namespace WebApplication2.Controllers
             return RedirectToAction("quiz1");
         }
 
-        public ActionResult quiz1(int result)
+        public ActionResult quiz1()
+        {
+            return View();
+        }
+        [HttpGet]
+
+        public ActionResult quiz1_result(int result)
         {
             if (result == 0)
             {

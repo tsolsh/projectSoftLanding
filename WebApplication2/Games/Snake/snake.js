@@ -4,7 +4,7 @@ const ctx = cvs.getContext("2d");
 let modal = document.getElementById("popup1");
 // close icon in modal
 let closeicon = document.querySelector(".close");
-
+let level = 0;
 // create the unit
 const box = 32;
 
@@ -89,6 +89,7 @@ function collision(head, array) {
 // draw everything to the canvas
 
 function draw() {
+    modal.classList.remove("show");
 
     ctx.drawImage(ground, 0, 0);
 
@@ -143,6 +144,11 @@ function draw() {
         //closeicon on modal
         closeModal();
     }
+    if (score > level) {
+        level++;
+        modal.classList.add("show");
+        draw();
+    }
 
     snake.unshift(newHead);
 
@@ -159,7 +165,7 @@ let game = setInterval(draw, 100);
 function closeModal() {
     closeicon.addEventListener("click", function (e) {
         modal.classList.remove("show");
-        startGame();
+        draw();
     });
 }
 
@@ -167,5 +173,11 @@ function closeModal() {
 // @desciption for user to play Again 
 function playAgain() {
     modal.classList.remove("show");
-    startGame();
+    draw();
+}
+
+function nextLevel() {
+    level++;
+    modal.classList.remove("show");
+    draw();
 }
