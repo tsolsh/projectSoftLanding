@@ -29,8 +29,9 @@
 		}
 		#enterCode{
 			position:absolute;
-			top :15%;
-			left: 67%;
+			top :10%;
+			left: 64%;
+			height: 5vh;
 		}
 		#doneButton{
 			position:absolute;
@@ -55,10 +56,11 @@
 		<div id="score" font-size="2em"></div>
 		<canvas id="tetris" width="240" height="400" ></canvas>
 		<form action="" method="POST">
-		</br><span id ="enterCode">enter code: </span></br><textarea id="textarea1" rows="18" cols ="35" ></textarea> 
+		</br><span id ="enterCode">enter code:</br>(Rotate(x), DropDown(x), MoveRight(x),MoveLeft(x)) </span></br>
+		<textarea id="textarea1" rows="18" cols ="35" ></textarea> 
 		</form>
 		<button id="doneButton" onClick="getInput()"> Done </button>
-		<p id="tryMe" font-size="2px">whateverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
+		<p id="tryMe" font-size="2px">whateverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
 		<script src="tetris.js"></script>
 	</body>
 		
