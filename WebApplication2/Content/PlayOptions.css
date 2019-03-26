@@ -33,6 +33,9 @@ h1 {
 	font-size: 2.5rem;
 	margin-top: 6rem;
 }
+a:visited{
+    color:aqua;
+}
 
 .btn {
 	display: block;

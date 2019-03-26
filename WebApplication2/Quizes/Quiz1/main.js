@@ -27,11 +27,11 @@ function check() {
         score = 2;
     }
 
-    if (correct > 0 && correct < 5) {
+    if (correct > 0 && correct < 4) {
         score = 1;
     }
 
-    if (correct === 5) {
+    if (correct === 4) {
         score = 0;
     }
 

@@ -142,12 +142,11 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
-    <Content Include="Games\Mathcing\css\app.css" />
+    <Content Include="Games\Mathcing\css\matching.css" />
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
-    <Content Include="Games\Mathcing\index.html" />
-    <Content Include="Games\Mathcing\js\app.js" />
-    <Content Include="Games\Mathcing\Level2.html" />
+    <Content Include="Games\Mathcing\js\matching.js" />
+    <Content Include="Games\Pong\pong.html" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
     <Content Include="Games\Snake\audio\dead.mp3" />
@@ -158,8 +157,8 @@
     <Content Include="Games\Snake\audio\up.mp3" />
     <Content Include="Games\Snake\img\food.png" />
     <Content Include="Games\Snake\img\ground.png" />
-    <Content Include="Games\Snake\index.html" />
     <Content Include="Games\Snake\snake.js" />
+    <Content Include="Games\Snake\snakecss.css" />
     <Content Include="Games\TetrisCode\index.html" />
     <Content Include="Games\TetrisCode\tetris.js" />
     <Content Include="Games\Tetris\index.html" />
@@ -172,13 +171,11 @@
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
     <Content Include="Quizes\app.js" />
-    <Content Include="Quizes\index.html" />
     <Content Include="Quizes\question.js" />
     <Content Include="Quizes\questions.txt" />
     <Content Include="Quizes\Quiz1\img\lose.gif" />
     <Content Include="Quizes\Quiz1\img\meh.jpeg" />
     <Content Include="Quizes\Quiz1\img\win.gif" />
-    <Content Include="Quizes\Quiz1\index.html" />
     <Content Include="Quizes\Quiz1\main.js" />
     <Content Include="Quizes\Quiz1\style.css" />
     <Content Include="Quizes\quiz_controller.js" />
@@ -243,6 +240,7 @@
     <Content Include="fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Games\Snake\snake.html" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\JavaScript.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -330,6 +328,13 @@
     <Content Include="Views\First\singleGames.cshtml" />
     <Content Include="Views\First\localGames.cshtml" />
     <Content Include="Views\First\startQuiz.cshtml" />
+    <Content Include="Views\First\quizMenu.cshtml" />
+    <Content Include="Views\First\Matching1.cshtml" />
+    <Content Include="Views\First\Matching2.cshtml" />
+    <Content Include="Views\First\check.cshtml" />
+    <Content Include="Views\First\quiz1.cshtml" />
+    <Content Include="Views\First\quiz2.cshtml" />
+    <Content Include="Views\First\Snake.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

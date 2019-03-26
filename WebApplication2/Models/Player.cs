@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication2.Models
 {
+    [Serializable()]
     public class Player
     {
 
@@ -44,7 +45,7 @@ namespace WebApplication2.Models
         public string Date { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
+        [DataType(DataType.Text)]
         [Display(Name = "Score")]
         public int Score { get; set; }
 

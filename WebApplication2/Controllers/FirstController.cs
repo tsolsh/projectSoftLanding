@@ -5,15 +5,68 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
+using System.Web.UI;
 
 namespace WebApplication2.Controllers
 {
     public class FirstController : Controller
     {
+        public event EventHandler Unload;
+        static int level = 0;
+        static int quizNum = 0;
+        string FileName = @"SavedPlayers.bin";
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
+        Stream SaveFileStream;
+        BinaryFormatter serializer;
 
+        public FirstController()
+        {
+            this.Unload += new System.EventHandler(this.Page_UnLoad);
+            string dirPath = Path.GetDirectoryName(
+            System.Reflection.Assembly.GetExecutingAssembly().Location);
+            FileName = dirPath + FileName;
+            if (!System.IO.File.Exists(FileName))
+            {            
+                Stream SaveFileStream = System.IO.File.Create(FileName);
+                BinaryFormatter serializer = new BinaryFormatter();
+                SaveFileStream.Close();
+            }
+        }
+
+        protected void Page_UnLoad(object sender, EventArgs e)
+        {
+            // code to be executed on user leaves the page    
+            int i = 0;
+        }
+
+        public ActionResult quizMenu()
+        {
+            return View();
+        }
         public ActionResult startQuiz()
+        {
+            return RedirectToAction("quiz1");
+        }
+
+        public ActionResult quiz1(int result)
+        {
+            if (result == 0)
+            {
+                return View();
+            }
+            else
+            {
+                player.Score += 10;
+                return RedirectToAction("quiz2");
+
+            }
+        }
+
+        public ActionResult quiz2()
         {
             return View();
         }
@@ -35,7 +88,15 @@ namespace WebApplication2.Controllers
 
         public ActionResult LogOut()
         {
-            return View();
+            //save player to file
+            Stream SaveFileStream = System.IO.File.Create(FileName);
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(SaveFileStream, playersList);
+            SaveFileStream.Close();
+
+            player.UserName = null;
+            return RedirectToAction("Menu");
+
         }
         [HttpGet]
         public ActionResult Login()
@@ -45,32 +106,40 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Login(Player p)
         {
-            if(playersList == null)
+            if (System.IO.File.Exists(FileName))
+            {
+                Stream openFileStream = System.IO.File.OpenRead(FileName);
+                if (openFileStream.Length != 0)
+                {
+                    BinaryFormatter deserializer = new BinaryFormatter();
+                    playersList = (List<Player>)deserializer.Deserialize(openFileStream);
+                }
+                openFileStream.Close();
+            }
+
+            if (playersList.Count == 0)
             {
                 ModelState.AddModelError("username", "username not found or matched");
                 return View();
             }
             bool user_exists = false;
-            bool pass_right = false;
-
+            //bool pass_right = false;
+            int i = 0; 
             foreach (Player pl in playersList)
             {
-                if(p.UserName == pl.UserName) {
+                if(p.UserName == pl.UserName && p.Password == pl.Password) {
                     user_exists = true;
+                    break;
                 }
+                i++;
             }
-            foreach (Player pl in playersList)
-            {
-                if (p.Password == pl.Password)
-                {
-                    pass_right = true;
-                }
-            }
-            if (!user_exists || !pass_right)
+
+            if (!user_exists)
             {
                 ModelState.AddModelError("username", "username not found or matched");
                 return View();
             }
+            player = playersList[i];
             return RedirectToAction("Menu");
         }
 
@@ -89,8 +158,12 @@ namespace WebApplication2.Controllers
             player.LastName = p.LastName;
             player.Date = p.Date;
             playersList.Add(player);
+
+           
+
             return RedirectToAction("Menu");
         }
+
         public ActionResult Contact()
         {
             try {
@@ -148,6 +221,44 @@ namespace WebApplication2.Controllers
         {
             return View(p);
         }
+        public ActionResult close()
+        {
+            level = 0;
+            return RedirectToAction("Menu");
+        }
 
+
+        [HttpGet]
+        public ActionResult Matching1()
+        {
+            if (level == 0)
+            {
+                level++;
+                return View();
+            }
+
+            player.Score = 10;
+            return RedirectToAction("Matching2");
+
+        }
+
+        [HttpGet]
+        public ActionResult Matching2()
+        {
+            if (level == 1)
+            {
+                level++;
+                return View();
+            }
+
+            player.Score += 20;
+            return RedirectToAction("Menu");
+        }
+
+
+        public ActionResult Snake()
+        {
+            return View();
+        }
     }
 }
