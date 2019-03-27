@@ -14,56 +14,145 @@
 
     <style>
         canvas {
-            display: block;
             margin: 0 auto;
-            height: 90vh;
+            height: 80vh;
+            top:10%;
+            left:28%;
+            bottom:inherit;
+            position:absolute;
         }
+
         .button {
-            background-color: #4CAF50;
+            background-image: url(data:image/jpeg;base64,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);
             color: white;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 150px;
+            margin: 4px 260px;
             cursor: pointer;
             position: center;
             -webkit-transition-duration: 0.4s; /* Safari */
             transition-duration: 0.4s;
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
         }
+        textarea {
+            background-image: url(https://d2d00szk9na1qq.cloudfront.net/Product/0253a8ef-822e-4033-b9fa-416eae53f379/Images/Large_UG-775.jpg);
+            position: absolute;
+            top: 20%;
+            left: 67%;
+            color: white;
+            font-family: sans-serif;
+            font-size: 20px;
+            padding: 10px;
+            height: 65vh;
+            border: 3px dashed white;
+        }
+        .exp {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            background-image: url(https://d2d00szk9na1qq.cloudfront.net/Product/0253a8ef-822e-4033-b9fa-416eae53f379/Images/Large_UG-775.jpg);
+            color: white;
+            font-family: FreeMono, monospace;
+            font-size: 15px;
+            padding: 10px;
+            height: 50vh;
+            width: 20%;
+            border: 3px dashed white;
+        }
+        #enterCode {
+            position: absolute;
+            top: 15%;
+            left: 67%;
+        }
+
+        #doneButton {
+            position: absolute;
+            background: #202028;
+            color: white;
+            hover: background:white;
+            top: 95%;
+            left: 75%;
+            width: 200px;
+            transition-duration: .5s;
+        }
+
+            #doneButton:hover {
+                background: white;
+                border: 1px solid green;
+                color: black;
+                cursor: pointer;
+            }
+            all3{
+                position:center;
+                display:grid;
+            }
     </style>
 </head>
+
 <body style="position: fixed; width:100%; height:100%;">
-    <canvas id="snake" width="608" height="608"></canvas>
-    <div style="display:none;">
-        <img id="ground"
-             src="~/Games/Snake/img/ground.png"
-             width="300" height="227" />
-        <img id="food"
-             src="~/Games/Snake/img/food.png"
-             width="300" height="227" />
-        <audio controls>
-            <source id="dead" src="~/Games/Snake/audio/dead.mp3" type="audio/mp3">
-            <source id="eat" src="~/Games/Snake/audio/eat.mp3" type="audio/mp3">
-            <source id="up" src="~/Games/Snake/audio/up.mp3" type="audio/mp3">
-            <source id="left" src="~/Games/Snake/audio/left.mp3" type="audio/mp3">
-            
-            <source id="right" src="~/Games/Snake/audio/right.mp3" type="audio/mp3">
-            <source id="down" src="~/Games/Snake/audio/down.mp3" type="audio/mp3">
+    <div class="all3">
+        <form action="" method="POST">
+            </br><span id="enterCode">enter code: </span></br><textarea id="textarea1" rows="18" cols="35"></textarea>
+        </form>
+        <button id="doneButton" onClick="getInput()"> Done </button>
+        <div class="exp">
+            <p>
+                you can write operations like:
+            </p>
+            <p>   MoveLeft()        </p>
+            <p>   Moveright()        </p>
+            <p>   MoveUp()        </p>
+            <p>   MoveDown()        </p>
+            <p></p>
+            <p>
+                Add numbers if you like !
+            </p>
+        </div>
+        <div>
+            <canvas id="snake" width="608" height="608"></canvas>
+            <div style="display:none;">
+                <img id="ground"
+                     src="~/Games/Snake/img/ground.png"
+                     width="300" height="227" />
+                <img id="food"
+                     src="~/Games/Snake/img/food.png"
+                     width="300" height="227" />
+                <audio controls>
+                    <source id="dead" src="~/Games/Snake/audio/dead.mp3" type="audio/mp3">
+                    <source id="eat" src="~/Games/Snake/audio/eat.mp3" type="audio/mp3">
+                    <source id="up" src="~/Games/Snake/audio/up.mp3" type="audio/mp3">
+                    <source id="left" src="~/Games/Snake/audio/left.mp3" type="audio/mp3">
 
-        </audio>
-    </div>
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <h2>too bad!</h2>
-            <a class="close" href=#>X</a>
+                    <source id="right" src="~/Games/Snake/audio/right.mp3" type="audio/mp3">
+                    <source id="down" src="~/Games/Snake/audio/down.mp3" type="audio/mp3">
 
-            <button class="button" type="submit" onclick="nextLevel()">
-                Next Level!
-            </button>
+                </audio>
+            </div>
+        </div>
+        <div id="popup2" class="overlay">
+            <div class="popup">
+                <h1>great job!</h1>
+                <a class="close" href="~/First/Snake">X</a>
+                <p>Can you handle more apples ?</p>
+                <button class="button" type="submit">
+                    @Html.ActionLink("Next Level!", "Snake_level", new { level = 1 }, null)
+                </button>
 
+            </div>
+        </div>
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <h1>too bad!</h1>
+                <a class="close" href="~/First/Snake">X</a>
+                <p>You had only <span id="move"> </span> more to win.. </p>
+                <button class="button" type="submit">
+                    @Html.ActionLink("Try again", "Snake_level", new { level = 0 }, null)
+                </button>
+
+            </div>
         </div>
     </div>
     <script src="~/Games/Snake/snake.js"></script>

@@ -171,10 +171,10 @@ h1 {
 
 .popup {
     margin: 100px auto;
-    padding: 80px;
+    padding: 50px;
     background: #ffffff;
     border-radius: 5px;
-    width: 85%;
+    width: 60%;
     height: 40%;
     position: relative;
     transition: all 5s ease-in-out;

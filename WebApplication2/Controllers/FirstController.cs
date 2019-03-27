@@ -261,10 +261,26 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Menu");
         }
 
-
         public ActionResult Snake()
         {
             return View();
+        }
+        public ActionResult Snake2()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Snake_level(int level)
+        {
+            if (level == 0)
+            {
+                return RedirectToAction("Snake");
+            }
+            else
+            {
+                return RedirectToAction("Snake2");
+            }
         }
     }
 }

@@ -2,9 +2,10 @@
 const ctx = cvs.getContext("2d");
 // declare modal
 let modal = document.getElementById("popup1");
+let modal2 = document.getElementById("popup2");
 // close icon in modal
 let closeicon = document.querySelector(".close");
-let level = 0;
+let level = 1;
 // create the unit
 const box = 32;
 
@@ -141,13 +142,15 @@ function draw() {
         //dead.play();
         // show congratulations modal
         modal.classList.add("show");
+        document.getElementById("move").innerHTML = level - score;
         //closeicon on modal
         closeModal();
     }
-    if (score > level) {
+    if (score === level) {
         level++;
-        modal.classList.add("show");
-        draw();
+        clearInterval(game);
+        modal2.classList.add("show");
+        closeModal();
     }
 
     snake.unshift(newHead);
@@ -165,19 +168,5 @@ let game = setInterval(draw, 100);
 function closeModal() {
     closeicon.addEventListener("click", function (e) {
         modal.classList.remove("show");
-        draw();
     });
-}
-
-
-// @desciption for user to play Again 
-function playAgain() {
-    modal.classList.remove("show");
-    draw();
-}
-
-function nextLevel() {
-    level++;
-    modal.classList.remove("show");
-    draw();
 }
