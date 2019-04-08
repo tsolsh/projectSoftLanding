@@ -57,22 +57,28 @@ namespace WebApplication2.Controllers
             return View();
         }
         [HttpGet]
-
-        public ActionResult quiz1_result(int result)
+        public ActionResult Add(int id)
         {
-            if (result == 0)
-            {
-                return View();
-            }
-            else
-            {
-                player.Score += 10;
-                return RedirectToAction("quiz2");
-
-            }
+            return RedirectToAction("Menu");
         }
 
+        [HttpGet]
+        public ActionResult quiz1_result(int id)
+        {
+            player.Score += id * 10;
+            return RedirectToAction("quiz2");
+        }
+        [HttpGet]
+        public ActionResult quiz2_result(int id)
+        {
+            player.Score += id * 20;
+            return RedirectToAction("quiz3");
+        }
         public ActionResult quiz2()
+        {
+            return View();
+        }
+        public ActionResult quiz3()
         {
             return View();
         }
@@ -165,8 +171,6 @@ namespace WebApplication2.Controllers
             player.Date = p.Date;
             playersList.Add(player);
 
-           
-
             return RedirectToAction("Menu");
         }
 
@@ -198,11 +202,11 @@ namespace WebApplication2.Controllers
         }
        
 
-        public ActionResult Leaderboard(Player p)
+        public ActionResult Leaderboard()
         {
-            if (p.UserName != null)
+            if (player.UserName != null)
             {
-                return View(p);
+                return View(player);
             }
             return RedirectToAction("Error");
         }

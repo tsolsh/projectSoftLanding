@@ -1,4 +1,6 @@
-
+let modal = document.getElementById("popup1");
+// close icon in modal
+let closeicon = document.querySelector(".close");
 function check() {
     var finish = false;
     var question1 = document.quiz.question1.value;
@@ -40,13 +42,7 @@ function check() {
     document.getElementById("message").innerHTML = messages[score];
     document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
     document.getElementById("picture").src = pictures[score];
-    if (finish === true) {
-        let modal = document.getElementById("ok");
-        clearInterval(game);
-
-        modal.classList.add("show");
-        
-    }
 
 }
+
 
