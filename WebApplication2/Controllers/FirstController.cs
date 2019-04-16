@@ -43,46 +43,6 @@ namespace WebApplication2.Controllers
             int i = 0;
         }
 
-        public ActionResult quizMenu()
-        {
-            return View();
-        }
-        public ActionResult startQuiz()
-        {
-            return RedirectToAction("quiz1");
-        }
-
-        public ActionResult quiz1()
-        {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Add(int id)
-        {
-            return RedirectToAction("Menu");
-        }
-
-        [HttpGet]
-        public ActionResult quiz1_result(int id)
-        {
-            player.Score += id * 10;
-            return RedirectToAction("quiz2");
-        }
-        [HttpGet]
-        public ActionResult quiz2_result(int id)
-        {
-            player.Score += id * 20;
-            return RedirectToAction("quiz3");
-        }
-        public ActionResult quiz2()
-        {
-            return View();
-        }
-        public ActionResult quiz3()
-        {
-            return View();
-        }
-
         public ActionResult MultiGames()
         {
             return View();
@@ -236,33 +196,83 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Menu");
         }
 
+        public ActionResult quizMenu()
+        {
+            return View();
+        }
+        public ActionResult startQuiz()
+        {
+            return RedirectToAction("quiz1");
+        }
+
+        public ActionResult quiz1()
+        {
+            return View();
+        }
+
 
         [HttpGet]
+        public ActionResult quiz1_result(int id)
+        {
+            player.Score += id * 10;
+            return RedirectToAction("quiz2");
+        }
+
+
+        [HttpGet]
+        public ActionResult quiz2_result(int id)
+        {
+            player.Score += id * 20;
+            return RedirectToAction("quiz3");
+        }
+
+
+        public ActionResult quiz2()
+        {
+            return View();
+        }
+
+        public ActionResult quiz3()
+        {
+            return View();
+        }
+
         public ActionResult Matching1()
         {
-            if (level == 0)
-            {
-                level++;
-                return View();
-            }
-
-            player.Score = 10;
-            return RedirectToAction("Matching2");
-
+            return View();
         }
 
         [HttpGet]
+        public ActionResult matching1_result(int id)
+        {
+            player.Score += id;
+            return RedirectToAction("Matching2");
+        }
+
         public ActionResult Matching2()
         {
-            if (level == 1)
-            {
-                level++;
-                return View();
-            }
-
-            player.Score += 20;
-            return RedirectToAction("Menu");
+            return View();
         }
+
+        [HttpGet]
+        public ActionResult matching2_result(int id)
+        {
+            player.Score += id;
+            return RedirectToAction("Matching3");
+        }
+
+        public ActionResult Matching3()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult matching3_result(int id)
+        {
+            player.Score += id;
+            return RedirectToAction("Matching4");
+        }
+
 
         public ActionResult Snake()
         {
@@ -272,6 +282,10 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+
+
+
+
 
         [HttpGet]
         public ActionResult Snake_level(int level)

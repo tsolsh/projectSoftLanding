@@ -33,7 +33,29 @@ body {
 h1 {
 	font-family: 'Gloria Hallelujah', cursive;
 }
+.button {
+    position: inherit;
+    top: 50%;
+    left: 35%;
+    display: inline-block;
+    padding: 1.0em 5.2em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: #FFD700;
+    text-align: center;
+    transition: all 0.2s;
+    font-weight: bold;
+}
 
+    .button:hover {
+        color: #000000;
+        background-color: #757575;
+    }
 
 /*
  * Styles for the deck of cards

@@ -335,6 +335,7 @@
     <Content Include="Views\First\quiz1.cshtml" />
     <Content Include="Views\First\quiz2.cshtml" />
     <Content Include="Views\First\Snake.cshtml" />
+    <Content Include="Views\First\Matching3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
