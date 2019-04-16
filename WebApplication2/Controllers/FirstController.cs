@@ -15,8 +15,6 @@ namespace WebApplication2.Controllers
     public class FirstController : Controller
     {
         public event EventHandler Unload;
-        static int level = 0;
-        static int quizNum = 0;
         string FileName = @"SavedPlayers.bin";
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
@@ -175,7 +173,7 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        // GET: First/Create
+
         public ActionResult Home()
         {
             return View();
@@ -192,7 +190,6 @@ namespace WebApplication2.Controllers
         }
         public ActionResult close()
         {
-            level = 0;
             return RedirectToAction("Menu");
         }
 
@@ -223,7 +220,7 @@ namespace WebApplication2.Controllers
         public ActionResult quiz2_result(int id)
         {
             player.Score += id * 20;
-            return RedirectToAction("quiz3");
+            return RedirectToAction("Menu");
         }
 
 
@@ -282,8 +279,6 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-
-
 
 
 
