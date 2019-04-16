@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Leader board</title>
     <link rel="stylesheet" type="text/css" href="~/Content/Leader.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-
     </style>
 </head>
 <body>
@@ -18,32 +18,33 @@
         if (Model != null)
         {
             <div class="fullWindow">
-                <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:60px;">@Model.UserName - These are your scores!</h1>
+                <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:60px;">@Model.FirstName - Look at the scores-</h1>
               
                 <table class="container">
                     <thead>
                         <tr>
-                            <th><h1>Sites</h1></th>
-                            <th><h1>Views</h1></th>
-                            <th><h1>Clicks</h1></th>
-                            <th><h1>Average</h1></th>
+                            <th><h1>USERNAME</h1></th>
+                            <th><h1>DADE</h1></th>
+                            <th><h1>SCORE</h1></th>
+                            <th><h1>PASSWORD</h1></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @{ foreach(player p in Model)
-                        <tr>
-                            <td>Google</td>
-                            <td>9518</td>
-                            <td>6369</td>
-                            <td>01:32:50</td>
-                        </tr>
+                        @{ foreach (var p in Model.players)
+                            {
+                                <tr>
+                                    <td>@p.UserName</td>
+                                    <td>@p.Date</td>
+                                    <td>@p.Score</td>
+                                    <td>@p.Password</td>
+                                </tr>
+                            }
                             }
                     </tbody>
                 </table>
-            </div>
-        }
-
+            </div>                
         <script src="~/js/leader.js"></script>
-    }
+                                }
+                            }
 </body>
 </html>

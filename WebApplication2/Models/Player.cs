@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     [Serializable()]
     public class Player
     {
-
+        
         public Player() {
             this.UserName = null;
         }
@@ -54,5 +54,8 @@ namespace WebApplication2.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public List<Player> players { get; set; }
+
     }
 }

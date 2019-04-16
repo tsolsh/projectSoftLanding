@@ -16,9 +16,16 @@ body {
     font-weight: 300;
     line-height: 1.42em;
     color: #A7A1AE;
-    background-color: #1F2739;
 }
-
+.fullWindow {
+    background-image: url("https://thumbs.gfycat.com/EmbellishedTatteredLadybug-size_restricted.gif");
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
 h1 {
     font-size: 3em;
     font-weight: 300;

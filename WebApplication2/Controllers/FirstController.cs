@@ -170,7 +170,7 @@ namespace WebApplication2.Controllers
             player.LastName = p.LastName;
             player.Date = p.Date;
             playersList.Add(player);
-
+            player.players = playersList;
             return RedirectToAction("Menu");
         }
 
@@ -195,7 +195,6 @@ namespace WebApplication2.Controllers
             return View(p);
         }
 
-        // GET: First/Create
         public ActionResult Menu()
         {
             return View(player);
