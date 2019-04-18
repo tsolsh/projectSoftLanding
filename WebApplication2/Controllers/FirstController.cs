@@ -294,5 +294,18 @@ namespace WebApplication2.Controllers
                 return RedirectToAction("Snake2");
             }
         }
+
+
+        public ActionResult SnakesAndLadders()
+        {
+            return View();
+        }
+
+        public ActionResult Dice()
+        {
+            return View();
+        }
+
+
     }
 }

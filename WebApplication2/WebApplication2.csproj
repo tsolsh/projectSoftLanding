@@ -128,6 +128,7 @@
     <Content Include="Content\Leader.css" />
     <Content Include="Content\multi.css" />
     <Content Include="Content\nav.css" />
+    <Content Include="Content\SnakeLadder.css" />
     <Content Include="Content\util.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\MenuBackground.css" />
@@ -170,6 +171,7 @@
     <Content Include="js\leader.js" />
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
+    <Content Include="js\SnakeLadder.js" />
     <Content Include="Quizes\app.js" />
     <Content Include="Quizes\question.js" />
     <Content Include="Quizes\questions.txt" />
@@ -336,6 +338,8 @@
     <Content Include="Views\First\quiz2.cshtml" />
     <Content Include="Views\First\Snake.cshtml" />
     <Content Include="Views\First\Matching3.cshtml" />
+    <EmbeddedResource Include="Views\First\SnakesAndLadders.cshtml" />
+    <Content Include="Views\First\Dice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
