@@ -19,13 +19,26 @@
 </head>
 <body>
 
-    <div class="all">
+     <div class="all">
         <div id="snakenladderBoard"></div>
         <div id="statistics">
             <div id="gameMessage"></div>
             <div id="dice">0</div>
             <button class="roll">Roll</button>
             <div id="players"></div>
+            <div id="middle" class="overlay">
+                <div class="popup">
+                    <h1>If you want to go up on the ladder you need to play a game , are you ready?</h1>
+                    <a class="close" href="~/First/MultiGames">X</a>
+                    <a id ="game" href="" onclick="changeLink()">
+                        Let's go!
+                    </a>
+                    <a id="pass">
+                        i pass
+                    </a>
+
+                </div>
+            </div>
 
             <div id="popup1" class="overlay">
                 <div class="popup">

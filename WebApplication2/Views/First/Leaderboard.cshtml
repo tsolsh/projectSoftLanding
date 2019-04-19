@@ -11,6 +11,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        table {
+            counter-reset: rowNumber;
+        }
+
+            table tr {
+                counter-increment: rowNumber;
+            }
+
+                table tr td:first-child::before {
+                    content: counter(rowNumber);
+                    min-width: 1em;
+                    margin-right: 0.5em;
+                }
     </style>
 </head>
 <body>
@@ -24,9 +37,7 @@
                     <thead>
                         <tr>
                             <th><h1>USERNAME</h1></th>
-                            <th><h1>DADE</h1></th>
                             <th><h1>SCORE</h1></th>
-                            <th><h1>PASSWORD</h1></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,9 +45,7 @@
                             {
                                 <tr>
                                     <td>@p.UserName</td>
-                                    <td>@p.Date</td>
                                     <td>@p.Score</td>
-                                    <td>@p.Password</td>
                                 </tr>
                             }
                             }

@@ -221,6 +221,7 @@ namespace WebApplication2.Controllers
         {
             player.Score += id * 20;
             return RedirectToAction("Menu");
+
         }
 
 
@@ -301,11 +302,7 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        public ActionResult Dice()
-        {
-            return View();
-        }
-
+       
 
     }
 }

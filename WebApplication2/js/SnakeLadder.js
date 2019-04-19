@@ -1,10 +1,12 @@
 ﻿// declare modal
 let modal = document.getElementById("popup1");
+let modal_middle = document.getElementById("middle");
 
 // add method in string prototype
 String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 };
+var Games = ["~/First/Snake", "~/First/Matching1", "~/First/Matching2", "~/First/Matching3"];
 var SnakeLadderModule = (function () {
     var snakes = {
         16: 6,
@@ -74,7 +76,14 @@ var SnakeLadderModule = (function () {
     function RandomizeDice() {
         return Math.floor(Math.random() * 6) + 1;
     }
+    function changeLink() {
+        var game = document.getElementById("game");
+        var rand = Math.floor(Math.random() * 3);
+        
+        game.setAttribute('href',Game[rand]);
 
+        return false;
+    }
     return {
         Init: function () {
             initUI();
@@ -103,28 +112,41 @@ var SnakeLadderModule = (function () {
                 closeModal();
             }
             else {
-                if(currentPosition === 2) {
+                if (currentPosition === 2) {
+                    modal_middle.classList.add("show");
                     currentPosition = 38;
                 } else if (currentPosition === 7) {
+                    modal_middle.classList.add("show");
                     currentPosition = 14;
                 } else if (currentPosition === 8) {
+                    modal_middle.classList.add("show");
                     currentPosition = 31;
                 } else if (currentPosition === 15) {
+                    modal_middle.classList.add("show");
                     currentPosition = 26;
                 } else if (currentPosition === 21) {
+                    modal_middle.classList.add("show");
                     currentPosition = 42;
                 } else if (currentPosition === 28) {
+                    modal_middle.classList.add("show");
                     currentPosition = 84;
                 } else if (currentPosition === 36) {
+                    modal_middle.classList.add("show");
                     currentPosition = 44;
                 } else if (currentPosition === 51) {
+                    modal_middle.classList.add("show");
                     currentPosition = 67;
                 } else if (currentPosition === 78) {
+                    modal_middle.classList.add("show");
                     currentPosition = 98;
                 } else if (currentPosition === 71) {
+                    modal_middle.classList.add("show");
                     currentPosition = 91;
                 } else if (currentPosition === 87) {
+                    modal_middle.classList.add("show");
                     currentPosition = 94;
+
+
                 } else if (currentPosition === 99) {
                     currentPosition = 80;
                 } else if (currentPosition === 95) {

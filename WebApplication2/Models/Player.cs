@@ -55,7 +55,26 @@ namespace WebApplication2.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        public List<Player> players { get; set; }
+        public List<Player> players {
+            get {
+                int temp = 0;
+
+                for (int write = 0; write < players.Count; write++)
+                {
+                    for (int sort = 0; sort < players.Count - 1; sort++)
+                    {
+                        if (players[sort].Score < players[sort + 1].Score)
+                        {
+                            temp = players[sort + 1].Score;
+                            players[sort + 1].Score = players[sort].Score;
+                            players[sort].Score = temp;
+                        }
+                    }
+                }
+
+                return players;
+            }
+            set { } }
 
     }
 }

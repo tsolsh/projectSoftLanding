@@ -27,7 +27,7 @@
             text-align: center;
             transition: all 0.2s;
             font-weight: bold;
-            color:white;
+            color:black;
         }
             .button2:hover {
                 color: white;
@@ -57,9 +57,9 @@
                 <p id="progress" style="font-family:Trattatello, fantasy">Question x of y</p>
             </footer>
         </div>
-        <button id="btn" class="button2" type="submit" onclick="Next()">
-            Next Level!
-        </button>
+        <a id="btn" class="button2" onclick="Next()" href="~/First/Menu">
+            Return to menu
+        </a>
     </div>
 
    
@@ -143,9 +143,13 @@
         var questions = [
             new Question("Which one is not an object oriented programming language?", ["java", "C#", "C++", "C"], "C"),
             new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
+            new Question("In memory - where are the local variables?", ["data", "heap", "stack", "code"], "stack"),
             new Question("There are ____ main components of object oriented programming", ["1", "6", "2", "4"], "4"),
             new Question("Which language is used for web apps?", ["PHP", "Python", "Javascript", "All"], "All"),
+            new Question("In memory - where are the code segment?", ["data", "heap", "stack", "code"], "code"),
             new Question("MVC is a ____.", ["Language", "Library", "Framework", "All"], "Framework"),
+            new Question("In memory - where are the dynamic variables ?", ["data", "heap", "stack", "code"], "heap"),
+            new Question("In memory - where are the global variables?", ["data", "heap", "stack", "code"], "data"),
         ];
 
         var quiz = new Quiz(questions);
