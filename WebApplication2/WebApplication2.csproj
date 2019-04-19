@@ -147,6 +147,15 @@
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
     <Content Include="Games\Mathcing\js\matching.js" />
+    <Content Include="Games\PacMan\bg.png" />
+    <Content Include="Games\PacMan\coin.png" />
+    <Content Include="Games\PacMan\ghost1.png" />
+    <Content Include="Games\PacMan\ghost2.png" />
+    <Content Include="Games\PacMan\index.html" />
+    <Content Include="Games\PacMan\pacman.png" />
+    <Content Include="Games\PacMan\script.js" />
+    <Content Include="Games\PacMan\style.css" />
+    <Content Include="Games\PacMan\wall.png" />
     <Content Include="Games\Pong\pong.html" />
     <Content Include="Games\simpleDice.html" />
     <Content Include="Games\snakeTesting.html" />
@@ -160,6 +169,8 @@
     <Content Include="Games\Snake\img\ground.png" />
     <Content Include="Games\Snake\snake.js" />
     <Content Include="Games\Snake\snakecss.css" />
+    <Content Include="Games\Space Invaders\index.html" />
+    <Content Include="Games\Space Invaders\style.css" />
     <Content Include="Games\TetrisCode\index.html" />
     <Content Include="Games\TetrisCode\tetris.js" />
     <Content Include="Games\Tetris\index.html" />
@@ -349,6 +360,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Games\PacMan\scripts\" />
+    <Folder Include="Games\Space Invaders\assets\" />
+    <Folder Include="Games\Space Invaders\assets_basic\" />
+    <Folder Include="Games\Space Invaders\scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
