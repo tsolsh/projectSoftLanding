@@ -236,7 +236,8 @@ namespace WebApplication2.Controllers
 
         public ActionResult Matching1()
         {
-            return View();
+            return Matching2();
+            //return View();
         }
 
         [HttpGet]
