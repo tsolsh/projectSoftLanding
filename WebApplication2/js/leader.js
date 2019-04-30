@@ -14,7 +14,7 @@ var data1 = {
             data: [594, 614, 592, 734, 598, 599]
         }
     ]
-}
+};
 
 var options1 = {
     scaleFontColor: "rgba(255,255,255,1)",

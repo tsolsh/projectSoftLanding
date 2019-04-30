@@ -6,7 +6,31 @@ let modal_middle = document.getElementById("middle");
 String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 };
-var questions = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10"];
+
+q1 = "Variable expressions are mathematical statements that contain:A.Only numbers B.Only letters C.Numbers and letters D.One letter and no numbers";
+q2 = "Identify the commutative property: A. A + b = a + b B.A + b = b + a C.B + a = a + B D.A + b = 0";
+q3 = "What value will return to the operating system upon the successful completion of a program ? A. - 1 B. 1 C. 0 D.Programs do not return a value";
+q4 = "The keyword ‘break’ cannot be simply used within _________  a) do -while b) if-else c) for d) while ";
+q5 = "Which keyword is used to come out of a loop only for that iteration? a) break b) continue c) return d) none of the mentioned ";
+q6 = "Which loop is most suitable to first perform the operation and then test the condition ? a) for loop b) while loop c) do -while loop d) none of the mentioned ";
+q7 = "Which of the following operator has the highest precedence in the following? a) () b) sizeofc) * d) + ";
+q8 = "Which is correct with respect to the size of the data types?a) char > int > float b) int > char > float c) char < int < double d) double > char > int";
+q9 = "Which of the following declaration is not supported by C? a) String str; b) char * str; c) float str = 3e2; d) Both String str; & float str = 3e2;";
+q10 = "Pick the operator that associate from the right? A. ? : B. + = C. = D.All";
+
+a1 = "C";
+a2 = "B";
+a3 = "C";
+a4 = "c";
+a5 = "b";
+a6 = "c";
+a7 = "a";
+a8 = "c";
+a9 = "a";
+a10 = "D";
+
+var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
+var answers = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10];
 var correct = 0;
 var SnakeLadderModule = (function () {
     var snakes = {
@@ -78,9 +102,9 @@ var SnakeLadderModule = (function () {
         modal_middle.classList.remove("show");
         return;
     });
-    function check() {
+    function check(num) {
         var answer = document.getElementById("answer");
-        if (answer.value === "1") {
+        if (answer.value === answers[num]) {
             correct = 1;
         }
         else {
@@ -140,7 +164,7 @@ var SnakeLadderModule = (function () {
                 if (currentPosition === 2) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[0];
-                    check();
+                    check(0);
                     if (correct === 1) {
                         currentPosition = 38;
                         correct = 0;
@@ -148,7 +172,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 7) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[1];
-                    check();
+                    check(1);
                     if (correct === 1) {
                         currentPosition = 14;
                         correct = 0;
@@ -156,7 +180,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 8) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[2];
-                    check();
+                    check(2);
                     if (correct === 1) {
                         currentPosition = 31;
                         correct = 0;
@@ -164,7 +188,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 15) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[3];
-                    check();
+                    check(3);
                     if (correct === 1) {
                         currentPosition = 26;
                         correct = 0;
@@ -172,6 +196,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 21) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[4];
+                    check(4);
                     if (correct === 1) {
                         currentPosition = 42;
                         correct = 0;
@@ -179,6 +204,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 28) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[5];
+                    check(5);
                     if (correct === 1) {
                         currentPosition = 84;
                         correct = 0;
@@ -186,6 +212,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 36) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[6];
+                    check(6);
                     if (correct === 1) {
                         currentPosition = 44;
                         correct = 0;
@@ -193,6 +220,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 51) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[7];
+                    check(7);
                     if (correct === 1) {
                         currentPosition = 67;
                         correct = 0;
@@ -200,6 +228,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 78) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[8];
+                    check(8);
                     if (correct === 1) {
                         currentPosition = 98;
                         correct = 0;
@@ -207,6 +236,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 71) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[9];
+                    check(9);
                     if (correct === 1) {
                         currentPosition = 91;
                         correct = 0;
@@ -214,6 +244,7 @@ var SnakeLadderModule = (function () {
                 } else if (currentPosition === 87) {
                     modal_middle.classList.add("show");
                     ques.innerText = questions[10];
+                    check(10);
                     if (correct === 1) {
                         currentPosition = 98;
                         correct = 0;
