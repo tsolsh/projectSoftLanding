@@ -224,7 +224,6 @@ namespace WebApplication2.Controllers
 
         }
 
-
         public ActionResult quiz2()
         {
             return View();
@@ -302,7 +301,23 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-       
+        [HttpGet]
+        public ActionResult SnkLds(int id)
+        {
+            switch (id) {
+                case 1:
+                    Matching1();
+                    break;
+                case 2:
+                    return RedirectToAction("Matching2");
+                    break;
+                case 3:
+                    return RedirectToAction("Matching3");
+                    break;
+
+            }
+            return RedirectToAction("Matching3");
+        }
 
     }
 }

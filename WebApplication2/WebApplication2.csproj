@@ -129,6 +129,7 @@
     <Content Include="Content\multi.css" />
     <Content Include="Content\nav.css" />
     <Content Include="Content\SnakeLadder.css" />
+    <Content Include="Content\stats.css" />
     <Content Include="Content\util.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\MenuBackground.css" />
@@ -351,6 +352,7 @@
     <Content Include="Views\First\Matching3.cshtml" />
     <EmbeddedResource Include="Views\First\SnakesAndLadders.cshtml" />
     <Content Include="Views\First\Dice.cshtml" />
+    <Content Include="Views\First\Questions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
