@@ -15,6 +15,42 @@
             display:flex;
             position:initial;
         }
+        h1{
+            text-align:center;
+            color:dimgrey;
+        }
+        .middle_buttons{
+            display:flow-root;
+        }
+        game {
+            position: fixed;
+            top: 50%;
+            left: 43%;
+            display: inline-block;
+            padding: 1.2em 4.2em;
+            border: 0.1em solid #FFFFFF;
+            margin: 0 0.3em 0.3em 0;
+            border-radius: 0.12em;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 300;
+            background-color: #bddfa1;
+            text-align: center;
+            transition: all 0.2s;
+            font-weight: bold;
+            color: white;
+        }
+
+            game:hover {
+                color: white;
+                border-color: #DDDDDD;
+            }
+
+            game:active {
+                color: #BBBBBB;
+                border-color: #BBBBBB;
+            }
     </style>
 </head>
 <body>
@@ -28,15 +64,19 @@
             <div id="players"></div>
             <div id="middle" class="overlay">
                 <div class="popup">
-                    <h1>If you want to go up on the ladder you need to play a game , are you ready?</h1>
+                    <h1>If you want to go up on the ladder you need to answer a question, 
+                    are you ready?</h1>
                     <a class="close" href="~/First/MultiGames">X</a>
-                    <a id ="game" href="" onclick="changeLink()">
-                        Let's go!
-                    </a>
-                    <a id="pass">
-                        i pass
-                    </a>
-
+                    <div class="middle_buttons">
+                        <h2 id="game" href="#">
+                            Let's go!
+                        </h2>
+                        <p id="question" style="font-family:Jazz LET, fantasy"></p>
+                        <div class="buttons">
+                            <input id="answer" type="text" name="question1">
+                            <input id="check" type="button" value="check">
+                        </div>
+                    </div>
                 </div>
             </div>
 
