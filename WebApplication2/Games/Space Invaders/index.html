@@ -5,16 +5,22 @@
     <link rel="stylesheet" href="style.css">
     <script src="scripts/jquery-2.0.3.min.js"></script>
 	<meta charset="utf-8" />
+    <style>
+        .all {
+            display: flex;
+            position: fixed;
+        }
+    </style>
 </head>
 <body>
-
-    <div id="background">        
-        <div id="hero"></div>
-        <div id="enemies"></div>
-        <div id="missiles"></div>
+    <div class="all">
+        <div id="background">
+            <div id="hero"></div>
+            <div id="enemies"></div>
+            <div id="missiles"></div>
+        </div>
+        <h3 id="score">0</h3>
     </div>
-    <h3 id="score">0</h3>
-    
 
     <script>
 

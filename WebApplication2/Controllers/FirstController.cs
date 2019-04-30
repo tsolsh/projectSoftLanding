@@ -236,8 +236,16 @@ namespace WebApplication2.Controllers
 
         public ActionResult Matching1()
         {
-            return Matching2();
-            //return View();
+            if (player.Score < 100) {
+                return View();
+            }
+            if (player.Score > 100 && player.Score < 200)
+            {
+                return RedirectToAction("Matching2");
+            }
+
+            return RedirectToAction("Matching3");
+
         }
 
         [HttpGet]
@@ -268,7 +276,7 @@ namespace WebApplication2.Controllers
         public ActionResult matching3_result(int id)
         {
             player.Score += id;
-            return RedirectToAction("Matching4");
+            return RedirectToAction("Menu");
         }
 
 
