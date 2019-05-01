@@ -1,4 +1,5 @@
-﻿// declare modal
+﻿
+// declare modal
 let modal = document.getElementById("popup1");
 let modal_middle = document.getElementById("middle");
 
