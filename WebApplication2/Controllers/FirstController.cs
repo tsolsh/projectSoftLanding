@@ -249,10 +249,9 @@ namespace WebApplication2.Controllers
         }
 
         [HttpGet]
-        public ActionResult matching1_result(int id)
+        public void matching1_result(int id)
         {
             player.Score += id;
-            return RedirectToAction("Matching2");
         }
 
         public ActionResult Matching2()
@@ -260,11 +259,15 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        public ActionResult middle()
+        {
+            return RedirectToAction("Matching2");
+
+        }
         [HttpGet]
-        public ActionResult matching2_result(int id)
+        public void matching2_result(int id)
         {
             player.Score += id;
-            return RedirectToAction("Matching3");
         }
 
         public ActionResult Matching3()
@@ -273,12 +276,10 @@ namespace WebApplication2.Controllers
         }
 
         [HttpGet]
-        public ActionResult matching3_result(int id)
+        public void matching3_result(int id)
         {
             player.Score += id;
-            return RedirectToAction("Menu");
         }
-
 
         public ActionResult Snake()
         {
@@ -319,13 +320,28 @@ namespace WebApplication2.Controllers
                     break;
                 case 2:
                     return RedirectToAction("Matching2");
-                    break;
                 case 3:
                     return RedirectToAction("Matching3");
-                    break;
 
             }
             return RedirectToAction("Matching3");
+        }
+
+        public ActionResult TetrisCode()
+        {
+            if (player.Score < 10)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("TetrisCode2");
+            }
+        }
+
+        public ActionResult TetrisCode2()
+        {
+            return View();
         }
 
     }

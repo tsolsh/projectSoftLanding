@@ -22,19 +22,19 @@ function arenaSweep(){
         rowCount *= 2;
         numRowsSweep++;
     }
-    if(oldScore != player.score){
-        if (numRowsSweep == 1){
+    if(oldScore !== player.score){
+        if (numRowsSweep === 1){
             alert("you could have done better, you know...");
-        } else if ((level != 4 && numRowsSweep == 2) || (level == 4 && numRowsSweep == 3)){
+        } else if (level !== 4 && numRowsSweep === 2 || level === 4 && numRowsSweep === 3){
             alert("AMAZING!, You are doing SO-GOOD!");
             level++;
-			if(level == 5) {
+			if(level === 5) {
 				window.location = "./index2.html";
 			}
-        } else if (level == 4 && numRowsSweep == 2){
+        } else if (level === 4 && numRowsSweep === 2){
             //level 4 and did 2 rows.
             alert("you did good, but you can do Better!");			
-        } else if (level == 5 && numRowsSweep == 2) {
+        } else if (level === 5 && numRowsSweep === 2) {
 			alert("NICE!!!!, you are grasping the idea of loops!");
 			level++;
 		}
@@ -49,13 +49,13 @@ function arenaSweep(){
 const matrix = [
 	[0,0,0],
 	[1,1,1],
-	[0,1,0],
+	[0,1,0]
 ];
 function collide(arena, player){
     const [m, o] = [player.matrix, player.pos];
     //y is the row, x is the column.
     for (let y = 0; y < m.length; y++){
-        for(let x = 0; x < m[y].length;++x){
+        for(let x = 0; x < m[y].length; ++x){
             //we check if the matrix value isn't zero, n then we check if the arena
             // has a row and the we check if the arena has a column and BOTH aren't 0
             //then we return true cause there is a collision.
@@ -74,43 +74,43 @@ function createPiece(type){
         return [
 				[0,0,0],
 				[1,1,1],
-				[0,1,0],
+				[0,1,0]
         ];
     }else if(type === 'O'){
         return [
 			[2,2],
-			[2,2],
+			[2,2]
         ];
     }else if(type === 'L'){
         return [
 			[0,3,0],
 			[0,3,0],
-			[0,3,3],
+			[0,3,3]
         ];
     }else if(type === 'J'){
         return [
 			[0,4,0],
 			[0,4,0],
-			[4,4,0],
+			[4,4,0]
         ];
     }else if(type === 'I'){
         return [
 			[0,5,0,0],
 			[0,5,0,0],
 			[0,5,0,0],
-			[0,5,0,0],
+			[0,5,0,0]
         ];
     }else if(type === 'S'){
         return [
 			[0,6,6],
 			[6,6,0],
-			[0,0,0],
+			[0,0,0]
         ];
     }
     return [
 		[7,7,0],
 		[0,7,7],
-		[0,0,0],
+		[0,0,0]
     ];
 }
 
@@ -146,10 +146,10 @@ function drawMatrix(matrix ,offset){
     });
 }
 var player = {
-    pos: {x:0,y:0},
+    pos: { x: 0, y: 0 },
     matrix: null,
-    score:0,
-}
+    score: 0
+};
 
 const arena = createMatrix(12,20);
 
@@ -183,7 +183,7 @@ function getInput(){
 		var lines = document.getElementById("textarea1").value.split('\n');
 	} else {
 		//must add the one inside the loop.
-		var lines = document.getElementById("textarea1").value.split('\n');	
+		lines = document.getElementById("textarea1").value.split('\n');	
 	}
     var i = 0;
     var date = new Date();
@@ -193,24 +193,24 @@ function getInput(){
 }
 
 function buildArena(){
-    if (level == 1){
+    if (level === 1){
         arena[arena.length - 1] = [2,2,2,2,2,2,2,2,2,2,2,2];
         arena[arena.length - 1][8] = 0;
         arena[arena.length - 2] = [3,3,3,3,3,3,3,3,3,3,3,3];
         arena[arena.length - 2][8] = 0;
         arena[arena.length - 2][9] = 0;
         arena[arena.length - 2	][10] = 0;
-    } else if( level == 2){
+    } else if( level === 2){
         arena[arena.length - 1] = [2,2,0,0,2,2,2,2,0,0,2,2];
         arena[arena.length - 2] = [2,2,0,0,2,2,2,2,0,0,2,2];
-    } else if (level == 3){
+    } else if (level === 3){
         arena[arena.length - 1] = [0,1,1,1,1,1,1,1,1,1,1,0];
         arena[arena.length - 2] = [0,0,2,2,2,2,2,2,2,2,0,0];
-    } else if (level == 4) {
+    } else if (level === 4) {
         arena[arena.length - 1] = [0,3,3,3,3,3,3,3,0,0,0,0];
         arena[arena.length - 2] = [0,3,4,5,5,5,4,3,0,0,0,0];
         arena[arena.length - 3] = [0,0,5,5,6,7,6,5,0,0,0,0];
-    } else if (level == 5) {
+    } else if (level === 5) {
         arena[arena.length - 2] = [3,3,0,0,3,3,3,3,3,3,3,3];
         arena[arena.length - 1] = [4,4,0,4,4,4,4,4,4,4,4,4];
 	}
@@ -237,7 +237,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
                     if(numOfLeftParenthesis > 1) {
                         alert("dont put more than one left Parenthesis");
                         i++;
-                        requestAnimationFrame(function(){getInp(seconds, i, lines, 0)})	
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});	
 						return -1;
 					}
                 }
@@ -247,7 +247,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
                     if(numOfRightParenthesis > 1) {
                         alert("dont put more than one right Parenthesis");
                         i++;
-                        requestAnimationFrame(function(){getInp(seconds, i, lines, 0)})
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});
 						return -1;
                     }
                 }
@@ -265,7 +265,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
                         alert("please enter numbers only as arguments on line " + lineOfError);
                         i++;
                         numOfTimes = 0;
-                        requestAnimationFrame(function(){getInp(seconds, i, lines, 0)})	
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});
 						return -1;
 					}
                 }
@@ -280,27 +280,27 @@ function getInp(seconds = 0, i, lines, numOfTimes){
                                     alert("Dont put anything after ';' (line " + lineOfError + ")");
                                     i++;
                                     draw();
-                                    requestAnimationFrame(function(){getInp(seconds, i, lines, 0)});					
+                                    requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});					
 									return -1;
 								}
                             }
                             break;
                         }
-                        if (j >= lines[i].length && (!endSemicolonExists)) {
+                        if (j >= lines[i].length && !endSemicolonExists) {
                             alert("please put semicolon ';' at end of line " + lineOfError);
                         } else {
                             alert("Dont put anything between the end of function and the ';' (line " + lineOfError + ")");
                         }
                         i++;
                         draw();
-                        requestAnimationFrame(function(){getInp(seconds, i, lines, 0)});
+                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});
 						return -1;
 					}
                 }
             }
 			
             if(numOfSpaces === endIndex - begin) {
-                numOfTimes = 1
+                numOfTimes = 1;
             } else {
                 numOfTimes = parseInt(lines[i].substring(begin, endIndex));
             }
@@ -310,14 +310,14 @@ function getInp(seconds = 0, i, lines, numOfTimes){
         if(Math.abs(lastTimeLoop - seconds) > 500){
             //alert(lastTimeLoop +" "+ seconds);
             seconds = lastTimeLoop;
-            if (lines[i] == "MoveLeft"){
+            if (lines[i] === "MoveLeft"){
                 playerMove(-1);
-            } else if( lines[i] == "MoveRight"){
+            } else if( lines[i] === "MoveRight"){
                 playerMove(1);
-            } else if (lines[i] == "DropDown"){
+            } else if (lines[i] === "DropDown"){
                 dropDownAnimation(seconds);
                 return;
-            } else if (lines[i] == "Rotate"){
+            } else if (lines[i] === "Rotate"){
                 playerRotate(-1);	
             }
             if(numOfTimes !== 0){
@@ -330,7 +330,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
             }
         }
         draw();
-        requestAnimationFrame(function(){getInp(seconds, i, lines, numOfTimes)})
+        requestAnimationFrame(function () { getInp(seconds, i, lines, numOfTimes);});
     }
 }
 
@@ -342,7 +342,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
         }
         draw();
         if (!collided){
-            requestAnimationFrame(function(){dropDownAnimation(seconds)})
+            requestAnimationFrame(function () { dropDownAnimation(seconds);});
         }
         return;
     }
@@ -373,7 +373,7 @@ function getInp(seconds = 0, i, lines, numOfTimes){
                 'blue',
                 'aqua',
                 'green',
-                'red',
+                'red'
             ];
 
 
@@ -387,17 +387,17 @@ function getInp(seconds = 0, i, lines, numOfTimes){
             function playerReset(){
                 const pieces = 'ILJOTSZ';
                 player.matrix = createPiece(pieces[Math.random() * pieces.length | 0]);
-                if (pieceCounter % 4 == 0) {
-                    if (level == 1) {
+                if (pieceCounter % 4 === 0) {
+                    if (level === 1) {
                         player.matrix = createPiece('L');
-                    } else if (level == 2) {
+                    } else if (level === 2) {
                         player.matrix = createPiece('O');
-                    } else if (level == 3) {
+                    } else if (level === 3) {
                         player.matrix = createPiece('T');	
-                    } else if(level == 4) {
+                    } else if(level === 4) {
                         let miniPieces = 'IOJ'; 
                         player.matrix = createPiece(miniPieces[Math.random() * miniPieces.length | 0]);
-                    } else if (level == 5) {
+                    } else if (level === 5) {
 						player.matrix = createPiece('T');
 					}
                 }
@@ -433,15 +433,15 @@ function getInp(seconds = 0, i, lines, numOfTimes){
                         //switching the values.
                         [
                         matrix[x][y],
-                        matrix[y][x],
+                        matrix[y][x]
                         ] = [
                             matrix[y][x],
-                            matrix[x][y],
+                            matrix[x][y]
                         ];
                     }
                 }
                 if(dir > 0 ){
-                    matrix.forEach((row => row.reverse()))	;
+                    matrix.forEach(row => row.reverse());
                 } else {
                     matrix.reverse();
                 }

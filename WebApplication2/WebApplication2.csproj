@@ -122,6 +122,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.Web.xml" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.xml" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
+    <Content Include="bin\System.Web.Webpages.Deployment.xml" />
+    <Content Include="bin\System.Web.Webpages.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.xml" />
+    <Content Include="bin\WebApplication2.dll" />
+    <Content Include="bin\WebApplication2.pdb" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\factsMenu.css" />
@@ -144,6 +184,15 @@
     <Content Include="fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Games\Flappy Bird\flappyBird.js" />
+    <Content Include="Games\Flappy Bird\images\bg.png" />
+    <Content Include="Games\Flappy Bird\images\bird.png" />
+    <Content Include="Games\Flappy Bird\images\fg.png" />
+    <Content Include="Games\Flappy Bird\images\pipeNorth.png" />
+    <Content Include="Games\Flappy Bird\images\pipeSouth.png" />
+    <Content Include="Games\Flappy Bird\index.html" />
+    <Content Include="Games\Flappy Bird\sounds\fly.mp3" />
+    <Content Include="Games\Flappy Bird\sounds\score.mp3" />
     <Content Include="Games\Mathcing\css\matching.css" />
     <Content Include="Games\Mathcing\img\geometry2.png" />
     <Content Include="Games\Mathcing\img\snippet.png" />
@@ -172,8 +221,11 @@
     <Content Include="Games\Snake\snakecss.css" />
     <Content Include="Games\Space Invaders\index.html" />
     <Content Include="Games\Space Invaders\style.css" />
+    <Content Include="Games\TetrisCode\endingPage.html" />
     <Content Include="Games\TetrisCode\index.html" />
+    <Content Include="Games\TetrisCode\index2.html" />
     <Content Include="Games\TetrisCode\tetris.js" />
+    <Content Include="Games\TetrisCode\tetrisLoops.js" />
     <Content Include="Games\Tetris\index.html" />
     <Content Include="Games\Tetris\tetris.js" />
     <Content Include="Global.asax" />
@@ -184,6 +236,11 @@
     <Content Include="js\main.js" />
     <Content Include="js\map-custom.js" />
     <Content Include="js\SnakeLadder.js" />
+    <Content Include="obj\Debug\WebApplication2.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\WebApplication2.dll" />
+    <Content Include="obj\Debug\WebApplication2.pdb" />
+    <Content Include="obj\Release\WebApplication2.dll" />
+    <Content Include="obj\Release\WebApplication2.pdb" />
     <Content Include="Quizes\app.js" />
     <Content Include="Quizes\question.js" />
     <Content Include="Quizes\questions.txt" />
@@ -255,6 +312,20 @@
     <Content Include="fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="fonts\poppins\Poppins-ThinItalic.ttf" />
     <Content Include="Games\Snake\snake.html" />
+    <Content Include="obj\Debug\1.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\softLanding.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\WebApplication2.csproj.CopyComplete" />
+    <Content Include="obj\Debug\WebApplication2.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\WebApplication2.csprojAssemblyReference.cache" />
+    <Content Include="obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache" />
+    <Content Include="obj\Release\WebApplication2.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Release\WebApplication2.csprojAssemblyReference.cache" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\WebApplication2.dll.config" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\JavaScript.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -308,6 +379,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Player.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -336,7 +410,6 @@
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Views\First\Signup.cshtml" />
     <Content Include="Views\First\MultiGames.cshtml" />
-    <Content Include="Views\First\MatchingGame.cshtml" />
     <Content Include="Views\First\Contact.cshtml" />
     <Content Include="Views\First\Settings.cshtml" />
     <Content Include="Views\First\singleGames.cshtml" />
@@ -353,6 +426,9 @@
     <EmbeddedResource Include="Views\First\SnakesAndLadders.cshtml" />
     <Content Include="Views\First\Dice.cshtml" />
     <Content Include="Views\First\Questions.cshtml" />
+    <Content Include="Views\First\TetrisCode.cshtml" />
+    <Content Include="Views\First\TetrisCode2.cshtml" />
+    <Content Include="Views\First\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -366,6 +442,8 @@
     <Folder Include="Games\Space Invaders\assets\" />
     <Folder Include="Games\Space Invaders\assets_basic\" />
     <Folder Include="Games\Space Invaders\scripts\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

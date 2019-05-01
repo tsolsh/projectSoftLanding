@@ -105,58 +105,53 @@
     // declare modal
     let modal = document.getElementById("popup1");
     let modal_middle = document.getElementById("middle");
+    if (@Model.Score < 10) {
+        q1 = "Variable expressions are mathematical statements that contain:A.Only numbers B.Only letters C.Numbers and letters D.One letter and no numbers";
+        q2 = "Identify the commutative property: A. A + b = a + b B.A + b = b + a C.B + a = a + B D.A + b = 0";
+        q3 = "What value will return to the operating system upon the successful completion of a program ? A. - 1 B. 1 C. 0 D.Programs do not return a value";
+        q4 = "The keyword ‘break’ cannot be simply used within _________  a) do -while b) if-else c) for d) while ";
+        q5 = "Which keyword is used to come out of a loop only for that iteration? a) break b) continue c) return d) none of the mentioned ";
+        q6 = "Which loop is most suitable to first perform the operation and then test the condition ? a) for loop b) while loop c) do -while loop d) none of the mentioned ";
+        q7 = "Which of the following operator has the highest precedence in the following? a) () b) sizeofc) * d) + ";
+        q8 = "Which is correct with respect to the size of the data types?a) char > int > float b) int > char > float c) char < int < double d) double > char > int";
+        q9 = "Which of the following declaration is not supported by C? a) String str; b) char * str; c) float str = 3e2; d) Both String str; & float str = 3e2;";
+        q10 = "Pick the operator that associate from the right? A. ? : B. + = C. = D.All";
 
-    // add method in string prototype
-    String.prototype.replaceAt = function (index, replacement) {
-        return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-    };
-        if (@Model.Score < 100) {
-            q1 = "Variable expressions are mathematical statements that contain:A.Only numbers B.Only letters C.Numbers and letters D.One letter and no numbers";
-            q2 = "Identify the commutative property: A. A + b = a + b B.A + b = b + a C.B + a = a + B D.A + b = 0";
-            q3 = "What value will return to the operating system upon the successful completion of a program ? A. - 1 B. 1 C. 0 D.Programs do not return a value";
-            q4 = "The keyword ‘break’ cannot be simply used within _________  a) do -while b) if-else c) for d) while ";
-            q5 = "Which keyword is used to come out of a loop only for that iteration? a) break b) continue c) return d) none of the mentioned ";
-            q6 = "Which loop is most suitable to first perform the operation and then test the condition ? a) for loop b) while loop c) do -while loop d) none of the mentioned ";
-            q7 = "Which of the following operator has the highest precedence in the following? a) () b) sizeofc) * d) + ";
-            q8 = "Which is correct with respect to the size of the data types?a) char > int > float b) int > char > float c) char < int < double d) double > char > int";
-            q9 = "Which of the following declaration is not supported by C? a) String str; b) char * str; c) float str = 3e2; d) Both String str; & float str = 3e2;";
-            q10 = "Pick the operator that associate from the right? A. ? : B. + = C. = D.All";
+        a1 = "C";
+        a2 = "B";
+        a3 = "C";
+        a4 = "c";
+        a5 = "b";
+        a6 = "c";
+        a7 = "a";
+        a8 = "c";
+        a9 = "a";
+        a10 = "D";
+    }
+    else if (@Model.Score > 10 && @Model.Score < 200) {
+        q1 = "Which of following is not accepted in C? a) static a = 10; //static as b) static int func(int); //parameter as static  c) static static int a; //a static variable prefixed with static  d) all of the mentioned";
+        q2 = "Which of the following cannot be static in C? a) Variables b) Functions c) Structures d) None of the mentioned";
+        q3 = "Which type of conversion is NOT accepted? a) From char to int b) From float to char pointer c) From negative int to char d) From double to char";
+        q4 = "When do you need to use type-conversions? a) The value to be stored is beyond the max limit b) The value to be stored is in a form not supported by that data type c) To reduce the memory in use, relevant to the value d) All of the mentioned";
+        q5 = "Choose the correct statement a) Size of array must be known at compile time b) String constants can be concatenated at compile time c) Constant expressions are evaluated at compile time d)All";
+        q6 = "What will be the value of var for the following C statement? var = strcmp('Hello", "World'); a) -1 b) 0 c) 1 d) strcmp has void return -type";
+        q7 = "Which function will you choose to join two words? a) strcpy() b) strcat() c) strncon() d) memcon()";
+        q8 = "How many bits are in a byte?  a) 1 b) 2 c) 4 d) 8";
+        q9 = "Functions in C are always _________ a) Internal b) External c) Both Internal and External d) External and Internal are not valid terms for functions";
+        q10 = "Which of the following declaration is illegal? a) char * str = “Best C programming classes by Sanfoundry”; b) char str[] = “Best C programming classes by Sanfoundry”; c) char str[20] = “Best C programming classes by Sanfoundry”; d) char[] str = “Best C programming classes by Sanfoundry”;";
 
-            a1 = "C";
-            a2 = "B";
-            a3 = "C";
-            a4 = "c";
-            a5 = "b";
-            a6 = "c";
-            a7 = "a";
-            a8 = "c";
-            a9 = "a";
-            a10 = "D";
-        }
-        else if (@Model.Score > 100 && @Model.Score < 200) {
-            q1 = "Which of following is not accepted in C? a) static a = 10; //static as b) static int func(int); //parameter as static  c) static static int a; //a static variable prefixed with static  d) all of the mentioned";
-            q2 = "Which of the following cannot be static in C? a) Variables b) Functions c) Structures d) None of the mentioned";
-            q3 = "Which type of conversion is NOT accepted? a) From char to int b) From float to char pointer c) From negative int to char d) From double to char";
-            q4 = "When do you need to use type-conversions? a) The value to be stored is beyond the max limit b) The value to be stored is in a form not supported by that data type c) To reduce the memory in use, relevant to the value d) All of the mentioned";
-            q5 = "Choose the correct statement a) Size of array must be known at compile time b) String constants can be concatenated at compile time c) Constant expressions are evaluated at compile time d)All";
-            q6 = "What will be the value of var for the following C statement? var = strcmp('Hello", "World'); a) -1 b) 0 c) 1 d) strcmp has void return -type";
-            q7 = "Which function will you choose to join two words? a) strcpy() b) strcat() c) strncon() d) memcon()";
-            q8 = "How many bits are in a byte?  a) 1 b) 2 c) 4 d) 8";
-            q9 = "Functions in C are always _________ a) Internal b) External c) Both Internal and External d) External and Internal are not valid terms for functions";
-            q10 = "Which of the following declaration is illegal? a) char * str = “Best C programming classes by Sanfoundry”; b) char str[] = “Best C programming classes by Sanfoundry”; c) char str[20] = “Best C programming classes by Sanfoundry”; d) char[] str = “Best C programming classes by Sanfoundry”;";
+        a1 = "c";
+        a2 = "d";
+        a3 = "b";
+        a4 = "d";
+        a5 = "d";
+        a6 = "a";
+        a7 = "b";
+        a8 = "d";
+        a9 = "b";
+        a10 = "d";
 
-            a1 = "c";
-            a2 = "d";
-            a3 = "b";
-            a4 = "d";
-            a5 = "d";
-            a6 = "a";
-            a7 = "b";
-            a8 = "d";
-            a9 = "b";
-            a10 = "d";
-
-        }
+    }
         else if(@Model.Score > 200) {
             q1 = "Variable expressions are mathematical statements that contain:A.Only numbers B.Only letters C.Numbers and letters D.One letter and no numbers";
             q2 = "Identify the commutative property: A. A + b = a + b B.A + b = b + a C.B + a = a + B D.A + b = 0";
@@ -181,6 +176,11 @@
             a10 = "D";
         }
    
+    // add method in string prototype
+    String.prototype.replaceAt = function (index, replacement) {
+        return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+    };
+        
     var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
     var answers = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10];
     var correct = 0;

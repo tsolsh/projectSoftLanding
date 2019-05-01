@@ -110,7 +110,7 @@
             <div id="popup1" class="overlay">
                 <div class="popup">
                     <h2>Congratulations 🎉</h2>
-                    <a class="close" href=#>×</a>
+                    <a class="close" href="~/First/singleGames">×</a>
                     <div class="content-1">
                         Congratulations you're a winner 🎉🎉
                     </div>
@@ -119,9 +119,9 @@
                         <p>in <span id=totalTime> </span> </p>
                         <p>Rating:  <span id=starRating></span></p>
                     </div>
-                    <button class="button" type="submit" onclick="next()">
+                    <a class="button" type="submit" href="~/First/Matching2">
                     Next Level!
-                    </button>
+                    </a>
 
                 </div>
             </div>
@@ -325,7 +325,16 @@
                 document.getElementById("starRating").innerHTML = starRating;
                 document.getElementById("totalTime").innerHTML = finalTime;
                 score = 100 - moves;
-
+                var URl = '@Url.Action("matching1_result", "First")';
+        
+                $.ajax({
+                url: URl,
+                data: { id: score },
+                success: function(data){
+                //call is successfully completed and we got result in data
+                },
+                });
+        
                 //closeicon on modal
                 closeModal();
             }
@@ -354,17 +363,7 @@
             card.addEventListener("click", congratulations);
         }
 
-        var URl = '@Url.Action("matching1_result","First")';
-        function next()
-        {
-          $.ajax({
-          url: URl,
-          data: { id: score },
-          success: function(data){
-            //call is successfully completed and we got result in data
-          },
-          });
-        }
+        
 
     </script>
 

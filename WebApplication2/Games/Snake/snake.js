@@ -184,7 +184,7 @@ function draw() {
 			if (level === 4) {
 				lineNum = 1;
 				drawingTimes = 0;
-				let str = "int main() {\n    GoLeft(5);\n    GoUp(5);\n    GoRight(5);\n    GoDown(5);\n    return 0;\n}"
+                let str = "int main() {\n    GoLeft(5);\n    GoUp(5);\n    GoRight(5);\n    GoDown(5);\n    return 0;\n}";
 				lines = str.split('\n');
 				clearInterval(game);
 				getInp();
@@ -265,12 +265,12 @@ function getInp(){
 			}
 		}
 		lines[lineNum] = lines[lineNum].replace(lines[lineNum].substring(0, j), "");
-		if (lines[lineNum] == ""){
+		if (lines[lineNum] === ""){
 			lineNum++;
 			getInp();
 			return -1;
 		}
-		if (lines[lineNum].substring(0, 2) ==  "//"){
+		if (lines[lineNum].substring(0, 2) ===  "//"){
 			lineNum++;
 			getInp();
 			return;
@@ -290,7 +290,7 @@ function getInp(){
 				return -1;
 			}
 		}
-		if (lines[lineNum].substring(begin, endIndex) == "break") {
+		if (lines[lineNum].substring(begin, endIndex) === "break") {
 			broke = true;
 			lineNum++;
 			getInp();
@@ -359,7 +359,7 @@ function getInp(){
 							}
 							break;
 						}
-						if (j >= lines[lineNum].length && (!endSemicolonExists)) {
+						if (j >= lines[lineNum].length && !endSemicolonExists) {
 							alert("please put semicolon ';' at end of line " + lineOfError);
 						} else {
 							alert("Dont put anything between the end of function and the ';' (line " + lineOfError + ")");
@@ -399,7 +399,7 @@ function getInp(){
 				//draw();
 			} else {
 				lineNum = 1;
-				let str = "int main() {\n    GoLeft(5);\n    GoUp(5);\n    GoRight(5);\n    GoDown(5);\n    return 0;\n}"
+                let str = "int main() {\n    GoLeft(5);\n    GoUp(5);\n    GoRight(5);\n    GoDown(5);\n    return 0;\n}";
 				lines = str.split('\n');
 				broke = false;
 				numSkipLinesLast = 2;
@@ -505,18 +505,18 @@ function initLevels() {
 		options.value = "\n\n\nGOAL \nEat all the fruits.\n\nBONUS\nUse least number of moves.\n\nOPERATIONS AVAILABLE\nGoLeft(x),GoRight(x),GoUp(x),GoDown(x)";
 		var code = document.getElementById("textarea1");
 		code.value="int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    	\n    \n    \n   return 0;\n}";
-		food[0] = {
-			x: Math.floor(0.1 * 17 + 1) * box,
-			y: Math.floor(0.5 * 15 + 3) * box
-		}
-		food[1] = {   
-			x: Math.floor(0.1 * 17 + 1) * box,
-			y: Math.floor(0.2 * 15 + 3) * box
-		}
-		food[2] = {   
-			x: Math.floor(0.3 * 17 + 1) * box,
-			y: Math.floor(0.5 * 15 + 3) * box
-		}
+        food[0] = {
+            x: Math.floor(0.1 * 17 + 1) * box,
+            y: Math.floor(0.5 * 15 + 3) * box
+        };
+        food[1] = {
+            x: Math.floor(0.1 * 17 + 1) * box,
+            y: Math.floor(0.2 * 15 + 3) * box
+        };
+        food[2] = {
+            x: Math.floor(0.3 * 17 + 1) * box,
+            y: Math.floor(0.5 * 15 + 3) * box
+        };
 	} else if (level === 2) {
 		snake = [];
 		snake[0] = {
@@ -528,28 +528,28 @@ function initLevels() {
 		var code = document.getElementById("textarea1");
 		code.value="int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    	\n    \n    \n   return 0;\n}";
 		for (let i = 1; i <= 6; i++){
-			food[i-1] = {   
-				x: Math.floor(0.1 * i * 17 +3	) * box,
-				y: Math.floor(0.15 * 15 + 3) * box
-			}
+            food[i - 1] = {
+                x: Math.floor(0.1 * i * 17 + 3) * box,
+                y: Math.floor(0.15 * 15 + 3) * box
+            };
 		}
 		for (let i = 1; i <= 6; i++){
-			food[i-1 + 6] = {   
-				x: Math.floor(0.1 * i * 17 +3) * box,
-				y: Math.floor(0.75 * 15 + 3) * box
-			}
+            food[i - 1 + 6] = {
+                x: Math.floor(0.1 * i * 17 + 3) * box,
+                y: Math.floor(0.75 * 15 + 3) * box
+            };
 		}
 		for (let i = 1; i <= 3; i++){
-			food[i-1 + 12] = {   
-				x: Math.floor(0.1 * 17 +3) * box,
-				y: Math.floor(0.15 * (i + 1) * 15 + 3) * box
-			}
+            food[i - 1 + 12] = {
+                x: Math.floor(0.1 * 17 + 3) * box,
+                y: Math.floor(0.15 * (i + 1) * 15 + 3) * box
+            };
 		}
 		for (let i = 1; i <= 3; i++){
-			food[i-1 + 15] = {   
-				x: Math.floor(0.6 * 17 +3) * box,
-				y: Math.floor(0.15 * (i + 1) * 15 + 3) * box
-			}
+            food[i - 1 + 15] = {
+                x: Math.floor(0.6 * 17 + 3) * box,
+                y: Math.floor(0.15 * (i + 1) * 15 + 3) * box
+            };
 		}
 	} else if (level === 3) {
 		snake = [];
@@ -562,10 +562,10 @@ function initLevels() {
 		var code = document.getElementById("textarea1");
 		code.value="int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    	\n    \n    \n   return 0;\n}";
 		for (let i = 1; i <= 6; i++){
-			food[i-1] = {   
-				x: Math.floor(0.1 * i * 17 +3	) * box,
-				y: Math.floor(0.15 * 15 + 3) * box
-			}
+            food[i - 1] = {
+                x: Math.floor(0.1 * i * 17 + 3) * box,
+                y: Math.floor(0.15 * 15 + 3) * box
+            };
 		}
 	} else if (level === 4){
 		snake = [];
@@ -578,22 +578,22 @@ function initLevels() {
 		var code = document.getElementById("textarea1");
 		code.value="int main() {\n    while(true){\n        GoLeft(5);\n        GoUp(5);\n        GoDown(5);\n        GoRight(5);\n        //add code to stop the spin.\n        \n    }\n    GoToGoal();\n    return 0;\n}";
 		
-		food[0] = {   
-			x: Math.floor(0* 17 +1) * box,
-			y: Math.floor(0 * 15 + 3) * box
-		}
+        food[0] = {
+            x: Math.floor(0 * 17 + 1) * box,
+            y: Math.floor(0 * 15 + 3) * box
+        };
 		
 	} else if(level === 0) {
-		food[0] = {   
-			x: Math.floor(0* 17 + 9) * box,
-			y: Math.floor(0 * 15 + 9) * box
-		}
-		snake[0] = {   
-			x: Math.floor(0* 17 + 6) * box,
-			y: Math.floor(0 * 15 + 11) * box
-		}
+        food[0] = {
+            x: Math.floor(0 * 17 + 9) * box,
+            y: Math.floor(0 * 15 + 9) * box
+        };
+        snake[0] = {
+            x: Math.floor(0 * 17 + 6) * box,
+            y: Math.floor(0 * 15 + 11) * box
+        };
 		var options = document.getElementById("options");
-		options.value="\n\nEXPLANATION\nThe programmer wrote the GoUp,GoRight functions, but it seems it not working in the right-manner, GoUp is making the snake go LEFT instead of going UP, and GoRight is making it go Left instead of right, fix the functions and call the them in main.\n\n NOTE:\n snake is a struct that has 2 parameters within, x and y.\nx corresponds to the x-axis.\ny corresponts to the y-axis."
+        options.value = "\n\nEXPLANATION\nThe programmer wrote the GoUp,GoRight functions, but it seems it not working in the right-manner, GoUp is making the snake go LEFT instead of going UP, and GoRight is making it go Left instead of right, fix the functions and call the them in main.\n\n NOTE:\n snake is a struct that has 2 parameters within, x and y.\nx corresponds to the x-axis.\ny corresponts to the y-axis.";
 		var code = document.getElementById("textarea1");
 		code.value="void GoUp(int numTimesMove) {\n    /*fix the code.*/\n    snake.x -= numMoves;\n}\nvoid GoRight(int numTimesMove) {\n    /*fix the code.*/\n    snake.x -= numMoves;\n}\nint main() {\n     //call the functions\n    \n    \n    return 0;\n}";
 	}

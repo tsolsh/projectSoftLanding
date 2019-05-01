@@ -10,62 +10,19 @@
     <title>Snake Game</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="~/Games/Snake/snakecss.css">
-
+    <link href="~/Games/Snake/snakecss.css" rel="stylesheet">
     <style>
-        canvas {
+        <!-- canvas {
+            display: block;
             margin: 0 auto;
-            height: 80vh;
-            top:10%;
-            left:28%;
-            bottom:inherit;
-            position:absolute;
+            height: 90vh;
         }
-
-        .button {
-            background-image: url(data:image/jpeg;base64,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);
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 260px;
-            cursor: pointer;
-            position: center;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        }
-        textarea {
-            background-image: url(https://d2d00szk9na1qq.cloudfront.net/Product/0253a8ef-822e-4033-b9fa-416eae53f379/Images/Large_UG-775.jpg);
-            position: absolute;
-            top: 20%;
-            left: 67%;
-            color: white;
-            font-family: sans-serif;
-            font-size: 20px;
-            padding: 10px;
-            height: 65vh;
-            border: 3px dashed white;
-        }
-        .exp {
-            position: absolute;
-            top: 20%;
-            left: 5%;
-            background-image: url(https://d2d00szk9na1qq.cloudfront.net/Product/0253a8ef-822e-4033-b9fa-416eae53f379/Images/Large_UG-775.jpg);
-            color: white;
-            font-family: FreeMono, monospace;
-            font-size: 15px;
-            padding: 10px;
-            height: 50vh;
-            width: 20%;
-            border: 3px dashed white;
-        }
+        -->
         #enterCode {
             position: absolute;
             top: 15%;
-            left: 67%;
+            left: 72%;
+            font-family: 'Gloria Hallelujah', cursive;
         }
 
         #doneButton {
@@ -78,83 +35,633 @@
             width: 200px;
             transition-duration: .5s;
         }
-
-            #doneButton:hover {
-                background: white;
-                border: 1px solid green;
-                color: black;
-                cursor: pointer;
-            }
-            all3{
-                position:center;
-                display:grid;
-            }
     </style>
 </head>
-
-<body style="position: fixed; width:100%; height:100%;">
-    <div class="all3">
+<body>
+    <canvas id="snake" width="608" height="608"></canvas>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <!--<h2>too bad!</h2>
+                <a class="close" href=#>×</a>
+                <button type="submit" onclick="click()"></button>
+            </div>-->
+        </div>
         <form action="" method="POST">
-            </br><span id="enterCode">enter code: </span></br><textarea id="textarea1" rows="18" cols="35"></textarea>
+            </br><span id="enterCode">enter code: </span></br><textarea id="textarea1" rows="18" cols="26"></textarea>
         </form>
-        <button id="doneButton" onClick="getInput()"> Done </button>
-        <div class="exp">
-            <p>
-                you can write operations like:
-            </p>
-            <p>   MoveLeft()        </p>
-            <p>   Moveright()        </p>
-            <p>   MoveUp()        </p>
-            <p>   MoveDown()        </p>
-            <p></p>
-            <p>
-                Add numbers if you like !
-            </p>
-        </div>
-        <div>
-            <canvas id="snake" width="608" height="608"></canvas>
-            <div style="display:none;">
-                <img id="ground"
-                     src="~/Games/Snake/img/ground.png"
-                     width="300" height="227" />
-                <img id="food"
-                     src="~/Games/Snake/img/food.png"
-                     width="300" height="227" />
-                <audio controls>
-                    <source id="dead" src="~/Games/Snake/audio/dead.mp3" type="audio/mp3">
-                    <source id="eat" src="~/Games/Snake/audio/eat.mp3" type="audio/mp3">
-                    <source id="up" src="~/Games/Snake/audio/up.mp3" type="audio/mp3">
-                    <source id="left" src="~/Games/Snake/audio/left.mp3" type="audio/mp3">
+        <button id="doneButton" onClick="Switch()"> Done </button>
 
-                    <source id="right" src="~/Games/Snake/audio/right.mp3" type="audio/mp3">
-                    <source id="down" src="~/Games/Snake/audio/down.mp3" type="audio/mp3">
+        <textarea style="left:2%; font-size:17px;text-align:center;" id="options" rows="18" cols="33" readonly></textarea>
+        <script>
 
-                </audio>
-            </div>
-        </div>
-        <div id="popup2" class="overlay">
-            <div class="popup">
-                <h1>great job!</h1>
-                <a class="close" href="~/First/Snake">X</a>
-                <p>Can you handle more apples ?</p>
-                <button class="button" type="submit">
-                    @Html.ActionLink("Next Level!", "Snake_level", new { level = 1 }, null)
-                </button>
+            /*-----------------------Notes to Self--------------------------
+	FIX:if the player clicks more than once on the play button
+		the function Switch is called and a new animation is 
+		started even tho the past animation wasn't done yet.
+*/
+            const cvs = document.getElementById("snake");
+            const ctx = cvs.getContext("2d");
+            // create the unit
+            const box = 32;
 
-            </div>
-        </div>
-        <div id="popup1" class="overlay">
-            <div class="popup">
-                <h1>too bad!</h1>
-                <a class="close" href="~/First/Snake">X</a>
-                <p>You had only <span id="move"> </span> more to win.. </p>
-                <button class="button" type="submit">
-                    @Html.ActionLink("Try again", "Snake_level", new { level = 0 }, null)
-                </button>
+            // load images
+            const ground = new Image();
+            ground.src = "/../Games/Snake/img/ground.png";
 
-            </div>
-        </div>
-    </div>
-    <script src="~/Games/Snake/snake.js"></script>
+            const foodImg = new Image();
+            foodImg.src = "/../Games/Snake/img/food.png";
+
+            const face = new Image;
+            face.src = "/../Games/Snake/img/face.png";
+            const body = new Image;
+            body.src = "/../Games/Snake/img/body.png";
+            // load audio files
+
+            const dead = new Audio();
+            const eat = new Audio();
+            const up = new Audio();
+            const left = new Audio();
+            const right = new Audio();
+            const down = new Audio();
+
+            dead.src = "/../Games/Snake/audio/dead.mp3";
+            eat.src = "/../Games/Snake/audio/eat.mp3";
+            up.src = "/../Games/Snake/audio/up.mp3";
+            left.src = "/../Games/Snake/audio/left.mp3";
+            right.src = "/../Games/Snake/audio/right.mp3";
+            down.src = "/../Games/Snake/audio/down.mp3";
+
+
+            // create the snake
+
+            let snake = [];
+
+            snake[0] = {
+                x: 9 * box,
+                y: 10 * box
+            };
+
+            // create the food
+            let food = [];
+            food[0] = {
+                x: Math.floor(Math.random() * 17 + 1) * box,
+                y: Math.floor(Math.random() * 15 + 3) * box
+            };
+
+            // create the score var
+
+            let score = 0;
+
+            // control the snake
+
+            //document.addEventListener("keydown", direction);
+
+            let d;
+
+            function direction(event) {
+                if (event.keyCode === 37 && d !== "RIGHT") {
+                    d = "LEFT";
+                    left.play();
+                }
+                else if (event.keyCode === 38 && d !== "DOWN") {
+                    d = "UP";
+                    up.play();
+                }
+                else if (event.keyCode === 39 && d !== "LEFT") {
+                    d = "RIGHT";
+                    right.play();
+                }
+                else if (event.keyCode === 40 && d !== "UP") {
+                    d = "DOWN";
+                    down.play();
+                }
+            }
+
+            // check collision
+            function collision(head, array) {
+                for (let i = 0; i < array.length; i++) {
+                    if (head.x === array[i].x && head.y === array[i].y) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            var drawingTimes = 0;
+            // draw everything to the canvas
+            function draw() {
+                if (broke) {
+                    goToGoal();
+                    drawingTimes = 1;
+                }
+                if (drawingTimes >= 0) {
+                    if (!firstMove) {
+                        drawingTimes--;
+                        if (drawingTimes < 0) {
+                            return;
+                        }
+                    }
+                    ctx.drawImage(ground, 0, 0);
+                    // old head position
+                    let snakeX = snake[0].x;
+                    let snakeY = snake[0].y;
+
+                    // which direction
+
+                    if (d === "GoLeft") { snakeX -= box; left.play(); }
+                    if (d === "GoUp") { snakeY -= box; up.play(); }
+                    if (d === "GoRight") { snakeX += box; right.play(); }
+                    if (d === "GoDown") { snakeY += box; down.play(); }
+                    let itEat = false;
+
+                    // if the snake eats the food
+                    for (let i = 0; i < food.length; i++) {
+                        if (snakeX === food[i].x && snakeY === food[i].y) {
+                            score++;
+                            eat.play();
+                            /*food[i] = {
+                                x: Math.floor(Math.random() * 17 + 1) * box,
+                                y: Math.floor(Math.random() * 15 + 3) * box
+                            };
+                            */
+                            food.splice(i, 1);
+                            // we don't remove the tail
+                            itEat = true;
+                            break;
+                        }
+                    }
+                    if (!itEat) {
+                        // remove the tail
+                        snake.pop();
+                    }
+
+                    // add new head
+                    let newHead = {
+                        x: snakeX,
+                        y: snakeY
+                    };
+
+                    // game over
+                    if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box
+                        || snakeY > 17 * box || collision(newHead, snake)) {
+                        clearInterval(game);
+                        dead.play();
+                    }
+                    snake.unshift(newHead);
+                    for (let i = 0; i < snake.length; i++) {
+                        if (i === 0) {
+                            ctx.fillStyle = "green";
+                            ctx.drawImage(face, snake[i].x, snake[i].y);
+                            ctx.strokeStyle = "red";
+                            ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+                        } else {
+                            ctx.fillStyle = "white";
+                            ctx.drawImage(body, snake[i].x, snake[i].y);
+                        }
+                    }
+                    for (let i = 0; i < food.length; i++) {
+                        ctx.drawImage(foodImg, food[i].x, food[i].y);
+                    }
+                    ctx.fillStyle = "white";
+                    ctx.font = "45px Changa one";
+                    ctx.fillText(score, 2 * box, 1.6 * box);
+                    if (drawingTimes === -1) {
+                        clearInterval(game);
+                        //drawI();
+                        //requestAnimationFrame(function(){getInp(lines, numOfTimes)})
+                        getInp();
+                    }
+                    //moving to next level!.
+                    if (food.length === 0) {
+                        setTimeout(alert, 100, "AMAZING YOU CLEARED THE LEVEL!! :)");
+                        level++;
+                        drawingTimes = 1;
+                        initLevels();
+                        if (level === 4) {
+                            lineNum = 1;
+                            drawingTimes = 0;
+                            let str = "int main() {\n    GoLeft(5);\n    GoUp(5);\n    GoRight(5);\n    GoDown(5);\n    return 0;\n}";
+                            lines = str.split('\n');
+                            clearInterval(game);
+                            getInp();
+                        } else {
+                            draw();
+                        }
+                        return;
+                    }
+                } else {
+                    //cancelling out the past interval, because getInp sets a new interval.
+                    clearInterval(game);
+                    //calling getInp but this time with next line!.
+                    getInp();
+                }
+            }
+
+
+
+
+            // call the draw function every 100 ms
+            //let game = setInterval(draw, 100);
+            var firstMove = true;
+            function drawI() {
+                firstMove = true;
+                d = "";
+                draw();
+                id = requestAnimationFrame(drawI);
+            }
+            drawI();
+            var id = null;
+            var numSkipLinesLast = 2;
+            var numSkipLinesStart = 1;
+            function Switch() {
+                firstMove = false;
+                cancelAnimationFrame(id);
+                if (level === 4) {
+                    clearInterval(game);
+                    numSkipLinesLast = 4;
+                    numSkipLinesStart = 7;
+                    drawingTimes = 0;
+                }
+                getInput();
+                //setInterval(draw,1000);
+            }
+
+            var lineNum = 1;
+            var lines = null;
+            function getInput() {
+                lines = document.getElementById("textarea1").value.split('\n');
+                lineNum = numSkipLinesStart;
+                if (level === 0) {
+                    if (checkFunctions()) {
+                        //game = setInterval(draw,100);
+                        return;
+                    }
+                }
+                getInp();
+            }
+            var broke = false;
+            //this function reads the first line of the code and sets call 
+            //interval on draw and draw calls getInp later for next line reading.
+            function getInp() {
+                //gotta fix if thigns after the ';' and also when there is no number, we set the numOfTime to 1.
+                if (lineNum < lines.length - numSkipLinesLast && (drawingTimes === 0 || drawingTimes === -1)) {
+                    let begin = 0, endIndex = 0;
+                    let numOfSpaces = 0;
+                    let startCountSpaces = false;
+                    //the num of the ';' and to check if it exists or no.
+                    let endSemicolonExists = false;
+                    let lineOfError = lineNum + 1;
+                    var numOfLeftParenthesis = 0;
+                    var numOfRightParenthesis = 0;
+                    let j = 0;
+                    while (lines[lineNum].charAt(j) === ' ' || lines[lineNum].charAt(j) === '\t') {
+                        j++;
+                        if (j > lines[lineNum].length) {
+                            break;
+                        }
+                    }
+                    lines[lineNum] = lines[lineNum].replace(lines[lineNum].substring(0, j), "");
+                    if (lines[lineNum] === "") {
+                        lineNum++;
+                        getInp();
+                        return -1;
+                    }
+                    if (lines[lineNum].substring(0, 2) === "//") {
+                        lineNum++;
+                        getInp();
+                        return;
+                    }
+                    //checking loop-related code
+                    if (level === 4) {
+                        for (j = 0; j < lines[lineNum].length; j++) {
+                            if (lines[lineNum].charAt(j) === ';') {
+                                endIndex = j;
+                                break;
+                            }
+                        }
+                        if (endIndex === 0) {
+                            alert("a semicolon is expected at line" + lineNum + 1 + ".");
+                            lineNum++;
+                            getInp();
+                            return -1;
+                        }
+                    }
+                    if (lines[lineNum].substring(begin, endIndex) === "break") {
+                        broke = true;
+                        lineNum++;
+                        getInp();
+                        return 0;
+                    } else {
+                        endIndex = 0;
+                        //checking function-related code.
+                        for (j = 0; j < lines[lineNum].length; j++) {
+                            if (lines[lineNum].charAt(j) === ' ') {
+                                begin++;
+                                continue;
+                            }
+                            if (lines[lineNum].charAt(j) === '(') {
+                                if (numOfLeftParenthesis === 0) {
+                                    begin = j + 1;
+                                }
+                                numOfLeftParenthesis++;
+                                if (numOfLeftParenthesis > 1) {
+                                    alert("dont put more than one left Parenthesis");
+                                    lineNum++;
+                                    getInp();
+                                    return -1;
+                                }
+                            }
+                            if (lines[lineNum].charAt(j) === ')') {
+                                endIndex = j;
+                                numOfRightParenthesis++;
+                                if (numOfRightParenthesis > 1) {
+                                    alert("dont put more than one right Parenthesis");
+                                    lineNum++;
+                                    getInp();
+                                    return -1;
+                                }
+                            }
+                            if (begin !== 0) {
+                                startCountSpaces = true;
+                            }
+                            if (endIndex !== 0) {
+                                startCountSpaces = false;
+                            }
+                            if (startCountSpaces) {
+                                if (lines[lineNum].charAt(j + 1) === ' ') {
+                                    numOfSpaces++;
+                                }
+                                if (isNaN(lines[lineNum].charAt(j + 1)) && lines[lineNum].charAt(j + 1) !== ')') {
+                                    alert("please enter numbers only as arguments on line " + lineOfError);
+                                    lineNum++;
+                                    drawingTimes = 0;
+                                    getInp();
+                                    return -1;
+                                }
+                            }
+                            if (begin !== 0 && endIndex !== 0) {
+                                if (lines[lineNum].charAt(j) !== ')' &&
+                                    lines[lineNum].charAt(j) !== ' ') {
+                                    if (lines[lineNum].charAt(j) === ';') {
+                                        j++;
+                                        endSemicolonExists = true;
+                                        while (j < lines[lineNum].length) {
+                                            if (lines[lineNum].charAt(j) !== ' ') {
+                                                alert("Dont put anything after ';' (line " + lineOfError + ")");
+                                                lineNum++;
+                                                getInp();
+                                                return -1;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    if (j >= lines[lineNum].length && !endSemicolonExists) {
+                                        alert("please put semicolon ';' at end of line " + lineOfError);
+                                    } else {
+                                        alert("Dont put anything between the end of function and the ';' (line " + lineOfError + ")");
+                                    }
+                                    lineNum++;
+                                    getInp();
+                                    return -1;
+                                }
+                            }
+                        }
+                        if (numOfSpaces === endIndex - begin) {
+                            if (endIndex === 0) {
+                                drawingTimes = 0;
+                            } else {
+                                drawingTimes = 1;
+                            }
+                        } else {
+                            drawingTimes = parseInt(lines[lineNum].substring(begin, endIndex));
+                        }
+                        lines[lineNum] = lines[lineNum].replace(lines[lineNum].substring(begin - 1, lines[lineNum].length), "");
+                        d = lines[lineNum];
+                        game = setInterval(draw, 100);
+                    }
+                    lineNum++;
+                    //draw();
+                    //requestAnimationFrame(function(){getInp(seconds, i, lines, numOfTimes)})
+
+                } else if (lineNum === lines.length - numSkipLinesLast) {
+                    //drawI();
+                    if (level === 4) {
+                        if (broke) {
+                            alert("WELL-DONE, THE LOOP WAS BROKEN");
+                            game = setInterval(draw, 100);
+                            //level++;
+                            //initLevels();
+                            //drawingTimes = 1;
+                            //draw();
+                        } else {
+                            lineNum = 1;
+                            let str = "int main() {\n    GoLeft(5);\n    GoUp(5);\n    GoRight(5);\n    GoDown(5);\n    return 0;\n}";
+                            lines = str.split('\n');
+                            broke = false;
+                            numSkipLinesLast = 2;
+                            lineNum = numSkipLinesStart = 1;
+                            getInp();
+                        }
+                    }
+                }
+            }
+            //related to level 0.
+            function checkFunctions() {
+                lineNum = 2;
+                let j = 0;
+                while (lines[lineNum].charAt(j) === ' ' || lines[lineNum].charAt(j) === '\t') {
+                    j++;
+                    if (j > lines[lineNum].length) {
+                        break;
+                    }
+                }
+                lines[lineNum] = lines[lineNum].replace(lines[lineNum].substring(0, j), "");
+                j = 0;
+                while (lines[lineNum].charAt(j) !== '.') {
+                    j++;
+                    if (j >= lines[lineNum].length) {
+                        //0 means fail in this function.
+                        return 1;
+                    }
+                }
+                j++;
+                if (lines[lineNum].charAt(j) !== 'y') {
+                    return 1;
+                }
+                j++;
+                //check if it is "-=" operator.
+                while (lines[lineNum].charAt(j) !== '=') {
+                    j++;
+                }
+                if (lines[lineNum].charAt(j - 1) !== '-') {
+                    return 1;
+                }
+                lineNum = 6;
+                j = 0;
+                while (lines[lineNum].charAt(j) === ' ' || lines[lineNum].charAt(j) === '\t') {
+                    j++;
+                    if (j > lines[lineNum].length) {
+                        break;
+                    }
+                }
+                lines[lineNum] = lines[lineNum].replace(lines[lineNum].substring(0, j), "");
+                j = 0;
+                while (lines[lineNum].charAt(j) !== '.') {
+                    j++;
+                    if (j >= lines[lineNum].length) {
+                        //0 means fail in this function.
+                        return 1;
+                    }
+                }
+                j++;
+                if (lines[lineNum].charAt(j) !== 'x') {
+                    return 1;
+                }
+                j++;
+                //check if it is "-=" operator.
+                while (lines[lineNum].charAt(j) !== '=') {
+                    j++;
+                }
+                if (lines[lineNum].charAt(j - 1) !== '+') {
+                    return 1;
+                }
+                lineNum = 9;
+                //all the function were changed correctly!. he passed! :).
+                return 0;
+            }
+
+            //related to level 4.
+            function goToGoal() {
+                if (snake[0].x > food[0].x) {
+                    d = "GoLeft";
+                } else if (snake[0].x < food[0].x) {
+                    d = "GoRight";
+                } else if (snake[0].y > food[0].y) {
+                    d = "GoUp";
+                } else if (snake[0].y < food[0].y) {
+                    d = "GoDown";
+                }
+            }
+
+            //--> init levels
+            let game = null;
+            let level = 0;
+
+            if (@Model.Score > 100) {
+                level = 1;
+            }
+            else if (@Model.Score > 200 && @Model.Score < 300) {
+                level = 2;
+            }
+
+            initLevels();
+            function initLevels() {
+                score = 0;
+                if (level === 1) {
+                    snake = [];
+                    snake[0] = {
+                        x: 9 * box,
+                        y: 10 * box
+                    };
+                    var options = document.getElementById("options");
+                    options.value = "\n\n\nGOAL \nEat all the fruits.\n\nBONUS\nUse least number of moves.\n\nOPERATIONS AVAILABLE\nGoLeft(x),GoRight(x),GoUp(x),GoDown(x)";
+                    var code = document.getElementById("textarea1");
+                    code.value = "int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    	\n    \n    \n   return 0;\n}";
+                    food[0] = {
+                        x: Math.floor(0.1 * 17 + 1) * box,
+                        y: Math.floor(0.5 * 15 + 3) * box
+                    };
+                    food[1] = {
+                        x: Math.floor(0.1 * 17 + 1) * box,
+                        y: Math.floor(0.2 * 15 + 3) * box
+                    };
+                    food[2] = {
+                        x: Math.floor(0.3 * 17 + 1) * box,
+                        y: Math.floor(0.5 * 15 + 3) * box
+                    };
+                } else if (level === 2) {
+                    snake = [];
+                    snake[0] = {
+                        x: 9 * box,
+                        y: 10 * box
+                    };
+                    var options = document.getElementById("options");
+                    options.value = "\n\n\nGOAL \nEat all the fruits.\n\nBONUS\nUse least number of moves.\n\nOPERATIONS AVAILABLE\nGoLeft(x),GoRight(x),GoUp(x),GoDown(x)";
+                    var code = document.getElementById("textarea1");
+                    code.value = "int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    	\n    \n    \n   return 0;\n}";
+                    for (let i = 1; i <= 6; i++) {
+                        food[i - 1] = {
+                            x: Math.floor(0.1 * i * 17 + 3) * box,
+                            y: Math.floor(0.15 * 15 + 3) * box
+                        };
+                    }
+                    for (let i = 1; i <= 6; i++) {
+                        food[i - 1 + 6] = {
+                            x: Math.floor(0.1 * i * 17 + 3) * box,
+                            y: Math.floor(0.75 * 15 + 3) * box
+                        };
+                    }
+                    for (let i = 1; i <= 3; i++) {
+                        food[i - 1 + 12] = {
+                            x: Math.floor(0.1 * 17 + 3) * box,
+                            y: Math.floor(0.15 * (i + 1) * 15 + 3) * box
+                        };
+                    }
+                    for (let i = 1; i <= 3; i++) {
+                        food[i - 1 + 15] = {
+                            x: Math.floor(0.6 * 17 + 3) * box,
+                            y: Math.floor(0.15 * (i + 1) * 15 + 3) * box
+                        };
+                    }
+                } else if (level === 3) {
+                    snake = [];
+                    snake[0] = {
+                        x: 9 * box,
+                        y: 10 * box
+                    };
+                    var options = document.getElementById("options");
+                    options.value = "\n\n\nGOAL \nEat all the fruits.\n\nBONUS\nUse least number of moves.\n\nOPERATIONS AVAILABLE\nGoLeft(x),GoRight(x),GoUp(x),GoDown(x)";
+                    var code = document.getElementById("textarea1");
+                    code.value = "int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    	\n    \n    \n   return 0;\n}";
+                    for (let i = 1; i <= 6; i++) {
+                        food[i - 1] = {
+                            x: Math.floor(0.1 * i * 17 + 3) * box,
+                            y: Math.floor(0.15 * 15 + 3) * box
+                        };
+                    }
+                } else if (level === 4) {
+                    snake = [];
+                    snake[0] = {
+                        x: 9 * box,
+                        y: 10 * box
+                    };
+                    var options = document.getElementById("options");
+                    options.value = "\n\n\nGOAL \nStop Spinning!.\n\n.\n\nHINT\n\nthink how to break the loop.";
+                    var code = document.getElementById("textarea1");
+                    code.value = "int main() {\n    while(true){\n        GoLeft(5);\n        GoUp(5);\n        GoDown(5);\n        GoRight(5);\n        //add code to stop the spin.\n        \n    }\n    GoToGoal();\n    return 0;\n}";
+
+                    food[0] = {
+                        x: Math.floor(0 * 17 + 1) * box,
+                        y: Math.floor(0 * 15 + 3) * box
+                    };
+
+                } else if (level === 0) {
+                    food[0] = {
+                        x: Math.floor(0 * 17 + 9) * box,
+                        y: Math.floor(0 * 15 + 9) * box
+                    };
+                    snake[0] = {
+                        x: Math.floor(0 * 17 + 6) * box,
+                        y: Math.floor(0 * 15 + 11) * box
+                    };
+                    var options = document.getElementById("options");
+                    options.value = "\n\nEXPLANATION\nThe programmer wrote the GoUp, GoRight functions, but it seems it's not working in the right-manner, GoUp is making the snake go LEFT instead of going UP, and GoRight is making it go Left instead of right, fix the functions and call the them in main.\n\n NOTE:\n snake is a struct that has 2 parameters within, x and y.\nx corresponds to the x-axis.\ny corresponts to the y-axis.";
+                    var code = document.getElementById("textarea1");
+                    code.value = "void GoUp(int numTimesMove) {\n    /*fix the code.*/\n    snake.x -= numMoves;\n}\nvoid GoRight(int numTimesMove) {\n    /*fix the code.*/\n    snake.x -= numMoves;\n}\nint main() {\n     //call the functions\n    \n    \n    return 0;\n}";
+                }
+            }
+
+
+        </script>
 </body>
 </html>

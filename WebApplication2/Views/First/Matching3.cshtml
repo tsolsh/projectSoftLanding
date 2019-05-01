@@ -15,12 +15,29 @@
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
     <link rel="stylesheet" href="~/Games/Mathcing/css/matching.css">
+    <style>
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Memory Game</h1>
         </header>
+        <div class="close">
+            <a>
+                @Html.ActionLink("X", "close")
+            </a>
+        </div>
         <section class="score-panel">
             <ul class="stars">
                 <li><i class="fa fa-star"></i></li>
@@ -77,7 +94,7 @@
         <div id="popup1" class="overlay">
             <div class="popup">
                 <h2>Congratulations 🎉</h2>
-                <a class="close" href=#>×</a>
+                <a class="close" href="~/First/singleGames">×</a>
                 <div class="content-1">
                     Congratulations you're a winner 🎉🎉
                 </div>
@@ -86,9 +103,9 @@
                     <p>in <span id=totalTime> </span> </p>
                     <p>Rating:  <span id=starRating></span></p>
                 </div>
-                <button class="button" type="submit" onclick="next()">
-                    Next Level!
-                </button>
+                <a class="button" type="submit" href="~/First/singleGames">
+                    Return
+                </a>
             </div>
         </div>
     </div>
@@ -291,7 +308,15 @@
                 document.getElementById("starRating").innerHTML = starRating;
                 document.getElementById("totalTime").innerHTML = finalTime;
                 score = 150 - moves;
-
+                var URl = '@Url.Action("matching3_result", "First")';
+        
+                $.ajax({
+                url: URl,
+                data: { id: score },
+                success: function(data){
+                //call is successfully completed and we got result in data
+                },
+                });
                 //closeicon on modal
                 closeModal();
             }
@@ -320,17 +345,6 @@
             card.addEventListener("click", congratulations);
         }
 
-        var URl = '@Url.Action("matching3_result","First")';
-        function next()
-        {
-          $.ajax({
-          url: URl,
-          data: { id: score },
-          success: function(data){
-            //call is successfully completed and we got result in data
-          },
-          });
-        }
 
     </script>
 </body>
