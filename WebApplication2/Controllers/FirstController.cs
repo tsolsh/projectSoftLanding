@@ -14,16 +14,12 @@ namespace WebApplication2.Controllers
 {
     public class FirstController : Controller
     {
-        public event EventHandler Unload;
         string FileName = @"SavedPlayers.bin";
         static Player player = new Player();
         static List<Player> playersList = new List<Player>();
-        Stream SaveFileStream;
-        BinaryFormatter serializer;
 
         public FirstController()
         {
-            this.Unload += new System.EventHandler(this.Page_UnLoad);
             string dirPath = Path.GetDirectoryName(
             System.Reflection.Assembly.GetExecutingAssembly().Location);
             FileName = dirPath + FileName;
@@ -35,11 +31,6 @@ namespace WebApplication2.Controllers
             }
         }
 
-        protected void Page_UnLoad(object sender, EventArgs e)
-        {
-            // code to be executed on user leaves the page    
-            int i = 0;
-        }
 
         public ActionResult MultiGames()
         {
@@ -121,14 +112,17 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Signup(Player p)
         {
-            player.UserName = p.UserName;
-            player.Password = p.Password;
-            player.Email = p.Email;
-            player.FirstName = p.FirstName;
-            player.LastName = p.LastName;
-            player.Date = p.Date;
-            playersList.Add(player);
+            Player newPlayer = new Player();
+            newPlayer.UserName = p.UserName;
+            newPlayer.Password = p.Password;
+            newPlayer.Email = p.Email;
+            newPlayer.FirstName = p.FirstName;
+            newPlayer.LastName = p.LastName;
+            newPlayer.Date = p.Date;
+            playersList.Add(newPlayer);
+            player = newPlayer;
             player.players = playersList;
+
             return RedirectToAction("Menu");
         }
 

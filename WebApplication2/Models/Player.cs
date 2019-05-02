@@ -9,9 +9,10 @@ namespace WebApplication2.Models
     [Serializable()]
     public class Player
     {
-        
+        private List<Player> pla;
         public Player() {
             this.UserName = null;
+            this.pla = new List<Player>();
         }
         public void copy(Player player) {
             FirstName = player.FirstName;
@@ -36,7 +37,7 @@ namespace WebApplication2.Models
 
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "username")]
+        [Display(Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
@@ -58,23 +59,22 @@ namespace WebApplication2.Models
         public List<Player> players {
             get {
                 int temp = 0;
-
-                for (int write = 0; write < players.Count; write++)
+                for (int write = 0; write < pla.Count; write++)
                 {
-                    for (int sort = 0; sort < players.Count - 1; sort++)
+                    for (int sort = 0; sort < pla.Count - 1; sort++)
                     {
-                        if (players[sort].Score < players[sort + 1].Score)
+                        if (pla[sort].Score < pla[sort + 1].Score)
                         {
-                            temp = players[sort + 1].Score;
-                            players[sort + 1].Score = players[sort].Score;
-                            players[sort].Score = temp;
+                            temp = pla[sort + 1].Score;
+                            pla[sort + 1].Score = pla[sort].Score;
+                            pla[sort].Score = temp;
                         }
                     }
                 }
 
-                return players;
+                return pla;
             }
-            set { } }
-
+            set { pla = value; }
+        }
     }
 }

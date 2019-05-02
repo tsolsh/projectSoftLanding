@@ -20,7 +20,6 @@
             }
 
                 table tr td:first-child::before {
-                    content: counter(rowNumber);
                     min-width: 1em;
                     margin-right: 0.5em;
                 }
@@ -31,12 +30,12 @@
         if (Model != null)
         {
             <div class="fullWindow">
-                <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:60px;">@Model.FirstName - Look at the scores-</h1>
+                <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:60px;">Leader Board</h1>
               
                 <table class="container">
                     <thead>
                         <tr>
-                            <th><h1>USERNAME</h1></th>
+                            <th><h1>Name</h1></th>
                             <th><h1>SCORE</h1></th>
                         </tr>
                     </thead>
@@ -44,7 +43,7 @@
                         @{ foreach (var p in Model.players)
                             {
                                 <tr>
-                                    <td>@p.UserName</td>
+                                    <td>@p.FirstName</td>
                                     <td>@p.Score</td>
                                 </tr>
                             }
