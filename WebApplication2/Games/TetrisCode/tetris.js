@@ -1,5 +1,8 @@
 const canvas = document.getElementById("tetris");
 const context = canvas.getContext("2d");
+// declare modal
+let modal = document.getElementById("popup1");
+
 context.scale(20,20);
 function arenaSweep(){
     let rowCount = 1;
@@ -25,10 +28,13 @@ function arenaSweep(){
     if(oldScore !== player.score){
         if (numRowsSweep === 1){
             alert("you could have done better, you know...");
+            modal.classList.add("show");
         } else if (level !== 4 && numRowsSweep === 2 || level === 4 && numRowsSweep === 3){
             alert("AMAZING!, You are doing SO-GOOD!");
             level++;
-			if(level === 5) {
+            //modal.classList.add("show");
+
+            if (level === 5) {
 				window.location = "./index2.html";
 			}
         } else if (level === 4 && numRowsSweep === 2){
@@ -45,6 +51,9 @@ function arenaSweep(){
         updateScore();
     }
 }
+//$("#level").click(function () {
+  //  level++;
+//});
 	
 const matrix = [
 	[0,0,0],

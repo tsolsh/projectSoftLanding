@@ -224,6 +224,7 @@
     <Content Include="Games\TetrisCode\endingPage.html" />
     <Content Include="Games\TetrisCode\index.html" />
     <Content Include="Games\TetrisCode\index2.html" />
+    <Content Include="Games\TetrisCode\tetris.css" />
     <Content Include="Games\TetrisCode\tetris.js" />
     <Content Include="Games\TetrisCode\tetrisLoops.js" />
     <Content Include="Games\Tetris\index.html" />

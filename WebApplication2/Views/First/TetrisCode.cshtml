@@ -6,7 +6,8 @@
 <html>
 <head>
     <title>TETRIS</title>
-
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="~/Games/TetrisCode/tetris.css">
     <style>
         body {
             background: #202028;
@@ -73,26 +74,42 @@
     </style>
 </head>
 <body>
-    <button> Close </button>
-    <div id="score" font-size="2em"></div>
-    <canvas id="tetris" width="240" height="400"></canvas>
-    <form action="" method="POST">
-        <br><span id="enterCode">enter code: </span></br><textarea id="textarea1" rows="18" cols="35"></textarea>
-    </form>
-    <button id="doneButton" onClick="getInput()"> Done </button>
-    <script src="~/Games/TetrisCode/tetris.js"></script>
-    <div class="exp">
-        <p>
-            you can write operations like:
-        </p>
-        <p contenteditable="true" style="white-space:nowrap;overflow:hidden;">   MoveLeft()        </p>
-        <p>   Moveright()        </p>
-        <p>    DropDown()        </p>
-        <p>   Rotate()        </p>
-        <p></p>
-        <p>
-            Add numbers if you like !
-        </p>
+    <div class="window">
+        <button> Close </button>
+        <div id="score" font-size="2em"></div>
+        <canvas id="tetris" width="240" height="400"></canvas>
+        <form action="" method="POST">
+            <br><span id="enterCode">enter code: </span></br><textarea id="textarea1" rows="18" cols="35"></textarea>
+        </form>
+        <button id="doneButton" onClick="getInput()"> Done </button>
+        <script src="~/Games/TetrisCode/tetris.js"></script>
+        <div class="exp">
+            <p>
+                you can write operations like:
+            </p>
+            <p contenteditable="true" style="white-space:nowrap;overflow:hidden;">   MoveLeft()        </p>
+            <p>   MoveRight()        </p>
+            <p>    DropDown()        </p>
+            <p>   Rotate()        </p>
+            <p></p>
+            <p>
+                Add numbers if you like !
+            </p>
+        </div>
+
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <h2>Congratulations 🎉</h2>
+                <a class="close" href="~/First/singleGames">×</a>
+                <div class="content-1">
+                    AMAZING!, You are doing SO-GOOD!
+                </div>
+                <button id="level" onclick="Level()">
+                    Next Level!
+                </button>
+
+            </div>
+        </div>
     </div>
 </body>
 
