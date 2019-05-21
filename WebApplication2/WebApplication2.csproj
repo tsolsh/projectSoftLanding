@@ -165,9 +165,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\factsMenu.css" />
+    <Content Include="Content\functions.css" />
     <Content Include="Content\Leader.css" />
     <Content Include="Content\multi.css" />
     <Content Include="Content\nav.css" />
+    <Content Include="Content\parameters.css" />
     <Content Include="Content\SnakeLadder.css" />
     <Content Include="Content\stats.css" />
     <Content Include="Content\util.css" />
@@ -327,6 +329,7 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\WebApplication2.dll.config" />
+    <Content Include="Content\param.scss" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\JavaScript.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -430,6 +433,10 @@
     <Content Include="Views\First\TetrisCode.cshtml" />
     <Content Include="Views\First\TetrisCode2.cshtml" />
     <Content Include="Views\First\Index.cshtml" />
+    <Content Include="Views\First\Parameters.cshtml" />
+    <Content Include="Views\First\Functions.cshtml" />
+    <Content Include="Views\First\Langs.cshtml" />
+    <Content Include="Views\First\People.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -341,5 +341,26 @@ namespace WebApplication2.Controllers
         {
             player.Score += id;
         }
+
+        public ActionResult Parameters()
+        {
+            return View();
+        }
+
+        public ActionResult Functions()
+        {
+            return View();
+        }
+
+        public ActionResult Langs()
+        {
+            return View();
+        }
+
+        public ActionResult People()
+        {
+            return View();
+        }
+
     }
 }
