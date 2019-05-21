@@ -274,14 +274,13 @@ namespace WebApplication2.Controllers
         {
             player.Score += id;
         }
-
         public ActionResult Snake()
         {
-            return View();
+            return View(player);
         }
         public ActionResult Snake2()
         {
-            return View();
+            return View(player);
         }
 
 
@@ -302,7 +301,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult SnakesAndLadders()
         {
-            return View();
+            return View(player);
         }
 
         [HttpGet]
@@ -337,6 +336,10 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-
+        [HttpGet]
+        public void tetris_result(int id)
+        {
+            player.Score += id;
+        }
     }
 }
