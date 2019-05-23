@@ -10,6 +10,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stats</title>
+    <style>
+        .container {
+            position: relative;
+            left:33%;
+        }
+        .outer {
+            margin: 29px auto;
+            position: relative;
+            width: 1px;
+            height: 20px;
+            text-align: center;
+        }
+
+            .outer .circle {
+                position: absolute;
+                top: 0;
+                width: 20px;
+                background-color: #fbc56f;
+                height: 35px;
+                border-radius: 0 30px 30px 0px;
+                -webkit-transform: rotate(-35deg);
+                z-index: 2;
+            }
+
+                .outer .circle:after {
+                    content: "";
+                    position: absolute;
+                    left: -15px;
+                    top: 0;
+                    width: 20px;
+                    background-color: #fab84a;
+                    height: 35px;
+                    border-radius: 0 30px 30px 0px;
+                    -webkit-transform: rotate(180deg);
+                    z-index: 2;
+                }
+
+            .outer .ribbon {
+                width: 19px;
+                height: 60px;
+                background-color: #9bdbf6;
+                position: absolute;
+                top: -45px;
+                left: -23px;
+                z-index: 1;
+                -webkit-transform: rotate(-35deg);
+                border-right: 1px solid white;
+            }
+
+                .outer .ribbon:after {
+                    content: "";
+                    width: 15px;
+                    height: 60px;
+                    top: 18px;
+                    left: 25px;
+                    background-color: #9bdbf6;
+                    position: absolute;
+                    -webkit-transform: rotate(70deg);
+                }
+
+                .outer .ribbon:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    height: 64px;
+                    width: 1px;
+                    background-color: white;
+                    z-index: 3;
+                }
+    </style>
 </head>
 <body>
     @{
@@ -30,20 +101,55 @@
                         </div>
                         <ul class="os-percentages horizontal-list">
                             <li>
-                                <p class="ios os scnd-font-color">iOS</p>
-                                <p class="os-percentage">21<sup>%</sup></p>
+                                <p class="ios os scnd-font-color">Begginer</p>
+                                <p class="os-percentage">
+                                    @{ if (Model.Score > 100)
+                                        {
+                                    <div class="outer">
+                                        <div class="circle"></div>
+                                        <div class="ribbon"></div>
+                                    </div>
+                                        }
+                                        else
+                                        {
+                                            <div></div>
+                                        }
+                                        }
+                                </p>
                             </li>
                             <li>
-                                <p class="mac os scnd-font-color">Mac</p>
-                                <p class="os-percentage">39<sup>%</sup></p>
+                                <p class="linux os scnd-font-color">Advanced</p>
+                                <p class="os-percentage">
+                                    @{ if (Model.Score > 200 && Model.Score<300)
+                                        {
+                                            <div class="outer">
+                                                <div class="circle"></div>
+                                                <div class="ribbon"></div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div></div>
+                                        }
+                                    }
+                                </p>
                             </li>
                             <li>
-                                <p class="linux os scnd-font-color">Linux</p>
-                                <p class="os-percentage">9<sup>%</sup></p>
-                            </li>
-                            <li>
-                                <p class="win os scnd-font-color">Win</p>
-                                <p class="os-percentage">31<sup>%</sup></p>
+                                <p class="win os scnd-font-color">Expert</p>
+                                <p class="os-percentage">
+                                    @{ if (Model.Score > 300)
+                                        {
+                                            <div class="outer">
+                                                <div class="circle"></div>
+                                                <div class="ribbon"></div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div></div>
+                                        }
+                                    }
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -104,7 +210,8 @@
             </div>
         }
 
-
     }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
 </body>
 </html>

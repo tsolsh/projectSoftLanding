@@ -1,0 +1,5 @@
+﻿C is the only language that exists for the longest period of time in computer programming history.
+Most popular Linux Kernel and most UNIX utilities, what you would call the operating system are written in C.
+C support 45 operators & they are categorized into 8 groups.
+We can not apply the modulo (%) operator to floating point values.
+In C there are mainly two types of constants Primary and Secondary constant.
