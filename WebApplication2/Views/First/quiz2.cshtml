@@ -57,9 +57,9 @@
                 <p id="progress" style="font-family:Trattatello, fantasy">Question x of y</p>
             </footer>
         </div>
-        <button id="btn" class="button2" type="submit" onclick="Next()">
+        <a id="btn" class="button2" href="~/First/Menu">
             Next Level!
-        </button>
+        </a>
     </div>
 
    
@@ -137,15 +137,20 @@
             var element = document.getElementById("quiz");
             element.innerHTML = gameOverHtml;
             $("#btn").show();
+            Next();
         }
 
 
         var questions = [
             new Question("Which one is not an object oriented programming language?", ["java", "C#", "C++", "C"], "C"),
             new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
+            new Question("In memory - where are the dynamic variables ?", ["data", "heap", "stack", "code"], "heap"),
             new Question("There are ____ main components of object oriented programming", ["1", "6", "2", "4"], "4"),
+            new Question("In memory - where are the code segment ?", ["data", "heap", "stack", "code"], "code"),
             new Question("Which language is used for web apps?", ["PHP", "Python", "Javascript", "All"], "All"),
+            new Question("In memory - where are the global variables ?", ["data", "heap", "stack", "code"], "data"),
             new Question("MVC is a ____.", ["Language", "Library", "Framework", "All"], "Framework"),
+            new Question("In memory - where are the local variables?", ["data", "heap", "stack", "code"], "stack"),
         ];
 
         var quiz = new Quiz(questions);
@@ -159,7 +164,7 @@
               data: { id: quiz.score },
           success: function(data){
             //call is successfully completed and we got result in data
-          },    
+          } 
           });
         }
     </script>

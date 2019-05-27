@@ -1,0 +1,9 @@
+﻿Variable expressions are mathematical statements that contain numbers and letters.
+The keyword ‘break’ cannot be simply used within for loop.
+when operating system completed successfully , the value -1 will return.
+you need to use type-conversions when the value to be stored is beyond the max limit ,when the value to be stored is in a form not supported by that data type and to reduce the memory in use and when relevant to the value.
+Size of array must be known at compile time.
+String constants can be concatenated at compile time.
+Constant expressions are evaluated at compile time.
+Functions in C are always external.
+In memory - the global variables are stored in the data segment.

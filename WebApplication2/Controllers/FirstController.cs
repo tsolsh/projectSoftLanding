@@ -384,6 +384,10 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+        public ActionResult progBasic()
+        {
+            return View();
+        }
 
     }
 }

@@ -183,6 +183,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\title.css" />
+    <Content Include="Did you know\basics.js" />
+    <Content Include="Did you know\basics.txt" />
     <Content Include="Did you know\John.jpg" />
     <Content Include="Did you know\alanTurig.jpg" />
     <Content Include="Did you know\BobKahn.jpg" />
@@ -597,6 +599,7 @@
     <Content Include="vendor2\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="vendor2\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor2\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Views\First\progBasic.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
