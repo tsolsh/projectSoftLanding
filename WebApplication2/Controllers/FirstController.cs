@@ -122,7 +122,7 @@ namespace WebApplication2.Controllers
             playersList.Add(newPlayer);
             player = newPlayer;
             player.players = playersList;
-
+            player.Enter = 1;
             return RedirectToAction("Menu");
         }
 
@@ -206,6 +206,7 @@ namespace WebApplication2.Controllers
         public ActionResult quiz1_result(int id)
         {
             player.Score += id * 10;
+            player.Enter++;
             return RedirectToAction("quiz2");
         }
 
@@ -214,6 +215,7 @@ namespace WebApplication2.Controllers
         public ActionResult quiz2_result(int id)
         {
             player.Score += id * 20;
+            player.Enter++;
             return RedirectToAction("Menu");
 
         }
@@ -246,6 +248,8 @@ namespace WebApplication2.Controllers
         public void matching1_result(int id)
         {
             player.Score += id;
+            player.MemoryScore += id;
+            player.MemoryLevel = 1;
         }
 
         public ActionResult Matching2()
@@ -262,6 +266,8 @@ namespace WebApplication2.Controllers
         public void matching2_result(int id)
         {
             player.Score += id;
+            player.MemoryScore += id;
+            player.MemoryLevel = 2;
         }
 
         public ActionResult Matching3()
@@ -273,6 +279,9 @@ namespace WebApplication2.Controllers
         public void matching3_result(int id)
         {
             player.Score += id;
+            player.MemoryScore += id;
+            player.MemoryLevel = 3;
+
         }
         public ActionResult Snake()
         {
@@ -297,6 +306,13 @@ namespace WebApplication2.Controllers
                 return RedirectToAction("Snake2");
             }
         }
+        [HttpGet]
+        public void snake_result(int id, int levelId)
+        {
+            player.Score += id;
+            player.SnakeScore += id;
+            player.SnakeLevel = levelId;
+        }
 
 
         public ActionResult SnakesAndLadders()
@@ -319,7 +335,12 @@ namespace WebApplication2.Controllers
             }
             return RedirectToAction("Matching3");
         }
-
+        [HttpGet]
+        public void snakesLadders_result(int id)
+        {
+            player.Score += id;
+            player.snakesLaddersScore += id;
+        }
         public ActionResult TetrisCode()
         {
             if (player.Score < 10)
@@ -337,9 +358,11 @@ namespace WebApplication2.Controllers
             return View();
         }
         [HttpGet]
-        public void tetris_result(int id)
+        public void tetris_result(int id,int levelId)
         {
             player.Score += id;
+            player.TetrisScore += id;
+            player.TetrisLevel = levelId;
         }
 
         public ActionResult Parameters()

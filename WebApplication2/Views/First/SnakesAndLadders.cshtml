@@ -286,6 +286,22 @@
                     $("#playerLegend" + idOfplayerTurn).find('span').text('Winner'); //currentPosition
                     $("button").attr('disabled', 'disabled');
                     document.getElementById("playerLegend").innerHTML = players[idOfplayerTurn].name + " is the winner!!";
+                    /*handle score*/
+                    if (idOfplayerTurn === 1) {
+                        score = 100;
+                    }
+                    else {
+                        score = 0;
+                    }
+                    var URl = '@Url.Action("snakesLadders_result", "First")';
+
+                        $.ajax({
+                            url: URl,
+                            data: { id: score },
+                            success: function (data) {
+                                //call is successfully completed and we got result in data
+                            }
+                        });
                     closeModal();
                 }
                 else {

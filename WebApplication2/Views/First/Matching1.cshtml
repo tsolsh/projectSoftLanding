@@ -325,11 +325,12 @@
                 document.getElementById("starRating").innerHTML = starRating;
                 document.getElementById("totalTime").innerHTML = finalTime;
                 score = 100 - moves;
+                score2 = 25;
                 var URl = '@Url.Action("matching1_result", "First")';
         
                 $.ajax({
                 url: URl,
-                data: { id: score },
+                    data: { id: score},
                 success: function(data){
                 //call is successfully completed and we got result in data
                 },

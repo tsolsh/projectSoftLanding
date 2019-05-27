@@ -234,6 +234,15 @@
                     //moving to next level!.
                     if (food.length === 0) {
                         setTimeout(alert, 100, "AMAZING YOU CLEARED THE LEVEL!! :)");
+                        var URl = '@Url.Action("snake_result", "First")';
+
+                        $.ajax({
+                            url: URl,
+                            data: { id: score, levelId: level},
+                            success: function (data) {
+                                //call is successfully completed and we got result in data
+                            }
+                        });
                         level++;
                         drawingTimes = 1;
                         initLevels();

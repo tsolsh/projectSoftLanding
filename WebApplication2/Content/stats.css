@@ -11,6 +11,7 @@ Css orignal https://codepen.io/jlalovi/details/bIyAr
 
 body {
     background: #1f253d;
+    background-image: url("https://thumbs.gfycat.com/EmbellishedTatteredLadybug-size_restricted.gif");
 }
 
 
@@ -18,7 +19,7 @@ body {
 ul {
     list-style-type: none;
     margin: 0;
-    padding-left: 0;
+    padding-left: 63px;
 }
 
 h1 {
@@ -26,7 +27,7 @@ h1 {
 }
 
 h2 {
-    font-size: 17px;
+    font-size: 35px;
 }
 
 p {
@@ -57,11 +58,12 @@ h1, h2, p, a, span {
     text-align: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    font-size: -webkit-xxx-large;
+    color:blanchedalmond;
 }
 
 .horizontal-list {
     margin: 0;
-    padding: 35px;
     list-style-type: none;
 }
 
@@ -74,7 +76,7 @@ h1, h2, p, a, span {
     background: #394264;
     border-radius: 5px;
     float: left;
-    width: 300px;
+    width: 420px;
     overflow: hidden;
 }
 
@@ -99,12 +101,13 @@ h1, h2, p, a, span {
     border-left: 1px solid #394264;
     text-align: center;
     background: #50597b;
+    font-size:50px;
 }
 
 .os {
     margin: 0;
     padding: 10px 0 5px;
-    font-size: 15px;
+    font-size: 18px;
 }
 
     .os.ios {
@@ -321,7 +324,7 @@ p.center-date {
     background: #394264;
     position: absolute;
     text-align: center;
-    font-size: 28px;
+    font-size: 38px;
     top: 0;
     left: 0;
     bottom: 0;

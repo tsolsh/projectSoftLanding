@@ -9,12 +9,33 @@
     <link rel="stylesheet" type="text/css" href="~/Content/stats.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+
+
+    <!--<link rel="icon" type="image/png" href="images/icons/favicon.ico" />-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor2/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/NewFolder1/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor2/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor2/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor2/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/settingutil.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/settingmain.css">
+
+
     <title>Stats</title>
     <style>
         .container {
             position: relative;
-            left:33%;
+            left: 8%;
         }
+
         .outer {
             margin: 29px auto;
             position: relative;
@@ -27,7 +48,6 @@
                 position: absolute;
                 top: 0;
                 width: 20px;
-                background-color: #fbc56f;
                 height: 35px;
                 border-radius: 0 30px 30px 0px;
                 -webkit-transform: rotate(-35deg);
@@ -40,64 +60,88 @@
                     left: -15px;
                     top: 0;
                     width: 20px;
-                    background-color: #fab84a;
                     height: 35px;
                     border-radius: 0 30px 30px 0px;
                     -webkit-transform: rotate(180deg);
                     z-index: 2;
                 }
 
-            .outer .ribbon {
-                width: 19px;
-                height: 60px;
-                background-color: #9bdbf6;
-                position: absolute;
-                top: -45px;
-                left: -23px;
-                z-index: 1;
-                -webkit-transform: rotate(-35deg);
-                border-right: 1px solid white;
+        #brown {
+            background-color: sandybrown;
+        }
+
+            #brown::after {
+                background-color: sandybrown;
             }
 
-                .outer .ribbon:after {
-                    content: "";
-                    width: 15px;
-                    height: 60px;
-                    top: 18px;
-                    left: 25px;
-                    background-color: #9bdbf6;
-                    position: absolute;
-                    -webkit-transform: rotate(70deg);
-                }
+        #silver {
+            background-color: darkgrey;
+        }
 
-                .outer .ribbon:before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    height: 64px;
-                    width: 1px;
-                    background-color: white;
-                    z-index: 3;
-                }
+            #silver::after {
+                background-color: darkgrey;
+            }
+
+        #gold {
+            background-color: gold;
+        }
+
+            #gold::after {
+                background-color: gold;
+            }
+
+        .outer .ribbon {
+            width: 19px;
+            height: 60px;
+            background-color: #9bdbf6;
+            position: absolute;
+            top: -45px;
+            left: -23px;
+            z-index: 1;
+            -webkit-transform: rotate(-35deg);
+            border-right: 1px solid white;
+        }
+
+            .outer .ribbon:after {
+                content: "";
+                width: 15px;
+                height: 60px;
+                top: 18px;
+                left: 25px;
+                background-color: #9bdbf6;
+                position: absolute;
+                -webkit-transform: rotate(70deg);
+            }
+
+            .outer .ribbon:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 64px;
+                width: 1px;
+                background-color: white;
+                z-index: 3;
+            }
+            .other{
+                font-size:25px;
+                display:grid;
+            }
     </style>
 </head>
-<body>
+<body style="background-image: url(https://thumbs.gfycat.com/EmbellishedTatteredLadybug-size_restricted.gif); width:100%; height:100%;">
     @{
         if (Model != null)
         {
             <div class="fullWindow">
-                <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:60px;">@Model.FirstName - These are your stats!</h1>
+                <h1 style="font-family:'Agency FB';color:white; margin:auto;text-align: center;font-size:85px;">@Model.FirstName - These are your stats!</h1>
                 <div class="container">
                     <!-- DONUT CHART BLOCK (LEFT-CONTAINER) -->
                     <div class="donut-chart-block block">
-                        <h2 class="titular">OS statistics</h2>
+                        <h2 class="titular">Rewards</h2>
                         <div class="donut-chart">
-                            <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
-                            <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
-                            <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
-                            <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
-                            <p class="center-date">JUNE<br><span class="scnd-font-color">2019</span></p>
+
+                            <p class="center-date">Points<br><span class="scnd-font-color">@Model.Score</span></p>
                         </div>
                         <ul class="os-percentages horizontal-list">
                             <li>
@@ -105,25 +149,25 @@
                                 <p class="os-percentage">
                                     @{ if (Model.Score > 100)
                                         {
-                                    <div class="outer">
-                                        <div class="circle"></div>
-                                        <div class="ribbon"></div>
-                                    </div>
+                                            <div class="outer">
+                                                <div class="circle" id="brown"></div>
+                                                <div class="ribbon"></div>
+                                            </div>
                                         }
                                         else
                                         {
                                             <div></div>
                                         }
-                                        }
+                                    }
                                 </p>
                             </li>
                             <li>
                                 <p class="linux os scnd-font-color">Advanced</p>
                                 <p class="os-percentage">
-                                    @{ if (Model.Score > 200 && Model.Score<300)
+                                    @{ if (Model.Score > 200)
                                         {
                                             <div class="outer">
-                                                <div class="circle"></div>
+                                                <div class="circle" id="silver"></div>
                                                 <div class="ribbon"></div>
                                             </div>
                                         }
@@ -140,7 +184,7 @@
                                     @{ if (Model.Score > 300)
                                         {
                                             <div class="outer">
-                                                <div class="circle"></div>
+                                                <div class="circle" id="gold"></div>
                                                 <div class="ribbon"></div>
                                             </div>
                                         }
@@ -153,65 +197,174 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
-                    <div class="line-chart-block block">
-                        <div class="line-chart">
-                            <div class='grafico'>
-                                <ul class='eje-y'>
-                                    <li data-ejeY='30'></li>
-                                    <li data-ejeY='20'></li>
-                                    <li data-ejeY='10'></li>
-                                    <li data-ejeY='0'></li>
-                                </ul>
-                                <ul class='eje-x'>
-                                    <li>Apr</li>
-                                    <li>May</li>
-                                    <li>Jun</li>
-                                </ul>
-                                <span data-valor='25'>
-                                    <span data-valor='8'>
-                                        <span data-valor='13'>
-                                            <span data-valor='5'>
-                                                <span data-valor='23'>
-                                                    <span data-valor='12'>
-                                                        <span data-valor='15'>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </span>
+
+
+                    <div class="donut-chart-block block">
+                        <h1 class="titular"></h1>
+                        <div class="donut-chart">
+                            @{ if (Model.Score < 100)
+                                {
+                                    <p class="other">Status:<span class="scnd-font-color">Begginer</span></p>
+                                }
+                                else if (Model.Score > 100 && Model.Score < 200)
+                                {
+                                    <p class="other">Status:<span class="scnd-font-color">Advanced</span></p>
+                                }
+                                if (Model.Score > 300)
+                                {
+                                    <p class="other">Status:<span class="scnd-font-color">Expert</span></p>
+                                }
+                                <p class="other">Advance:<span class="scnd-font-color">@Model.Advance %</span></p>
+                                <p class="other">Games Played:<span class="scnd-font-color">@Model.GamePlayed / 10</span></p>
+                                }
+                            </div>      
+                    </div>
+                    </div>
+                </div>
+
+            <div class="limiter">
+                <div class="container-table100">
+                    <div class="wrap-table100">
+
+                        <div class="table100 ver3 m-b-110">
+                            <div class="table100-head">
+                                <table>
+                                    <thead>
+                                        <tr class="row100 head">
+                                            <th class="cell100 column1">Game</th>
+                                            <th class="cell100 column2">Total Score</th>
+                                            <th class="cell100 column3">Level Passed</th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
 
-                        </div>
-                        <ul class="time-lenght horizontal-list">
-                            <li><a class="time-lenght-btn" href="#14">Week</a></li>
-                            <li><a class="time-lenght-btn" href="#15">Month</a></li>
-                            <li><a class="time-lenght-btn" href="#16">Year</a></li>
-                        </ul>
-                        <ul class="month-data clear">
-                            <li>
-                                <p>APR<span class="scnd-font-color"> 2019</span></p>
-                                <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
-                            </li>
-                            <li>
-                                <p>MAY<span class="scnd-font-color"> 2019</span></p>
-                                <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
-                            </li>
-                            <li>
-                                <p>JUN<span class="scnd-font-color"> 2019</span></p>
-                                <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
-                            </li>
-                        </ul>
-                    </div>
+                            <div class="table100-body js-pscroll">
+                                <table>
+                                    <tbody>
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Tetris</td>
+                                            <td class="cell100 column2">@Model.TetrisScore</td>
+                                            <td class="cell100 column3">@Model.TetrisLevel</td>
+                                        </tr>
 
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Snake</td>
+                                            <td class="cell100 column2">@Model.SnakeScore</td>
+                                            <td class="cell100 column3">@Model.SnakeLevel</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Simon</td>
+                                            <td class="cell100 column2">@Model.SimonScore</td>
+                                            <td class="cell100 column3">@Model.SnakeLevel</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Matching Game</td>
+                                            <td class="cell100 column2">@Model.MemoryScore</td>
+                                            <td class="cell100 column3">@Model.MemoryLevel</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Snakes And Ladders</td>
+                                            <td class="cell100 column2">@Model.snakesLaddersScore</td>
+                                            <td class="cell100 column3">@Model.SnakeNLaddersLevel</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Rock Paper Scissors</td>
+                                            <td class="cell100 column2">@Model.RPSScore</td>
+                                            <td class="cell100 column3">@Model.RPSLevel</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Questions</td>
+                                            <td class="cell100 column2">0</td>
+                                            <td class="cell100 column3">0</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Corrections</td>
+                                            <td class="cell100 column2">0</td>
+                                            <td class="cell100 column3">0</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Ping Pong</td>
+                                            <td class="cell100 column2">0</td>
+                                            <td class="cell100 column3">0</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Flappy Bird</td>
+                                            <td class="cell100 column2">0</td>
+                                            <td class="cell100 column3">0</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Pack Man</td>
+                                            <td class="cell100 column2">0</td>
+                                            <td class="cell100 column3">0</td>
+
+                                        </tr>
+
+                                        <tr class="row100 body">
+                                            <td class="cell100 column1">Space Invaders</td>
+                                            <td class="cell100 column2">0</td>
+                                            <td class="cell100 column3">0</td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
+
             </div>
+
+
+
+
+
         }
 
     }
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="~/vendor2/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor2/bootstrap/js/popper.js"></script>
+    <script src="~/vendor2/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor2/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor2/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            var ps = new PerfectScrollbar(this);
 
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/js/settingmain.js"></script>
 </body>
 </html>
