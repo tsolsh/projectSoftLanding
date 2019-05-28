@@ -18,7 +18,7 @@ function readTextFile(file) {
 
 $("#NextFact").click(function () {
     var raw = filetext.split("\n");
-    var i = Math.floor(Math.random() * 4) + 1;
+    var i = Math.floor(Math.random() * (raw.length - 1)) + 1;
     document.getElementById("sentence").innerText = raw[i];
 });
 readTextFile("/../Did you Know/basics.txt");

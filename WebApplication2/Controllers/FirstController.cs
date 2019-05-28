@@ -39,7 +39,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult localGames()
         {
-            return View();
+            return View(player);
         }
 
         public ActionResult singleGames()
@@ -180,7 +180,11 @@ namespace WebApplication2.Controllers
 
         public ActionResult Settings(Player p)
         {
-            return View(p);
+            if (player.UserName != null)
+            {
+                return View(p);
+            }
+            return RedirectToAction("Error");
         }
         public ActionResult close()
         {

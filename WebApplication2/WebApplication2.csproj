@@ -168,6 +168,7 @@
     <Content Include="Content\functions.css" />
     <Content Include="Content\Langs.css" />
     <Content Include="Content\Leader.css" />
+    <Content Include="Content\local.css" />
     <Content Include="Content\multi.css" />
     <Content Include="Content\nav.css" />
     <Content Include="Content\parameters.css" />
@@ -185,9 +186,9 @@
     <Content Include="Content\title.css" />
     <Content Include="Did you know\basics.js" />
     <Content Include="Did you know\basics.txt" />
-    <Content Include="Did you know\John.jpg" />
     <Content Include="Did you know\alanTurig.jpg" />
     <Content Include="Did you know\BobKahn.jpg" />
+    <Content Include="Did you know\jvn.jpg" />
     <Content Include="Did you know\Linus.jpg" />
     <Content Include="Did you know\steveJobs.jpg" />
     <Content Include="Did you know\CLang.txt" />
@@ -585,7 +586,6 @@
     <Content Include="Views\First\Matching3.cshtml" />
     <EmbeddedResource Include="Views\First\SnakesAndLadders.cshtml" />
     <Content Include="Views\First\Dice.cshtml" />
-    <Content Include="Views\First\Questions.cshtml" />
     <Content Include="Views\First\TetrisCode.cshtml" />
     <Content Include="Views\First\TetrisCode2.cshtml" />
     <Content Include="Views\First\Index.cshtml" />

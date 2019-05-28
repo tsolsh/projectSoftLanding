@@ -8,12 +8,24 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" type="text/css" href="~/Content/multi.css">
-    <title></title>
+    <title>Single Games</title>
+    <style>
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     
     <div>
-    <a href="~/first/Menu">X</a>
+    <a class="close" href="~/first/Play">></a>
         <div class="wrapper">
             <a class="button" href="~/First/TetrisCode">CodeTetris</a>
         </div>

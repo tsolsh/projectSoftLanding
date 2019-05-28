@@ -11,13 +11,12 @@
     <meta charset="utf-8" />
     <style>
         .button2 {
-            position: fixed;
+            position: static;
             top: 50%;
             left: 43%;
-            display: inline-block;
             padding: 1.2em 4.2em;
             border: 0.1em solid #FFFFFF;
-            margin: 0 0.3em 0.3em 0;
+            margin:184px 0.3em 0.3em 0;
             border-radius: 0.12em;
             box-sizing: border-box;
             text-decoration: none;
@@ -58,7 +57,7 @@
             </footer>
         </div>
         <a id="btn" class="button2" href="~/First/Menu">
-            Next Level!
+            return to menu
         </a>
     </div>
 
@@ -161,7 +160,7 @@
         {    
           $.ajax({
           url: URl,
-              data: { id: quiz.score },
+              data: { id: quiz.score*11 },
           success: function(data){
             //call is successfully completed and we got result in data
           } 

@@ -23,34 +23,44 @@
                     min-width: 1em;
                     margin-right: 0.5em;
                 }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
-<body>
+<body style="background-image: url(https://thumbs.gfycat.com/EmbellishedTatteredLadybug-size_restricted.gif); width:100%; height:100%;">
     @{
         if (Model != null)
         {
-            <div class="fullWindow">
-                <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:60px;">Leader Board</h1>
-              
-                <table class="container">
-                    <thead>
+    <div class="fullWindow">
+        <h1 style="font-family:'Agency FB'; margin:auto;text-align: center;font-size:75px;">Leader Board</h1>
+        <a class="close" href="~/First/Menu">X</a>
+        <table class="container">
+            <thead>
+                <tr>
+                    <th><h1>Name</h1></th>
+                    <th><h1>SCORE</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ foreach (var p in Model.players)
+                    {
                         <tr>
-                            <th><h1>Name</h1></th>
-                            <th><h1>SCORE</h1></th>
+                            <td>@p.FirstName</td>
+                            <td>@p.Score</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @{ foreach (var p in Model.players)
-                            {
-                                <tr>
-                                    <td>@p.FirstName</td>
-                                    <td>@p.Score</td>
-                                </tr>
-                            }
-                            }
-                    </tbody>
-                </table>
-            </div>                
+                    }
+                }
+            </tbody>
+        </table>
+    </div>                
         <script src="~/js/leader.js"></script>
                                 }
                             }

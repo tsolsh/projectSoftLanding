@@ -34,7 +34,7 @@
 }
 
     #cssmenu ul {
-        background: #afbec4;
+        background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/circuit.png);
     }
 
     #cssmenu > ul > li {
@@ -74,11 +74,14 @@
         transition: all .2s ease;
         margin-right: -4px;
     }
+a:visited {
+    color: #05182a;
+}
 
         #cssmenu > ul > li.active > a,
         #cssmenu > ul > li:hover > a,
         #cssmenu > ul > li > a:hover {
-            color: #afbec4;
+            color: aliceblue;
         }
 
         #cssmenu > ul > li > a:after {
