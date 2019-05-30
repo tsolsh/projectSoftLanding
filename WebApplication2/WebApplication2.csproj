@@ -615,6 +615,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Games\completeTheCode\" />
     <Folder Include="Games\PacMan\scripts\" />
     <Folder Include="Games\Space Invaders\assets\" />
     <Folder Include="Games\Space Invaders\assets_basic\" />
