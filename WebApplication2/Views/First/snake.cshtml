@@ -35,11 +35,83 @@
             width: 200px;
             transition-duration: .5s;
         }
+        :root {
+            --bg: #1a1e24;
+            --color: green;
+            --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .wrapper {
+            padding: 1.5rem 0;
+            filter: url('#goo');
+        }
+
+        .exit {
+            display: table-caption;
+            text-align: center;
+            background: var(--color);
+            color: var(--bg);
+            padding: 0.18em 1.32em 1.03em;
+            line-height: 1;
+            border-radius: 1em;
+            position: relative;
+            min-width: 8.23em;
+            text-decoration: none;
+            font-family: Marker Felt, fantasy;
+            font-size: 1.55rem;
+            left: 35%;
+            height: 14px;
+        }
+
+            .exit:before,
+            .exit:after {
+                width: 4.4em;
+                height: 2.45em;
+                position: absolute;
+                content: "";
+                display: inline-block;
+                background: var(--color);
+                border-radius: 50%;
+                transition: transform 1s ease;
+                transform: scale(0);
+                z-index: -1;
+            }
+
+            .exit:before {
+                top: -25%;
+                left: 20%;
+            }
+
+            .exit:after {
+                bottom: -25%;
+                right: 20%;
+            }
+
+            .exit:hover:before,
+            .exit:hover:after {
+                transform: none;
+            }
+
     </style>
 </head>
 <body>
+    <div class="wrapper">
+        <a class="exit" href="~/First/singleGames">Exit</a>
+    </div>
+
+    <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
     <canvas id="snake" width="608" height="608"></canvas>
     <div id="popup1" class="overlay">
+
         <div class="popup">
             <!--<h2>too bad!</h2>
                 <a class="close" href=#>×</a>
@@ -52,11 +124,12 @@
         <button id="doneButton" onClick="Switch()"> Done </button>
 
         <textarea style="left:2%; font-size:17px;text-align:center;" id="options" rows="18" cols="33" readonly></textarea>
-        <script>
+    </div>
+    <script>
 
             /*-----------------------Notes to Self--------------------------
 	FIX:if the player clicks more than once on the play button
-		the function Switch is called and a new animation is 
+		the function Switch is called and a new animation is
 		started even tho the past animation wasn't done yet.
 */
             const cvs = document.getElementById("snake");
@@ -309,7 +382,7 @@
                 getInp();
             }
             var broke = false;
-            //this function reads the first line of the code and sets call 
+            //this function reads the first line of the code and sets call
             //interval on draw and draw calls getInp later for next line reading.
             function getInp() {
                 //gotta fix if thigns after the ';' and also when there is no number, we set the numOfTime to 1.
@@ -666,6 +739,6 @@
             }
 
 
-        </script>
+    </script>
 </body>
 </html>

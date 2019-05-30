@@ -26,6 +26,65 @@
             text-decoration: none;
             color: #333;
         }
+        :root {
+            --bg: #1a1e24;
+            --color: indianred;
+            --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .wrapper {
+            padding: 1.5rem 0;
+            filter: url('#goo');
+        }
+
+        .exit {
+            display: table-caption;
+            text-align: center;
+            background: var(--color);
+            color: var(--bg);
+            padding: 0.18em 1.32em 1.03em;
+            line-height: 1;
+            border-radius: 1em;
+            position: relative;
+            min-width: 4.3em;
+            text-decoration: none;
+            font-family: Marker Felt, fantasy;
+            font-size: 1.55rem;
+            left: -600%;
+            height: 14px;
+            margin-top: -37%;
+            margin-bottom: 37%;
+        }
+
+            .exit:before,
+            .exit:after {
+                width: 4.4em;
+                height: 2.45em;
+                position: absolute;
+                content: "";
+                display: inline-block;
+                background: var(--color);
+                border-radius: 50%;
+                transition: transform 1s ease;
+                transform: scale(0);
+                z-index: -1;
+            }
+
+            .exit:before {
+                top: -25%;
+                left: 20%;
+            }
+
+            .exit:after {
+                bottom: -25%;
+                right: 20%;
+            }
+
+            .exit:hover:before,
+            .exit:hover:after {
+                transform: none;
+            }
+
     </style>
 </head>
 
@@ -34,11 +93,20 @@
         <header>
             <h1>Memory Game</h1>
         </header>
-        <div class="close">
-            <a>
-                @Html.ActionLink("X", "close")
-            </a>
+        <div class="wrapper">
+            <a class="exit" href="~/First/singleGames">Exit</a>
         </div>
+
+        <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+        <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter>
+            </defs>
+        </svg>
         <section class="score-panel">
             <ul class="stars">
                 <li><i class="fa fa-star"></i></li>

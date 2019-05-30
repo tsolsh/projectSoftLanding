@@ -273,7 +273,7 @@ function runLoopInp(seconds = 0,lines, lineNum = 0, times = 0, readAlr = 0){
 			}		
 			if (command === "break"){
 				return 0;
-			} else if (command == "continue") {
+			} else if (command === "continue") {
 				playerRotate(-1);
 				draw();
 				lineNum++;
@@ -301,7 +301,7 @@ function runLoopInp(seconds = 0,lines, lineNum = 0, times = 0, readAlr = 0){
 					}
 					end = begin;
 					while(lines[lineNum].charAt(end) === '>' || lines[lineNum].charAt(end) === '<' ||
-	    				  lines[lineNum].charAt(end) === '=') {
+	    			  lines[lineNum].charAt(end) === '=') {
 						end++;
 					}
 					if(lines[lineNum].substring(begin, end) !== "==") {

@@ -118,12 +118,81 @@
             transition: all 0.2s;
             font-weight: bold;
         }
-        
+        :root {
+            --bg: #1a1e24;
+            --color: grey;
+            --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+        }
+        .wrapper {
+            padding: 1.5rem 0;
+            filter: url('#goo');
+        }
+        .exit {
+            display: inline-block;
+            text-align: center;
+            background: var(--color);
+            color: var(--bg);
+            padding: 0.18em 1.32em 1.03em;
+            line-height: 1;
+            border-radius: 1em;
+            position: relative;
+            min-width: 5.23em;
+            text-decoration: none;
+            font-family: Marker Felt, fantasy;
+            font-size: 1.25rem;
+            left: -34%;
+            height: 8px;
+        }
+        .exit:before,
+        .exit:after {
+            width: 4.4em;
+            height: 2.45em;
+            position: absolute;
+            content: "";
+            display: inline-block;
+            background: var(--color);
+            border-radius: 50%;
+            transition: transform 1s ease;
+            transform: scale(0);
+            z-index: -1;
+        }
+
+        .exit:before {
+            top: -25%;
+            left: 20%;
+        }
+
+        .exit:after {
+            bottom: -25%;
+            right: 20%;
+        }
+
+        .exit:hover:before,
+        .exit:hover:after {
+            transform: none;
+        }
+
     </style>
 </head>
 <body>
+
+    <div class="wrapper">
+        <a class="exit" href="~/First/singleGames">Exit</a>
+    </div>
+
+    <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
     <div class="window">
-        <button> Close </button>
+
+
         <div id="score" font-size="2em"></div>
         <canvas id="tetris" width="240" height="400"></canvas>
         <form action="" method="POST">
@@ -206,7 +275,7 @@
 			    }
             } else if (level === 4 && numRowsSweep === 2){
                 //level 4 and did 2 rows.
-                alert("you did good, but you can do Better!");			
+                alert("you did good, but you can do Better!");
             } else if (level === 5 && numRowsSweep === 2) {
 			    alert("NICE!!!!, you are grasping the idea of loops!");
 			    level++;
@@ -325,8 +394,8 @@
 								    ,1,1);
                     //1 means covers 2 pixels in the canvas!!!.
                 }
-			
-            }); 
+
+            });
         });
     }
     var player = {
@@ -367,7 +436,7 @@
 		    var lines = document.getElementById("textarea1").value.split('\n');
 	    } else {
 		    //must add the one inside the loop.
-		    lines = document.getElementById("textarea1").value.split('\n');	
+		    lines = document.getElementById("textarea1").value.split('\n');
 	    }
         var i = 0;
         var date = new Date();
@@ -421,7 +490,7 @@
                         if(numOfLeftParenthesis > 1) {
                             alert("dont put more than one left Parenthesis");
                             i++;
-                            requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});	
+                            requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});
 						    return -1;
 					    }
                     }
@@ -464,7 +533,7 @@
                                         alert("Dont put anything after ';' (line " + lineOfError + ")");
                                         i++;
                                         draw();
-                                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});					
+                                        requestAnimationFrame(function () { getInp(seconds, i, lines, 0);});
 									    return -1;
 								    }
                                 }
@@ -482,7 +551,7 @@
 					    }
                     }
                 }
-			
+
                 if(numOfSpaces === endIndex - begin) {
                     numOfTimes = 1;
                 } else {
@@ -502,7 +571,7 @@
                     dropDownAnimation(seconds);
                     return;
                 } else if (lines[i] === "Rotate"){
-                    playerRotate(-1);	
+                    playerRotate(-1);
                 }
                 if(numOfTimes !== 0){
                     numOfTimes--;
@@ -577,9 +646,9 @@
                         } else if (level === 2) {
                             player.matrix = createPiece('O');
                         } else if (level === 3) {
-                            player.matrix = createPiece('T');	
+                            player.matrix = createPiece('T');
                         } else if(level === 4) {
-                            let miniPieces = 'IOJ'; 
+                            let miniPieces = 'IOJ';
                             player.matrix = createPiece(miniPieces[Math.random() * miniPieces.length | 0]);
                         } else if (level === 5) {
 						    player.matrix = createPiece('T');
@@ -629,7 +698,7 @@
                     } else {
                         matrix.reverse();
                     }
-	
+
                 }
                 /*
                 document.addEventListener("keydown", event =>{
@@ -637,7 +706,7 @@
                     //write on top, pomle.github.io/keycode: 37 left , 38 up, 39 > , 40 down.
                     if(event.keyCode === 37){
                         playerMove(-1);
-                    //up	
+                    //up
                     }else if (event.keyCode === 38){
                     //	player.pos.y--;
                         playerRotate(-1);
@@ -661,7 +730,7 @@
                 updateScore();
 
                 function updateScore(){
-                    var score = document.getElementById("score");	
+                    var score = document.getElementById("score");
                     score.innerText = player.score;
                     /*SCORE*/
                     score = player.score;

@@ -178,11 +178,11 @@ namespace WebApplication2.Controllers
             return View(p);
         }
 
-        public ActionResult Settings(Player p)
+        public ActionResult Settings()
         {
             if (player.UserName != null)
             {
-                return View(p);
+                return View(player);
             }
             return RedirectToAction("Error");
         }
@@ -347,7 +347,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult TetrisCode()
         {
-            if (player.Score < 10)
+            if (player.Score < 1000)
             {
                 return View();
             }

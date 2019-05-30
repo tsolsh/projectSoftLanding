@@ -1,9 +1,6 @@
-﻿Variable expressions are mathematical statements that contain numbers and letters.
-The keyword ‘break’ cannot be simply used within for loop.
-when operating system completed successfully , the value -1 will return.
-you need to use type-conversions when the value to be stored is beyond the max limit ,when the value to be stored is in a form not supported by that data type and to reduce the memory in use and when relevant to the value.
-Size of array must be known at compile time.
-String constants can be concatenated at compile time.
-Constant expressions are evaluated at compile time.
-Functions in C are always external.
-In memory - the global variables are stored in the data segment.
+﻿If condition returns true then the statements inside the body of “if” are executed and the statements inside body of “else” are skipped.If condition returns false then the statements inside the body of “if” are skipped and the statements in “else” are executed.
+A switch statement allows a variable to be tested for equality against a list of values. Each value is called a case, and the variable being switched on is checked for each switch case.
+A for loop is a repetition control structure that allows you to efficiently write a loop that needs to execute a specific number of times.
+A while loop in C programming repeatedly executes a target statement as long as a given condition is true.
+While creating a C function, you give a definition of what the function has to do. To use a function, you will have to call that function to perform the defined task. To call a function, you simply need to pass the required parameters along with the function name, and if the function returns a value, then you can store the returned value.
+A function is a group of statements that together perform a task. Every C program has at least one function, which is main(), and all the most trivial programs can define additional functions.A function declaration tells the compiler about a function's name, return type, and parameters. A function definition provides the actual body of the function.

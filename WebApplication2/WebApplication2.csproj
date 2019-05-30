@@ -188,8 +188,12 @@
     <Content Include="Did you know\basics.txt" />
     <Content Include="Did you know\alanTurig.jpg" />
     <Content Include="Did you know\BobKahn.jpg" />
+    <Content Include="Did you know\for-loop-header.jpg" />
+    <Content Include="Did you know\function.png" />
+    <Content Include="Did you know\if else.png" />
     <Content Include="Did you know\jvn.jpg" />
     <Content Include="Did you know\Linus.jpg" />
+    <Content Include="Did you know\main.png" />
     <Content Include="Did you know\steveJobs.jpg" />
     <Content Include="Did you know\CLang.txt" />
     <Content Include="Did you know\facts.js" />
@@ -198,6 +202,8 @@
     <Content Include="Did you know\people.js" />
     <Content Include="Did you know\people.txt" />
     <Content Include="Did you know\billGates.jpg" />
+    <Content Include="Did you know\switch.png" />
+    <Content Include="Did you know\while.png" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />

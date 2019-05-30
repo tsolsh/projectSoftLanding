@@ -11,12 +11,12 @@
     <meta charset="utf-8" />
     <style>
         .button2 {
-            position: static;
-            top: 50%;
-            left: 43%;
+            position: sticky;
+            top: 70%;
+            left: 45%;
             padding: 1.2em 4.2em;
             border: 0.1em solid #FFFFFF;
-            margin:184px 0.3em 0.3em 0;
+            margin: 169px 0.3em 0.3em 0;
             border-radius: 0.12em;
             box-sizing: border-box;
             text-decoration: none;
@@ -26,7 +26,7 @@
             text-align: center;
             transition: all 0.2s;
             font-weight: bold;
-            color:white;
+            color: white;
         }
             .button2:hover {
                 color: white;
@@ -160,7 +160,7 @@
         {    
           $.ajax({
           url: URl,
-              data: { id: quiz.score*11 },
+              data: { id: quiz.score },
           success: function(data){
             //call is successfully completed and we got result in data
           } 

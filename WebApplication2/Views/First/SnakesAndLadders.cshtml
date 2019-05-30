@@ -55,9 +55,80 @@
                 color: #BBBBBB;
                 border-color: #BBBBBB;
             }
+        :root {
+            --bg: #1a1e24;
+            --color: coral;
+            --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .wrapper {
+            padding: 1.5rem 0;
+            filter: url('#goo');
+        }
+
+        .exit {
+            display: inline-block;
+            text-align: center;
+            background: var(--color);
+            color: var(--bg);
+            padding: 0.18em 1.32em 1.03em;
+            line-height: 1;
+            border-radius: 1em;
+            position: relative;
+            min-width: 5.23em;
+            text-decoration: none;
+            font-family: Marker Felt, fantasy;
+            font-size: 1.25rem;
+            right: -105%;
+            height: 8px;
+        }
+
+            .exit:before,
+            .exit:after {
+                width: 4.4em;
+                height: 2.45em;
+                position: absolute;
+                content: "";
+                display: inline-block;
+                background: var(--color);
+                border-radius: 50%;
+                transition: transform 1s ease;
+                transform: scale(0);
+                z-index: -1;
+            }
+
+            .exit:before {
+                top: -25%;
+                left: 20%;
+            }
+
+            .exit:after {
+                bottom: -25%;
+                right: 20%;
+            }
+
+            .exit:hover:before,
+            .exit:hover:after {
+                transform: none;
+            }
     </style>
 </head>
 <body>
+
+    <div class="wrapper">
+        <a class="exit" href="~/First/MultiGames">Exit</a>
+    </div>
+
+    <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
 
     <div class="all">
         <div id="snakenladderBoard"></div>
@@ -72,7 +143,6 @@
                         If you want to go up on the ladder you need to answer a question,
                         are you ready?
                     </h1>
-                    <a class="close" href="~/First/MultiGames">X</a>
                     <div class="middle_buttons">
                         <h2 id="game" href="#">
                             Let's go!
@@ -100,8 +170,8 @@
         </div>
     </div>
 
-    <script >
-        
+    <script>
+
     // declare modal
     let modal = document.getElementById("popup1");
     let modal_middle = document.getElementById("middle");
@@ -177,12 +247,12 @@
         a10 = "d";
 
     }
-   
+
     // add method in string prototype
     String.prototype.replaceAt = function (index, replacement) {
         return this.substr(0, index) + replacement + this.substr(index + replacement.length);
     };
-        
+
     var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
     var answers = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10];
     var correct = 0;
@@ -216,7 +286,7 @@
             }
         }
 
-        /// Build Players 
+        /// Build Players
         function BuildPlayers() {
             for (var i = 0; i < players.length; i++) {
                 var player = players[i];
@@ -224,9 +294,9 @@
                 var playerLegendHtml = "<div id='playerLegend" + i + "' class='legends' style='background-color:" + player.bg + "'>" + player.name + "<span>0</span></div>";
                 $("#players").append(playerHtml + playerLegendHtml);
             }
-        } 
+        }
 
-        $("#check").on("click",function () {       
+        $("#check").on("click",function () {
             modal_middle.classList.remove("show");
             return;
         });
@@ -238,16 +308,16 @@
             else {
                 correct = 0;
             }
-        
+
         }
-    
+
 
         function RandomizeDice() {
             return Math.floor(Math.random() * 6) + 1;
         }
-    
+
         function changeLink() {
-        
+
             var rand = Math.floor(Math.random() * 3);
 
             var URl = '@Url.Action("SnkLds","First")';
@@ -416,10 +486,10 @@
                     } else if (currentPosition === 16) {
                         currentPosition = 6;
                     }
-                
+
                     $("#player" + idOfplayerTurn).appendTo("#cell_" + currentPosition);
                     $("#gameMessage").text(players[idOfplayerTurn].name + " played " + randm);
-                    $("#playerLegend" + idOfplayerTurn).find('span').text(currentPosition); //currentPosition  
+                    $("#playerLegend" + idOfplayerTurn).find('span').text(currentPosition); //currentPosition
 
                 }
                 players[idOfplayerTurn].position = currentPosition;

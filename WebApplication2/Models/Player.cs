@@ -10,6 +10,7 @@ namespace WebApplication2.Models
     public class Player
     {
         private List<Player> pla;
+
         public Player() {
             this.UserName = "adi";
             this.pla = new List<Player>();
@@ -21,6 +22,10 @@ namespace WebApplication2.Models
             this.SnakeLevel = 0;
             this.SimonLevel = 0;
             this.RPSLevel = 0;
+            this.PongLevel = 0;
+            this.FlappyLevel = 0;
+            this.SpaceLevel = 0;
+            this.PacmanLevel = 0;
         }
         public void copy(Player player) {
             FirstName = player.FirstName;
@@ -200,5 +205,24 @@ namespace WebApplication2.Models
         [Display(Name = "Level")]
         public int RPSLevel { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Level")]
+        public int PongLevel { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Level")]
+        public int FlappyLevel { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Level")]
+        public int SpaceLevel { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Level")]
+        public int PacmanLevel { get; set; }
     }
 }

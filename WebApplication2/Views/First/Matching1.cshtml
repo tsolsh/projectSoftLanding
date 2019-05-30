@@ -34,97 +34,166 @@
             text-decoration: none;
             color: #333;
         }
-        
+        :root {
+            --bg: #1a1e24;
+            --color: indianred;
+            --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .wrapper {
+            padding: 1.5rem 0;
+            filter: url('#goo');
+        }
+
+        .exit {
+            display: table-caption;
+            text-align: center;
+            background: var(--color);
+            color: var(--bg);
+            padding: 0.18em 1.32em 1.03em;
+            line-height: 1;
+            border-radius: 1em;
+            position: relative;
+            min-width: 4.3em;
+            text-decoration: none;
+            font-family: Marker Felt, fantasy;
+            font-size: 1.55rem;
+            left: -600%;
+            height: 14px;
+            margin-top: -37%;
+            margin-bottom: 37%;
+        }
+
+            .exit:before,
+            .exit:after {
+                width: 4.4em;
+                height: 2.45em;
+                position: absolute;
+                content: "";
+                display: inline-block;
+                background: var(--color);
+                border-radius: 50%;
+                transition: transform 1s ease;
+                transform: scale(0);
+                z-index: -1;
+            }
+
+            .exit:before {
+                top: -25%;
+                left: 20%;
+            }
+
+            .exit:after {
+                bottom: -25%;
+                right: 20%;
+            }
+
+            .exit:hover:before,
+            .exit:hover:after {
+                transform: none;
+            }
+
 
     </style>
 </head>
 
 <body>
     <div class="container">
-            <header>
-                <h1>Memory Game</h1>
-            </header>
-            <div class="close">
-                <a>
-                    @Html.ActionLink("X", "close")
-                </a>
-            </div>
-            <section class="score-panel">
-                <ul class="stars">
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                </ul>
+        <header>
+            <h1>Memory Game</h1>
+        </header>
 
-                <span class="moves">0</span> Move(s)
+        <div class="wrapper">
+            <a class="exit" href="~/First/singleGames">Exit</a>
+        </div>
 
-                <div class="timer">
-                </div>
+        <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+        <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter>
+            </defs>
+        </svg>
 
-                <div class="restart" onclick=startGame()>
-                    <i class="fa fa-repeat"></i>
-                </div>
-            </section>
-
-            <ul class="deck" id="card-deck">
-                <li class="card" type="diamond">
-                    <i>input</i>
-                </li>
-                <li class="card" type="plane">
-                    <i>output</i>
-                </li>
-                <li class="card match" type="anchor">
-                    <i>%s</i>
-                </li>
-                <li class="card" type="bolt">
-                    <i>%d</i>
-                </li>
-                <li class="card match" type="anchor">
-                    <i>string</i>
-                </li>
-                <li class="card" type="leaf">
-                    <i>%c</i>
-                </li>
-                <li class="card" type="bicycle">
-                    <i>%u</i>
-                </li>
-                <li class="card" type="diamond">
-                    <i>scanf</i>
-                </li>
-
-                <li class="card" type="leaf">
-                    <i>Char</i>
-                </li>
-
-                <li class="card open show" type="bolt">
-                    <i>Integer</i>
-                </li>
-                <li class="card" type="bicycle">
-                    <i> unsigned int </i>
-                </li>
-                <li class="card" type="plane">
-                    <i>printf</i>
-                </li>
-
+        <section class="score-panel">
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
             </ul>
-            <div id="popup1" class="overlay">
-                <div class="popup">
-                    <h2>Congratulations 🎉</h2>
-                    <a class="close" href="~/First/singleGames">×</a>
-                    <div class="content-1">
-                        Congratulations you're a winner 🎉🎉
-                    </div>
-                    <div class="content-2">
-                        <p>You made <span id="move"> </span> moves </p>
-                        <p>in <span id=totalTime> </span> </p>
-                        <p>Rating:  <span id=starRating></span></p>
-                    </div>
-                    <a class="button" type="submit" href="~/First/Matching2">
-                    Next Level!
-                    </a>
 
-                </div>
+            <span class="moves">0</span> Move(s)
+
+            <div class="timer">
             </div>
+
+            <div class="restart" onclick=startGame()>
+                <i class="fa fa-repeat"></i>
+            </div>
+        </section>
+
+        <ul class="deck" id="card-deck">
+            <li class="card" type="diamond">
+                <i>input</i>
+            </li>
+            <li class="card" type="plane">
+                <i>output</i>
+            </li>
+            <li class="card match" type="anchor">
+                <i>%s</i>
+            </li>
+            <li class="card" type="bolt">
+                <i>%d</i>
+            </li>
+            <li class="card match" type="anchor">
+                <i>string</i>
+            </li>
+            <li class="card" type="leaf">
+                <i>%c</i>
+            </li>
+            <li class="card" type="bicycle">
+                <i>%u</i>
+            </li>
+            <li class="card" type="diamond">
+                <i>scanf</i>
+            </li>
+
+            <li class="card" type="leaf">
+                <i>Char</i>
+            </li>
+
+            <li class="card open show" type="bolt">
+                <i>Integer</i>
+            </li>
+            <li class="card" type="bicycle">
+                <i> unsigned int </i>
+            </li>
+            <li class="card" type="plane">
+                <i>printf</i>
+            </li>
+
+        </ul>
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <h2>Congratulations 🎉</h2>
+                <a class="close" href="~/First/singleGames">×</a>
+                <div class="content-1">
+                    Congratulations you're a winner 🎉🎉
+                </div>
+                <div class="content-2">
+                    <p>You made <span id="move"> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating:  <span id=starRating></span></p>
+                </div>
+                <a class="button" type="submit" href="~/First/Matching2">
+                    Next Level!
+                </a>
+
+            </div>
+        </div>
     </div>
     <script>
                 // cards array holds all cards
