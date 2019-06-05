@@ -23,31 +23,31 @@ function check() {
     if (question1 === "int") {
         correct++;
         document.quiz.question1.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="x1" />'
+        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="x1" />';
     }
     else {
         //document.quiz.question1.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x1" />'
+        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x1" />';
     }
 
     if (question2 === 'ary[0]') {
         correct++;
         document.quiz.question2.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="x2" />'
+        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="x2" />';
     }
     else {
         //document.quiz.question2.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x2" />'
+        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x2" />';
     }
 
     if (question3 === "&") {
         correct++;
         document.quiz.question3.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="x3" />'
+        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="x3" />';
     }
     else {
         //document.quiz.question3.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x3" />'
+        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x3" />';
     }
    // if (question5 === "All") {
     //    correct++;

@@ -21,4 +21,4 @@ $("#NextFact").click(function () {
     var i = Math.floor(Math.random() * (raw.length - 1)) + 1;
     document.getElementById("sentence").innerText = raw[i];
 });
-readTextFile("/../Did you Know/OtherLang.txt");
+readTextFile("/../Did you know/OtherLang.txt");

@@ -23,31 +23,31 @@ function check() {
     if (question1 === "5") {
         correct++;
         document.quiz.question1.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="v1" />'
+        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="v1" />';
     }
     else {
         //document.quiz.question1.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x1" />'
+        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x1" />';
     }
 
     if (question2 === "if") {
         correct++;
         document.quiz.question2.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="v2" />'
+        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="v2" />';
     }
     else {
         //document.quiz.question2.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x2" />'
+        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x2" />';
     }
 
     if (question3 === "else") {
         correct++;
         document.quiz.question3.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="v3" />'
+        document.getElementById("quiz").innerHTML += '<img src="../v.png" id="v3" />';
     }
     else {
         //document.quiz.question3.style.display = 'none';
-        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x3" />'
+        document.getElementById("quiz").innerHTML += '<img src="../x3.png" id="x3" />';
     }
    // if (question5 === "All") {
     //    correct++;
@@ -73,11 +73,11 @@ function check() {
     document.getElementById("output").innerHTML += "</br>" + "You got " + correct + " / " + numQuestions + " correct.";
     if (correct < numQuestions) {
         awwAudio.play();
-        document.getElementById("output").innerHTML += '<button class="button" type="submit" id="button" onclick="repeat001()">Try again!</button>'
+        document.getElementById("output").innerHTML += '<button class="button" type="submit" id="button" onclick="repeat001()">Try again!</button>';
     }
     else {
         clapAudio.play();
-        document.getElementById("output").innerHTML += '<button class="button" type="submit" id="button" onclick="nextLevel()">Next Level</button>'
+        document.getElementById("output").innerHTML += '<button class="button" type="submit" id="button" onclick="nextLevel()">Next Level</button>';
     }
     document.getElementById("button2").style.visibility = "hidden";
 

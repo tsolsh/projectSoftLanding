@@ -62,7 +62,6 @@
         }
 
         .wrapper {
-            padding: 1.5rem 0;
             filter: url('#goo');
         }
 
@@ -256,6 +255,7 @@
     var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
     var answers = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10];
     var correct = 0;
+
     var SnakeLadderModule = (function () {
         var players = [{
             name: 'Player1',
@@ -298,9 +298,14 @@
 
         $("#check").on("click",function () {
             modal_middle.classList.remove("show");
+            finish = true;
             return;
         });
         function check(num) {
+            var i = 0,y = 0;
+            for (i = 0; i < 2000; i++) {
+                y++;
+            }
             var answer = document.getElementById("answer");
             if (answer.value === answers[num]) {
                 correct = 1;

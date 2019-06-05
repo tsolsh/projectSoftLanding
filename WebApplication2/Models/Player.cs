@@ -15,7 +15,7 @@ namespace WebApplication2.Models
             this.UserName = "adi";
             this.pla = new List<Player>();
             this.Enter = 0;
-            this.Score = 0;
+            this.Score = 150;
             this.MemoryLevel = 0;
             this.TetrisLevel = 0;
             this.SnakeNLaddersLevel = 0;
@@ -26,6 +26,7 @@ namespace WebApplication2.Models
             this.FlappyLevel = 0;
             this.SpaceLevel = 0;
             this.PacmanLevel = 0;
+            this.FillLevel = 0;
         }
         public void copy(Player player) {
             FirstName = player.FirstName;
@@ -95,9 +96,9 @@ namespace WebApplication2.Models
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Advance")]
-        public int Advance { get {
-                int adv = 0;
-                int totalLevels = MemoryLevel + TetrisLevel + SnakeLevel + SnakeNLaddersLevel + SimonLevel +RPSLevel;
+        public float Advance { get {
+                float adv = 0;
+                float totalLevels = MemoryLevel + TetrisLevel + SnakeLevel + SnakeNLaddersLevel + SimonLevel +RPSLevel+FillLevel;
                 adv = totalLevels *10/100;
                 return adv;
             } set { } }
@@ -107,26 +108,30 @@ namespace WebApplication2.Models
         [Display(Name = "GamePlayed")]
         public int GamePlayed { get {
                 int games = 0;
-                if (this.MemoryLevel != 0)
+                if (this.MemoryLevel == 3)
                 {
                     games++;
                 }
-                if (this.TetrisLevel != 0)
+                if (this.TetrisLevel == 6)
                 {
                     games++;
                 }
-                if (this.SnakeNLaddersLevel != 0){
+                if (this.SnakeNLaddersLevel == 1){
                     games++;
                 }
-                if (this.SnakeLevel != 0){
+                if (this.SnakeLevel == 4){
                     games++;
                 }
 
-                if (this.SimonLevel != 0)
+                if (this.SimonLevel == 1)
                 {
                     games++;
                 }
-                if (this.RPSLevel != 0)
+                if (this.RPSLevel == 3)
+                {
+                    games++;
+                }
+                if (this.FillLevel == 8)
                 {
                     games++;
                 }
@@ -177,6 +182,21 @@ namespace WebApplication2.Models
 
         [Required]
         [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int PacmanScore { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int SpaceScore { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int FillScore { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
         [Display(Name = "Level")]
         public int TetrisLevel { get; set; }
 
@@ -224,5 +244,10 @@ namespace WebApplication2.Models
         [DataType(DataType.Text)]
         [Display(Name = "Level")]
         public int PacmanLevel { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Level")]
+        public int FillLevel { get; set; }
     }
 }

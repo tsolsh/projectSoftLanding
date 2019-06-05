@@ -165,6 +165,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\factsMenu.css" />
+    <Content Include="Content\fill.css" />
     <Content Include="Content\functions.css" />
     <Content Include="Content\Langs.css" />
     <Content Include="Content\Leader.css" />
@@ -238,6 +239,7 @@
     <Content Include="Games\completeTheCode\completeTheCode.csproj" />
     <Content Include="Games\completeTheCode\completeTheCode.csproj.user" />
     <Content Include="Games\completeTheCode\correct.mp3" />
+    <Content Include="Games\completeTheCode\data.txt" />
     <Content Include="Games\completeTheCode\error.wav" />
     <Content Include="Games\completeTheCode\jsFile.js" />
     <Content Include="Games\completeTheCode\level1.png" />
@@ -379,12 +381,14 @@
     <Content Include="Games\Snake\audio\left.mp3" />
     <Content Include="Games\Snake\audio\right.mp3" />
     <Content Include="Games\Snake\audio\up.mp3" />
+    <Content Include="Games\Snake\data.txt" />
     <Content Include="Games\Snake\img\food.png" />
     <Content Include="Games\Snake\img\ground.png" />
     <Content Include="Games\Snake\snake.js" />
     <Content Include="Games\Snake\snakecss.css" />
     <Content Include="Games\Space Invaders\index.html" />
     <Content Include="Games\Space Invaders\style.css" />
+    <Content Include="Games\TetrisCode\data.txt" />
     <Content Include="Games\TetrisCode\endingPage.html" />
     <Content Include="Games\TetrisCode\index.html" />
     <Content Include="Games\TetrisCode\index2.html" />
@@ -742,7 +746,6 @@
     <Content Include="Views\First\TetrisCode.cshtml" />
     <Content Include="Views\First\TetrisCode2.cshtml" />
     <Content Include="Views\First\Index.cshtml" />
-    <Content Include="Views\First\Parameters.cshtml" />
     <Content Include="Views\First\Functions.cshtml" />
     <Content Include="Views\First\Langs.cshtml" />
     <Content Include="Views\First\People.cshtml" />
@@ -753,6 +756,30 @@
     <Content Include="vendor2\bootstrap\css\bootstrap.css.map" />
     <Content Include="vendor2\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Views\First\progBasic.cshtml" />
+    <Content Include="Views\First\Fill1.cshtml" />
+    <Content Include="Views\First\Fill2.cshtml" />
+    <Content Include="Views\First\Fill3.cshtml" />
+    <Content Include="Views\First\Fill4.cshtml" />
+    <Content Include="Views\First\Fill5.cshtml" />
+    <Content Include="Views\First\Fill6.cshtml" />
+    <Content Include="Views\First\Fill7.cshtml" />
+    <Content Include="Views\First\Fill8.cshtml" />
+    <Content Include="Views\First\Fill9.cshtml" />
+    <Content Include="Views\First\Fill10.cshtml" />
+    <Content Include="Views\First\Fill11.cshtml" />
+    <Content Include="Views\First\Fill12.cshtml" />
+    <Content Include="Views\First\Fill13.cshtml" />
+    <Content Include="Views\First\Fill14.cshtml" />
+    <Content Include="Views\First\Fill15.cshtml" />
+    <Content Include="Views\First\Fill16.cshtml" />
+    <Content Include="Views\First\Fill17.cshtml" />
+    <Content Include="Views\First\Fill18.cshtml" />
+    <Content Include="Views\First\Fill19.cshtml" />
+    <Content Include="Views\First\Fill20.cshtml" />
+    <Content Include="Views\First\Fill21.cshtml" />
+    <Content Include="Views\First\Fill22.cshtml" />
+    <Content Include="Views\First\Fill23.cshtml" />
+    <Content Include="Views\First\Fill24.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

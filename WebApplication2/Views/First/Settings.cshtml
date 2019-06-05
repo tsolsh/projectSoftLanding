@@ -177,7 +177,7 @@
                     <li>
                         <p class="ios os scnd-font-color">Begginer</p>
                         <p class="os-percentage">
-                            @{ if (Model.Score > 100)
+                            @{ if (Model.Score >= 100)
                                 {
                                     <div class="outer">
                                         <div class="circle" id="brown"></div>
@@ -194,7 +194,7 @@
                     <li>
                         <p class="linux os scnd-font-color">Advanced</p>
                         <p class="os-percentage">
-                            @{ if (Model.Score > 200)
+                            @{ if (Model.Score >= 200)
                                 {
                                     <div class="outer">
                                         <div class="circle" id="silver"></div>
@@ -211,7 +211,7 @@
                     <li>
                         <p class="win os scnd-font-color">Expert</p>
                         <p class="os-percentage">
-                            @{ if (Model.Score > 300)
+                            @{ if (Model.Score >= 300)
                                 {
                                     <div class="outer">
                                         <div class="circle" id="gold"></div>
@@ -232,20 +232,20 @@
             <div class="donut-chart-block block">
                 <h1 class="titular"></h1>
                 <div class="donut-chart">
-                    @{ if (Model.Score < 100)
+                    @{ if (Model.Score < 101)
                         {
                             <p class="other">Status:<span class="scnd-font-color">Begginer</span></p>
                         }
-                        else if (Model.Score > 100 && Model.Score < 200)
+                        else if (Model.Score > 100 && Model.Score < 301)
                         {
                             <p class="other">Status:<span class="scnd-font-color">Advanced</span></p>
                         }
-                        if (Model.Score > 300)
+                        if (Model.Score > 301)
                         {
                             <p class="other">Status:<span class="scnd-font-color">Expert</span></p>
                         }
-                        <p class="other">Progress:<span class="scnd-font-color">@Model.Advance %</span></p>
-                        <p class="other">Games Completed:<span class="scnd-font-color">@Model.GamePlayed / 10</span></p>
+                        <p class="other">Progress:<span class="scnd-font-color">45 %</span></p>
+                        <p class="other">Games Completed:<span class="scnd-font-color">4 / 10</span></p>
                     }
                 </div>
             </div>
@@ -315,9 +315,9 @@
                                         </tr>
 
                                         <tr class="row100 body">
-                                            <td class="cell100 column1">Questions</td>
-                                            <td class="cell100 column2">0</td>
-                                            <td class="cell100 column3">0</td>
+                                            <td class="cell100 column1">Fill In The Blanks</td>
+                                            <td class="cell100 column2">@Model.FillScore</td>
+                                            <td class="cell100 column3">@Model.FillLevel</td>
 
                                         </tr>
 

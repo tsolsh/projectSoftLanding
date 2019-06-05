@@ -44,7 +44,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult singleGames()
         {
-            return View();
+            return View(player);
         }
 
         public ActionResult LogOut()
@@ -393,5 +393,172 @@ namespace WebApplication2.Controllers
             return View();
         }
 
+        public ActionResult Fill1()
+        {
+            string level;
+            using (StreamReader file = new StreamReader(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
+            {
+                level = file.ReadLine();
+            }
+            if (level == "1")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Fill"+level);
+
+            }
+        }
+        public ActionResult Fill2()
+        {
+            return View();
+        }
+        public ActionResult Fill3()
+        {
+            return View();
+        }
+        public ActionResult Fill4()
+        {
+            return View();
+        }
+        public ActionResult Fill5()
+        {
+            return View();
+        }
+        public ActionResult Fill6()
+        {
+            return View();
+        }
+        public ActionResult Fill7()
+        {
+            return View();
+        }
+        public ActionResult Fill8()
+        {
+            return View();
+        }
+        public ActionResult Fill9()
+        {
+            return View();
+        }
+        public ActionResult Fill10()
+        {
+            return View();
+        }
+        public ActionResult Fill11()
+        {
+            return View();
+        }
+        public ActionResult Fill12()
+        {
+            return View();
+        }
+        public ActionResult Fill13()
+        {
+            return View();
+        }
+        public ActionResult Fill14()
+        {
+            return View();
+        }
+        public ActionResult Fill15()
+        {
+            return View();
+        }
+        public ActionResult Fill16()
+        {
+            return View();
+        }
+        public ActionResult Fill17()
+        {
+            return View();
+        }
+        public ActionResult Fill18()
+        {
+            return View();
+        }
+        public ActionResult Fill19()
+        {
+            return View();
+        }
+        public ActionResult Fill20()
+        {
+            return View();
+        }
+        public ActionResult Fill21()
+        {
+            return View();
+        }
+        public ActionResult Fill22()
+        {
+            return View();
+        }
+        public ActionResult Fill23()
+        {
+            return View();
+        }
+        public ActionResult Fill24()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public void fill_result(int id,int levelId)
+        {
+            player.Score += id;
+            player.FillScore += id;
+            player.FillLevel = levelId;
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), false))
+            {
+                for (int i = 0; i < 24; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
+        [HttpGet]
+        public void exitTetris(int id)
+        {
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/TetrisCode/data.txt"), false))
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/TetrisCode/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
+
+        [HttpGet]
+        public void exitSnake(int id)
+        {
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/Snake/data.txt"), false))
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/Snake/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
     }
+
+
 }
