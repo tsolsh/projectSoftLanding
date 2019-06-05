@@ -80,7 +80,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <a class="exit" href="~/First/singleGames">Exit</a>
+        <a id="exit" >Exit</a>
     </div>
 
     <!-- Filter: https://css-tricks.com/gooey-effect/ -->
@@ -204,7 +204,15 @@
             document.getElementById("button2").style.visibility = "hidden";
 
         }
+        $("#exit").on("click", function () {
+            var URl = '@Url.Action("exitFill", "First")';
 
+                $.ajax({
+                    url: URl,
+                    data: { id: 2}
+            });
+            window.location = "/../First/singleGames";
+        });
         function nextLevel() {
         window.location = "/../First/Fill3";
 

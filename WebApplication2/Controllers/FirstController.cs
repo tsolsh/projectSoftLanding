@@ -502,13 +502,10 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-
         [HttpGet]
-        public void fill_result(int id,int levelId)
+        public void exitFill(int id)
         {
-            player.Score += id;
-            player.FillScore += id;
-            player.FillLevel = levelId;
+            
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), false))
             {
                 for (int i = 0; i < 24; i++)
@@ -522,6 +519,14 @@ namespace WebApplication2.Controllers
 
                 file.WriteLine(id.ToString()); // Write the file.
             }
+        }
+        [HttpGet]
+        public void fill_result(int id,int levelId)
+        {
+            player.Score += id;
+            player.FillScore += id;
+            player.FillLevel = levelId;
+            
         }
         [HttpGet]
         public void exitTetris(int id)
