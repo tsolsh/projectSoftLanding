@@ -27,6 +27,7 @@ namespace WebApplication2.Models
             this.SpaceLevel = 0;
             this.PacmanLevel = 0;
             this.FillLevel = 0;
+            this.SNLPos = 0;
         }
         public void copy(Player player) {
             FirstName = player.FirstName;
@@ -169,6 +170,28 @@ namespace WebApplication2.Models
         [DataType(DataType.Text)]
         [Display(Name = "Score")]
         public int snakesLaddersScore { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int SNLPos { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int SNLquestNum { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int SNLnew { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int SNLold { get; set; }
+
 
         [Required]
         [DataType(DataType.Text)]

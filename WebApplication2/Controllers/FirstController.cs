@@ -137,11 +137,6 @@ namespace WebApplication2.Controllers
             }
         }
 
-        public ActionResult Read()
-        {
-            return View();
-        }
-
         public ActionResult facts(Player p)
         {
             return View(p);
@@ -345,6 +340,24 @@ namespace WebApplication2.Controllers
             player.Score += id;
             player.snakesLaddersScore += id;
         }
+
+        public ActionResult Read()
+        {
+            return View(player);
+        }
+
+        [HttpGet]
+        public void snakesLadders_Qresult(int id)
+        {
+            player.SNLPos = id;
+        }
+
+        [HttpGet]
+        public void snakesLadders_QA(int id)
+        {
+            player.snakesLaddersScore += id;
+        }
+
         public ActionResult TetrisCode()
         {
             if (player.Score < 1000)
@@ -440,7 +453,20 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Fill9()
         {
-            return View();
+            string level;
+            using (StreamReader file = new StreamReader(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
+            {
+                level = file.ReadLine();
+            }
+            if (level == "9")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Fill" + level);
+
+            }
         }
         public ActionResult Fill10()
         {
@@ -472,7 +498,20 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Fill17()
         {
-            return View();
+            string level;
+            using (StreamReader file = new StreamReader(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
+            {
+                level = file.ReadLine();
+            }
+            if (level == "17")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Fill" + level);
+
+            }
         }
         public ActionResult Fill18()
         {
