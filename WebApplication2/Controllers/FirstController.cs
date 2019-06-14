@@ -405,6 +405,131 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+        public ActionResult FDE1()
+        {
+            return View();
+        }
+        public ActionResult FDE2()
+        {
+            return View();
+        }
+        public ActionResult FDE3()
+        {
+            return View();
+        }
+        public ActionResult FDE4()
+        {
+            return View();
+        }
+        public ActionResult FDE5()
+        {
+            return View();
+        }
+        public ActionResult FDE6()
+        {
+            return View();
+        }
+        public ActionResult FDE7()
+        {
+            return View();
+        }
+        public ActionResult FDE8()
+        {
+            return View();
+        }
+        public ActionResult FDE9()
+        {
+            return View();
+        }
+        public ActionResult FDE10()
+        {
+            return View();
+        }
+        public ActionResult FDE11()
+        {
+            return View();
+        }
+        public ActionResult FDE12()
+        {
+            return View();
+        }
+        public ActionResult FDE13()
+        {
+            return View();
+        }
+        public ActionResult FDE14()
+        {
+            return View();
+        }
+        public ActionResult FDE15()
+        {
+            return View();
+        }
+        public ActionResult FDE16()
+        {
+            return View();
+        }
+        public ActionResult FDE17()
+        {
+            return View();
+        }
+        public ActionResult FDE18()
+        {
+            return View();
+        }
+        public ActionResult FDE19()
+        {
+            return View();
+        }
+        public ActionResult FDE20()
+        {
+            return View();
+        }
+        public ActionResult FDE21()
+        {
+            return View();
+        }
+        public ActionResult FDE22()
+        {
+            return View();
+        }
+        public ActionResult FDE23()
+        {
+            return View();
+        }
+        public ActionResult FDE24()
+        {
+            return View();
+
+        }
+
+
+        [HttpGet]
+        public void exitFDE(int id)
+        {
+
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), false))
+            {
+                for (int i = 0; i < 24; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
+        [HttpGet]
+        public void FDE_result(int id, int levelId)
+        {
+            player.Score += id;
+            player.FillScore += id;
+            player.FillLevel = levelId;
+
+        }
 
         public ActionResult Fill1()
         {

@@ -251,7 +251,9 @@
         String.prototype.replaceAt = function (index, replacement) {
             return this.substr(0, index) + replacement + this.substr(index + replacement.length);
         };
-
+        var original = 0;
+        var currentQuest = 1;
+        var lastLadder = false;
         var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
         var answers = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10];
         var correct = 0;
@@ -299,10 +301,11 @@
             $("#check").on("click", function () {
                 modal_middle.classList.remove("show");
                 finish = true;
+
                 return;
             });
             function check(newN) {
-
+                currentQuest = newN;
                 var answer = document.getElementById("answer");
                 if (answer.value === answers[newN]) {
                      var URl = '@Url.Action("snakesLadders_Qresult", "First")';
@@ -349,10 +352,28 @@
                     var randm = RandomizeDice();
                     var die1 = document.getElementById("dice");
                     die1.innerHTML = randm;
+                    var answer = document.getElementById("answer");
+                    
 
                     idOfplayerTurn = idOfplayerTurn % players.length;
                     $(".legends").removeClass('active');
                     $("#playerLegend" + (idOfplayerTurn + 1) % players.length).addClass('active');
+
+
+                    if (answer.value !== answers[currentQuest] && lastLadder) {
+                        lastLadder = false;
+                        if (idOfplayerTurn === 0) {
+                            players[1].position = original;
+                            $("#player1").appendTo("#cell_" + original);
+                            $("#playerLegend1").find('span').text(original); 
+                        }
+                        else {
+                            players[0].position = original;
+                            $("#player0").appendTo("#cell_" + original);
+                            $("#playerLegend0").find('span').text(original); 
+                        }                     
+                    }
+
 
                     var currentPosition = players[idOfplayerTurn].position;
                     currentPosition += randm;
@@ -381,85 +402,91 @@
                     else {
                         if (currentPosition === 2) {
                             var URl = '@Url.Action("snakesLadders_result", "First")';
-
-                       /* $.ajax({
-                            url: URl,
-                            data: { id: 0 ,old:2,new2:28}
-                        });
-                            window.location = "/../First/Read";
-                           */
+                            original = 2;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[0];
                             check(0);
                             currentPosition = 38;
+                            lastLadder = true;
 
                         } else if (currentPosition === 7) {
+                            original = 7;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[1];
                             check(1);
                             currentPosition = 14;
-
+                            lastLadder = true;
                         } else if (currentPosition === 8) {
+                            original = 8;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[2];
                             check(2);
                             currentPosition = 31;
+                            lastLadder = true;
                         } else if (currentPosition === 15) {
+                            original = 15;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[3];
                             check(3);
 
                             currentPosition = 26;
-
+                            lastLadder = true;
                         } else if (currentPosition === 21) {
+                            original = 21;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[4];
                             check(4);
 
                             currentPosition = 42;
-
+                            lastLadder = true;
                         } else if (currentPosition === 28) {
+                            original = 28;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[5];
                             check(5);
 
                             currentPosition = 84;
-
+                            lastLadder = true;
                         } else if (currentPosition === 36) {
+                            original = 36;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[6];
                             check(6);
 
                             currentPosition = 44;
-
+                            lastLadder = true;
                         } else if (currentPosition === 51) {
+                            original = 51;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[7];
                             check(7);
 
                             currentPosition = 67;
-
+                            lastLadder = true;
                         } else if (currentPosition === 78) {
+                            original = 78;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[8];
                             check(8);
 
                             currentPosition = 98;
-
+                            lastLadder = true;
                         } else if (currentPosition === 71) {
+                            original = 71;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[9];
                             check(9);
 
                             currentPosition = 91;
-
+                            lastLadder = true;
                         } else if (currentPosition === 87) {
+                            original = 87;
                             modal_middle.classList.add("show");
                             ques.innerText = questions[10];
                             check(10);
 
                             currentPosition = 94;
-
+                            lastLadder = true;
 
 
                         } else if (currentPosition === 99) {
