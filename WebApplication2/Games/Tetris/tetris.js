@@ -24,7 +24,7 @@ function arenaSweep(){
 const matrix = [
 	[0,0,0],
 	[1,1,1],
-	[0,1,0],
+	[0,1,0]
 ];
 function collide(arena, player){
 	const [m, o] = [player.matrix, player.pos];
@@ -49,43 +49,43 @@ function createPiece(type){
 		return [
 				[0,0,0],
 				[1,1,1],
-				[0,1,0],
+				[0,1,0]
 			];
 	}else if(type === 'O'){
 		return [
 			[2,2],
-			[2,2],
+			[2,2]
 			];
 	}else if(type === 'L'){
 		return [
 			[0,3,0],
 			[0,3,0],
-			[0,3,3],
+			[0,3,3]
 			];
 	}else if(type === 'J'){
 		return [
 			[0,4,0],
 			[0,4,0],
-			[4,4,0],
+			[4,4,0]
 			];
 	}else if(type === 'I'){
 		return [
 			[0,5,0,0],
 			[0,5,0,0],
 			[0,5,0,0],
-			[0,5,0,0],
+			[0,5,0,0]
 			];
 	}else if(type === 'S'){
 		return [
 			[0,6,6],
 			[6,6,0],
-			[0,0,0],
+			[0,0,0]
 			];
 	}
 	return [
 		[7,7,0],
 		[0,7,7],
-		[0,0,0],
+		[0,0,0]
 		];
 }
 
@@ -121,10 +121,10 @@ function drawMatrix(matrix ,offset){
 	});
 }
 var player = {
-	pos: {x:0,y:0},
-	matrix: null,
-	score:0,
-}
+    pos: { x: 0, y: 0 },
+    matrix: null,
+    score: 0
+};
 
 const arena = createMatrix(12,20);
 
@@ -177,7 +177,7 @@ function update(time = 0){
         'blue',
         'aqua',
         'green',
-        'red',
+        'red'
     ];
 
 
@@ -221,15 +221,15 @@ function update(time = 0){
                 //switching the values.
                 [
                 matrix[x][y],
-                matrix[y][x],
+                matrix[y][x]
                 ] = [
                     matrix[y][x],
-                    matrix[x][y],
+                    matrix[x][y]
                 ];
             }
         }
         if(dir > 0 ){
-            matrix.forEach((row => row.reverse()))	;
+            matrix.forEach((row => row.reverse()));
         } else {
             matrix.reverse();
         }

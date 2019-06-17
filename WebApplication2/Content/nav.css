@@ -34,7 +34,7 @@
 }
 
     #cssmenu ul {
-        background: #afbec4;
+        background-image: url(https://image.shutterstock.com/image-vector/golden-texture-seamless-geometric-pattern-260nw-641076928.jpg);
     }
 
     #cssmenu > ul > li {
@@ -74,11 +74,14 @@
         transition: all .2s ease;
         margin-right: -4px;
     }
+a:visited {
+    color: #05182a;
+}
 
         #cssmenu > ul > li.active > a,
         #cssmenu > ul > li:hover > a,
         #cssmenu > ul > li > a:hover {
-            color: #afbec4;
+            color: aliceblue;
         }
 
         #cssmenu > ul > li > a:after {

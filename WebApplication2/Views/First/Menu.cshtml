@@ -30,6 +30,36 @@
             padding: 0 30px 0 30px;
             text-align: center;
         }
+        .button2 {
+            position: static;
+            top: 50%;
+            left: 44%;
+            display: inline-block;
+            padding: 0.2em 4.2em;
+            border: 0.1em solid #FFFFFF;
+            margin: 75px 0.3em 0.3em 0;
+            border-radius: 0.42em;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 300;
+            background-color: #66cdaa;
+            text-align: center;
+            transition: all 0.2s;
+            font-weight: bold;
+            color: white;
+            height: 39px;
+        }
+
+        .button2:hover {
+            color: white;
+            border-color: #DDDDDD;
+        }
+
+        .button2:active {
+            color: #BBBBBB;
+            border-color: #BBBBBB;
+        }
     </style>
 
 
@@ -107,11 +137,42 @@
                         <span class="frame-btn__line frame-btn__line--flat"></span>
                     </span>
                     <span class="frame-btn__solid"></span>
-                    <span class="frame-btn__text">Settings</span>
+                    <span class="frame-btn__text">Stats</span>
                 </a>
             </div>
         </div>
+     
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <h2>Welcome! 🎉</h2>
+                    <a class="close" href="~/First/Menu">×</a>
+                    <div class="content-1">
+                        First time here ? Let's take a quiz
+                    </div>
+                        
+                    <a class="button2" type="submit" href="~/First/quiz2">
+                        Ok
+                    </a>
+
+                </div>
+            </div>
+            
+        
     </div>
+    <script>
+        // declare modal
+        let modal = document.getElementById("popup1");
+        if (@Model.Enter == 1) {
+            modal.classList.add("show");
+            closeModal();
+        }
+        function closeModal() {
+            closeicon.addEventListener("click", function (e) {
+                modal.classList.remove("show");
+                startGame();
+            });
+        }
+    </script>
 </body>
 </html>
 
