@@ -1,4 +1,4 @@
-@model WebApplication2.Models.Player
+﻿@model WebApplication2.Models.Player
 
 @{
     Layout = null;
@@ -146,23 +146,32 @@
         </form>
         <button id="doneButton" onClick="Switch()"> Done </button>
         <textarea style="left:2%; font-size:17px;text-align:center;" id="operations" rows="18" cols="33" readonly></textarea>
-
+        <div id="startPopup" class="overlay">
+            <div class="popup">
+                <h2>Are you ready?</h2>
+                <button class="button2" id="lets">
+                    Let's go!
+                </button>
+            </div>
+        </div>
     </div>
     <script>
+        let modal = document.getElementById("startPopup");
+
         //getElemntby class name is returning all the items that has a word ,option, in it
 //meaning that if you go look at the index.html there are 3 divs that has the word
 // 'option' in it which are 'option rock', 'option paper', 'option scissors'.
-let options = document.getElementsByClassName("option");
-let choices = ['"rock"', '"paper"', '"scissors"'];
-let winState = { '"rock"': '"scissors"', '"paper"': '"rock"', '"scissors"': '"paper"' };
-let battle_elem = document.getElementById("battle");
-let reset_elem = document.getElementById("reset");
-let reseted = 1;
+        let options = document.getElementsByClassName("option");
+        let choices = ['"rock"', '"paper"', '"scissors"'];
+        let winState = { '"rock"': '"scissors"', '"paper"': '"rock"', '"scissors"': '"paper"' };
+        let battle_elem = document.getElementById("battle");
+        let reset_elem = document.getElementById("reset");
+        let reseted = 1;
 
 //alert (options.length);
-let score = 0;
-let aiScore = 0;
-let storage = window.localStorage;
+        let score = 0;
+        let aiScore = 0;
+        let storage = window.localStorage;
 /*
 if (storage.getItem("score")) {
 	score = storage.getItem("score");
@@ -281,43 +290,71 @@ function rand(max, min) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function disableOptions() {
-    for (let i = 0; i < options.length; i++) {
-        let option = options[i];
-        if (!option.classList.contains("selected")) {
-            option.classList.add("disabled");
+        function disableOptions() {
+            for (let i = 0; i < options.length; i++) {
+                let option = options[i];
+                if (!option.classList.contains("selected")) {
+                    option.classList.add("disabled");
+                }
+            }
         }
-    }
-}
 
-reset_elem.addEventListener("click", function() {
-	//disabling the click on the done button.
-	$("#doneButton").css({"pointerEvents":"none"});
-	reset();
-	//enabling the click on the done button after 1 sec.
-	$(".delay").toggle(1000, function() {$("#doneButton").css("pointerEvents","auto");});
-});
+        reset_elem.addEventListener("click", function () {
+            //disabling the click on the done button.
+            $("#doneButton").css({ "pointerEvents": "none" });
+            reset();
+            //enabling the click on the done button after 1 sec.
+            $(".delay").toggle(1000, function () { $("#doneButton").css("pointerEvents", "auto"); });
+        });
 
-function reset() {
-	$(".game").animate({maxWidth:'500px'},1000);
-		$(".selected").animate({width:'125px',
-						  height:'125px'
-						  },1000);
-    for (let i = 0; i < options.length; i++) {
-        let option = options[i];
-    	option.classList.remove("selected");
-        option.classList.remove("disabled");
-        option.classList.remove("winner");
-        option.classList.remove("loser");
-        option.classList.remove("draw");
-	}
-	$(".aiChoice").slideUp(1000,function(){battle_elem.innerHTML = "<h3>AI CHOICE</h3>"});
-	reset_elem.classList.add("hide");
-	reseted = 1;
+        function reset() {
+            $(".game").animate({ maxWidth: '500px' }, 1000);
+            $(".selected").animate({
+                width: '125px',
+                height: '125px'
+            }, 1000);
+            for (let i = 0; i < options.length; i++) {
+                let option = options[i];
+                option.classList.remove("selected");
+                option.classList.remove("disabled");
+                option.classList.remove("winner");
+                option.classList.remove("loser");
+                option.classList.remove("draw");
+            }
+            $(".aiChoice").slideUp(1000, function () { battle_elem.innerHTML = "<h3>AI CHOICE</h3>" });
+            reset_elem.classList.add("hide");
+            reseted = 1;
 
-}
+        }
+        var filetext = "";
+        function readFromFile() {
+            var file = "/../Games/RockPaperScissors/data.txt";
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status === 0) {
+                        filetext = rawFile.responseText;
+                        //alert(filetext);
+                    }
+                }
+            };
+            rawFile.send(null);
 
-var level = 3;
+        }
+        readFromFile();
+
+        //level = 1;
+
+        $("#lets").on("click", function () {
+            //document.getElementById("popup1").style.marginBottom= "50px";
+            modal.style.display = "none";
+            //modal.style.backgroundColor = "red";
+            level = Number(filetext);
+            initLevels();
+
+        });
+//var level = 3;
 function initLevels() {
 	let solution = document.getElementById("solution");
 	solution.value = "void main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n}";
@@ -338,7 +375,6 @@ function initLevels() {
 	}
 	$("textarea").slideDown(2000, function(){ $("#doneButton").fadeIn();});
 }
-initLevels();
 
 
 var skipFirstLines = 1;

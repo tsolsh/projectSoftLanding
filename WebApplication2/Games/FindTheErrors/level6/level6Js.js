@@ -1,11 +1,11 @@
 ﻿var a = 0;
-a++
+a++;
 var b = 3;
 b--;
 
 function correct001() {
 
-    let audio = document.getElementById("clip1")
+    let audio = document.getElementById("clip1");
     audio.play();
     board001.innerHTML += "<div id=mark001></div><h3 id='text1'>logical error - PRINT is two statement, need curly brackets</h3>";
     score001.innerHTML = a++;
@@ -19,7 +19,7 @@ function correct001() {
 
 function correct002() {
 
-    let audio = document.getElementById("clip1")
+    let audio = document.getElementById("clip1");
     audio.play();
     board001.innerHTML += "<div id=mark002></div><h3 id='text2'>compilation error - this else is not attached to any if statement</h3>";
     score001.innerHTML = a++;
@@ -33,7 +33,7 @@ function correct002() {
 
 function incorrect001() {
 
-    let audio = document.getElementById("clip2")
+    let audio = document.getElementById("clip2");
     audio.play();
     attempts001.innerHTML = b--;
     if (b < 0) {

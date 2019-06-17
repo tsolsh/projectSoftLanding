@@ -148,9 +148,18 @@
         </form>
         <button id="doneButton" onClick="Switch()"> Done </button>
         <textarea style="left:2%; font-size:17px;text-align:center;" id="operations" rows="18" cols="33" readonly></textarea>
-
+        <div id="startPopup" class="overlay">
+            <div class="popup">
+                <h2>Are you ready?</h2>
+                <button class="button2" id="lets">
+                    Let's go!
+                </button>
+            </div>
+        </div>
     </div>
     <script>
+        let modal = document.getElementById("startPopup");
+
         //getElemntby class name is returning all the items that has a word ,option, in it
 //meaning that if you go look at the index.html there are 3 divs that has the word
 // 'option' in it which are 'option rock', 'option paper', 'option scissors'.
@@ -311,8 +320,35 @@ function reset() {
 	reseted = 1;
 
 }
+        var filetext = "";
+        function readFromFile() {
+            var file = "/../Games/RockPaperScissors/data.txt";
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status === 0) {
+                        filetext = rawFile.responseText;
+                        //alert(filetext);
+                    }
+                }
+            };
+            rawFile.send(null);
 
-var level = 3;
+        }
+        readFromFile();
+
+        //level = 1;
+
+        $("#lets").on("click", function () {
+            //document.getElementById("popup1").style.marginBottom= "50px";
+            modal.style.display = "none";
+            //modal.style.backgroundColor = "red";
+            level = Number(filetext);
+            initLevels();
+
+        });
+//var level = 3;
 function initLevels() {
 	let solution = document.getElementById("solution");
 	solution.value = "void main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n}";
@@ -336,7 +372,6 @@ function initLevels() {
 	}
 	$("textarea").slideDown(2000, function(){ $("#doneButton").fadeIn();});
 }
-initLevels();
 
 
 var skipFirstLines = 1;

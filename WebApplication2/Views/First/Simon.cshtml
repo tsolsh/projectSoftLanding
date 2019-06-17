@@ -154,7 +154,19 @@
     <span id="enterCode">enter code: </span><br /><textarea id="solution" rows="18" cols="31"></textarea>
     <button id="doneButton" onClick="Switch()"> Done </button>
     <textarea class="background" style="left:2%; font-size:17px;text-align:center;" id="operations" rows="18" cols="33" readonly></textarea>
+    </div>
+    <div id="startPopup" class="overlay">
+        <div class="popup">
+            <h2>Are you ready?</h2>
+            <button class="button2" id="lets">
+                Let's go!
+            </button>
+        </div>
+    </div>
+
     <script>
+        let modal = document.getElementById("startPopup");
+
         /*
 function readTextFile(file)
 {
@@ -1935,7 +1947,35 @@ function popElmFrom(objectName) {
             });
         }
 
-var level = 1;
+//var level = 1;
+        var filetext = "";
+        function readFromFile() {
+            var file = "/../Games/Simon/data.txt";
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status === 0) {
+                        filetext = rawFile.responseText;
+                        //alert(filetext);
+                    }
+                }
+            };
+            rawFile.send(null);
+
+        }
+        readFromFile();
+
+        //level = 1;
+
+        $("#lets").on("click", function () {
+            //document.getElementById("popup1").style.marginBottom= "50px";
+            modal.style.display = "none";
+            //modal.style.backgroundColor = "red";
+            level = Number(filetext);
+            initLevels();
+
+        });
 var beginLevel = 1;
         function initLevels() {
             let solution = document.getElementById("solution");
@@ -1971,7 +2011,6 @@ var beginLevel = 1;
             }
             $("textarea").slideDown(2000, function () { $("#doneButton").fadeIn(); });
         }
-        initLevels();
 
 
 
