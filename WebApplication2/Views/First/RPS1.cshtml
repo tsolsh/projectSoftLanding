@@ -10,8 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" href="~Games/RockPaperScissors/assets/css/main.min.css" />
+    <link rel="stylesheet" href="~/Games/RockPaperScissors/assets/css/main.min.css" />
     <script src="jquery-2.0.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
     <style>
 
         :root {
@@ -33,7 +35,7 @@
             padding: 0.18em 1.32em 1.03em;
             line-height: 1;
             border-radius: 1em;
-            position: relative;
+            position: unset;
             min-width: 5.23em;
             text-decoration: none;
             font-family: Marker Felt, fantasy;
@@ -44,8 +46,7 @@
 
             .exit:before,
             .exit:after {
-                width: 4.4em;
-                height: 2.45em;
+                
                 position: absolute;
                 content: "";
                 display: inline-block;
@@ -56,10 +57,7 @@
                 z-index: -1;
             }
 
-            .exit:before {
-                top: -25%;
-                left: 20%;
-            }
+            
 
             .exit:after {
                 bottom: -25%;
@@ -393,7 +391,7 @@ let listOfTypes = {"string":"declare", "int":"declare", "String":"declare",
 					"case":"case", "default":"case"};
 let oneWordFuncs = {"play":"func"};
 let boolChecking = ["==",">=","<=","!=",">","<"];
-let emptyVal = "!@#";
+let emptyVal = "!#";
 let isThereIf = false;
 let curlyBraceOpened = false;
 let funcCurlyBracesLine = 0;

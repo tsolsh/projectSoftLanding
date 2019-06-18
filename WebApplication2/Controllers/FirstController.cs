@@ -211,11 +211,11 @@ namespace WebApplication2.Controllers
 
 
         [HttpGet]
-        public ActionResult quiz2_result(int id)
+        public void quiz2_result(int id)
         {
             player.Score += id * 12;
             player.Enter++;
-            return RedirectToAction("Menu");
+            //return RedirectToAction("Menu");
 
         }
 

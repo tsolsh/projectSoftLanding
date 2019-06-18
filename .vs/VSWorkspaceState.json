@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\WebApplication2",
-    "\\WebApplication2\\Controllers",
     "\\WebApplication2\\Games",
+    "\\WebApplication2\\Games\\FindTheErrors",
+    "\\WebApplication2\\Games\\FindTheErrors\\level9",
     "\\WebApplication2\\Games\\RockPaperScissorsLizardSpock\\assets",
-    "\\WebApplication2\\Games\\RockPaperScissorsLizardSpock\\assets\\images\\pack2",
-    "\\WebApplication2\\Games\\RockPaperScissorsLizardSpock\\assets\\js",
-    "\\WebApplication2\\Games\\Simon\\js",
-    "\\WebApplication2\\Views",
-    "\\WebApplication2\\Views\\First"
+    "\\WebApplication2\\Games\\RockPaperScissorsLizardSpock\\assets\\css",
+    "\\WebApplication2\\Games\\RockPaperScissors\\assets",
+    "\\WebApplication2\\Games\\RockPaperScissors\\assets\\css",
+    "\\WebApplication2\\Games\\Simon\\css"
   ],
-  "SelectedNode": "\\WebApplication2\\Views\\First\\RPS2.cshtml",
+  "SelectedNode": "\\WebApplication2.sln",
   "PreviewInSolutionExplorer": false
 }

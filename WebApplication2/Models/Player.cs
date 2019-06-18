@@ -15,7 +15,7 @@ namespace WebApplication2.Models
             this.UserName = "adi";
             this.pla = new List<Player>();
             this.Enter = 0;
-            this.Score = 150;
+            this.Score = 0;
             this.MemoryLevel = 0;
             this.TetrisLevel = 0;
             this.SnakeNLaddersLevel = 0;
