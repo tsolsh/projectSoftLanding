@@ -12,7 +12,7 @@ namespace WebApplication2.Models
         private List<Player> pla;
 
         public Player() {
-            this.UserName = "adi";
+            this.UserName ="adi";
             this.pla = new List<Player>();
             this.Enter = 0;
             this.Score = 0;
