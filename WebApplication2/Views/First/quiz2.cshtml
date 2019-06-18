@@ -13,7 +13,7 @@
         .button2 {
             position: sticky;
             top: 70%;
-            left: 45%;
+            left: 41%;
             padding: 1.2em 4.2em;
             border: 0.1em solid #FFFFFF;
             margin: 169px 0.3em 0.3em 0;
@@ -39,7 +39,11 @@
     </style>
 </head>
 <body style="background-image: url(https://www.endsight.net/hubfs/Blog/5-accounting-process-red-flags-caused-by-business-growth.jpg);height:100%;background-position: center">
+    <button onclick="exit()" class="button2" style="margin: 0px 0.3em 0.3em 0; position:unset;">
+        Exit
+    </button>
     <div class="grid">
+        
         <div id="quiz">
             <h1>Quiz</h1>
             <hr style="margin-bottom: 20px" />
@@ -57,7 +61,7 @@
             </footer>
         </div>
         <a id="btn" class="button2" href="~/First/Menu">
-            return to menu
+            Return to menu
         </a>
     </div>
 
@@ -142,13 +146,17 @@
 
         var questions = [
             new Question("Which one is not an object oriented programming language?", ["java", "C#", "C++", "C"], "C"),
-            new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
+            new Question("Which of the following operator has the highest precedence in the following?", ["()", "sizeof", "*", "+"], "()"),
             new Question("In memory - where are the dynamic variables ?", ["data", "heap", "stack", "code"], "heap"),
+            new Question("How many bits are in a byte?", ["1", "2", "4", "8"], "8"),
             new Question("There are ____ main components of object oriented programming", ["1", "6", "2", "4"], "4"),
-            new Question("In memory - where are the code segment ?", ["data", "heap", "stack", "code"], "code"),
             new Question("Which language is used for web apps?", ["PHP", "Python", "Javascript", "All"], "All"),
             new Question("In memory - where are the global variables ?", ["data", "heap", "stack", "code"], "data"),
             new Question("MVC is a ____.", ["Language", "Library", "Framework", "All"], "Framework"),
+            new Question("Which function will you choose to join two words?", ["strcpy()", "strcat()", "strncon()", "memcon()"], "strcat()"),
+            new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
+            new Question("Pick the operator that associate from the right?", ["?", "+=", "=", "All"], "All"),
+            new Question("Which of the following declarations is not supported by C?", ["String str", "char * str", "float str = 3e2", "Both String str; & float str = 3e2;"], "a"),
             new Question("In memory - where are the local variables?", ["data", "heap", "stack", "code"], "stack"),
         ];
 
@@ -165,6 +173,16 @@
             //call is successfully completed and we got result in data
           } 
           });
+        }
+
+        function exit() {
+             var URl = '@Url.Action("quiz2_result", "First")';
+                $.ajax({
+                    url: URl,
+                    data: { id: quiz.score}
+            });
+            window.location = "/../First/Menu";
+
         }
     </script>
 </body>

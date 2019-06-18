@@ -211,11 +211,11 @@ namespace WebApplication2.Controllers
 
 
         [HttpGet]
-        public ActionResult quiz2_result(int id)
+        public void quiz2_result(int id)
         {
-            player.Score += id * 20;
+            player.Score += id * 12;
             player.Enter++;
-            return RedirectToAction("Menu");
+            //return RedirectToAction("Menu");
 
         }
 
@@ -761,6 +761,76 @@ namespace WebApplication2.Controllers
                 _testData.Close();
             }
             using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/Snake/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
+
+        public ActionResult Simon()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public void simon_result(int id, int levelId)
+        {
+            player.Score += id;
+            player.SimonScore += id;
+            player.SimonLevel = levelId;
+
+        }
+
+        [HttpGet]
+        public void exitSimon(int id)
+        {
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/Simon/data.txt"), false))
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/Simon/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
+
+
+        public ActionResult RPS1()
+        {
+            return View();
+        }
+
+        public ActionResult RPS2()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public void RPS_result(int id, int levelId)
+        {
+            player.Score += id;
+            player.RPSScore += id;
+            player.RPSLevel = levelId;
+
+        }
+
+        [HttpGet]
+        public void exitRPS(int id)
+        {
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/RockPaperScissors/data.txt"), false))
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/RockPaperScissors/data.txt"), true))
             {
 
                 file.WriteLine(id.ToString()); // Write the file.

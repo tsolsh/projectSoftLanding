@@ -12,10 +12,10 @@ namespace WebApplication2.Models
         private List<Player> pla;
 
         public Player() {
-            this.UserName = "adi";
+            this.UserName ="adi";
             this.pla = new List<Player>();
             this.Enter = 0;
-            this.Score = 150;
+            this.Score = 0;
             this.MemoryLevel = 0;
             this.TetrisLevel = 0;
             this.SnakeNLaddersLevel = 0;
