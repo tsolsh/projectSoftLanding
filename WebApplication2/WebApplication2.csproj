@@ -390,6 +390,7 @@
     <Content Include="Games\FindTheErrors\Capture8.PNG" />
     <Content Include="Games\FindTheErrors\Capture9.PNG" />
     <Content Include="Games\FindTheErrors\correct.mp3" />
+    <Content Include="Games\FindTheErrors\data.txt" />
     <Content Include="Games\FindTheErrors\error.wav" />
     <Content Include="Games\FindTheErrors\gettyimages-948075622-170667a.jpg" />
     <Content Include="Games\FindTheErrors\leaves-pattern\leaves-pattern\leaves-pattern.png" />

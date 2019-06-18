@@ -86,29 +86,29 @@
                 </div>
             }
         }
-        @{if (Model.PongLevel > 1)
+        @{if (Model.SnakeLevel > 4)
             {
                 <div class="wrapper">
-                    <a class="button" href="~/Games/Pong/pong.html">Pong</a>
+                    <a class="button" href="~/Games/Snake/snake.html">Snake</a>
                 </div>
             }
             else
             {
                 <div class="wrapper">
-                    <a class="button" style="cursor: not-allowed;" href="">Pong</a>
+                    <a class="button" style="cursor: not-allowed;" href="">Snake</a>
                 </div>
             }
         }
-        @{if (Model.FlappyLevel > 1)
+        @{if (Model.SimonLevel > 1)
             {
                 <div class="wrapper">
-                    <a class="button" href="~/Games/Flappy Bird/index.html">Flappy Bird</a>
+                    <a class="button" href="~/Games/Simon/index.html">Simon</a>
                 </div>
             }
             else
             {
                 <div class="wrapper">
-                    <a class="button" style="cursor: not-allowed;" href="">Flappy Bird</a>
+                    <a class="button" style="cursor: not-allowed;" href="">Simon</a>
                 </div>
             }
         }
@@ -139,6 +139,19 @@
                 </div>
             }
         }
+        @{if (Model.RPSLevel > 3)
+            {
+                <div class="wrapper">
+                    <a class="button" href="~/Games/PacMan/index.html">Rock Paper Scissors</a>
+                </div>
+            }
+            else
+            {
+                <div class="wrapper">
+                    <a class="button" style="cursor: not-allowed;" href="">Rock Paper Scissors</a>
+                </div>
+            }
+        }
         <!-- Filter: https://css-tricks.com/gooey-effect/ -->
         <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
             <defs>
@@ -160,7 +173,7 @@
                 </filter>
             </defs>
         </svg>
-        <div class="boxMessage" >
+        <div class="boxMessage">
             <p id="box">
                 If you want to unlock a game you need to finish all his levels in the previous sections.
             </p>

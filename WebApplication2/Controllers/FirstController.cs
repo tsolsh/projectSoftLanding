@@ -407,7 +407,20 @@ namespace WebApplication2.Controllers
         }
         public ActionResult FDE1()
         {
-            return View();
+            string level;
+            using (StreamReader file = new StreamReader(Server.MapPath("~/Games/FindTheErrors/data.txt"), true))
+            {
+                level = file.ReadLine();
+            }
+            if (level == "1")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("FDE" + level);
+
+            }
         }
         public ActionResult FDE2()
         {
@@ -439,7 +452,20 @@ namespace WebApplication2.Controllers
         }
         public ActionResult FDE9()
         {
-            return View();
+            string level;
+            using (StreamReader file = new StreamReader(Server.MapPath("~/Games/FindTheErrors/data.txt"), true))
+            {
+                level = file.ReadLine();
+            }
+            if (level == "9")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("FDE" + level);
+
+            }
         }
         public ActionResult FDE10()
         {
@@ -471,7 +497,20 @@ namespace WebApplication2.Controllers
         }
         public ActionResult FDE17()
         {
-            return View();
+            string level;
+            using (StreamReader file = new StreamReader(Server.MapPath("~/Games/FindTheErrors/data.txt"), true))
+            {
+                level = file.ReadLine();
+            }
+            if (level == "17")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("FDE" + level);
+
+            }
         }
         public ActionResult FDE18()
         {
@@ -526,8 +565,8 @@ namespace WebApplication2.Controllers
         public void FDE_result(int id, int levelId)
         {
             player.Score += id;
-            player.FillScore += id;
-            player.FillLevel = levelId;
+            player.FDEScore += id;
+            player.FDELevel = levelId;
 
         }
 

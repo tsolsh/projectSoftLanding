@@ -244,8 +244,8 @@
                         {
                             <p class="other">Status:<span class="scnd-font-color">Expert</span></p>
                         }
-                        <p class="other">Progress:<span class="scnd-font-color">45 %</span></p>
-                        <p class="other">Games Completed:<span class="scnd-font-color">4 / 10</span></p>
+                        <p class="other">Progress:<span class="scnd-font-color">@Model.Advance %</span></p>
+                        <p class="other">Games Completed:<span class="scnd-font-color">@Model.GamePlayed / 10</span></p>
                     }
                 </div>
             </div>
@@ -322,37 +322,30 @@
                                         </tr>
 
                                         <tr class="row100 body">
-                                            <td class="cell100 column1">Corrections</td>
-                                            <td class="cell100 column2">0</td>
-                                            <td class="cell100 column3">0</td>
+                                            <td class="cell100 column1">Fill In The Blanks</td>
+                                            <td class="cell100 column2">@Model.FillScore</td>
+                                            <td class="cell100 column3">@Model.FillLevel</td>
 
                                         </tr>
 
                                         <tr class="row100 body">
-                                            <td class="cell100 column1">Ping Pong</td>
-                                            <td class="cell100 column2">0</td>
-                                            <td class="cell100 column3">0</td>
+                                            <td class="cell100 column1">Find The Errors</td>
+                                            <td class="cell100 column2">@Model.FDEScore</td>
+                                            <td class="cell100 column3">@Model.FDELevel</td>
 
                                         </tr>
 
                                         <tr class="row100 body">
-                                            <td class="cell100 column1">Flappy Bird</td>
-                                            <td class="cell100 column2">0</td>
-                                            <td class="cell100 column3">0</td>
-
-                                        </tr>
-
-                                        <tr class="row100 body">
-                                            <td class="cell100 column1">Pack Man</td>
-                                            <td class="cell100 column2">0</td>
-                                            <td class="cell100 column3">0</td>
+                                            <td class="cell100 column1">PacMan</td>
+                                            <td class="cell100 column2">@Model.PacmanScore</td>
+                                            <td class="cell100 column3">@Model.PacmanLevel</td>
 
                                         </tr>
 
                                         <tr class="row100 body">
                                             <td class="cell100 column1">Space Invaders</td>
-                                            <td class="cell100 column2">0</td>
-                                            <td class="cell100 column3">0</td>
+                                            <td class="cell100 column2">@Model.SpaceScore</td>
+                                            <td class="cell100 column3">@Model.SpaceLevel</td>
 
                                         </tr>
 

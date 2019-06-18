@@ -22,11 +22,10 @@ namespace WebApplication2.Models
             this.SnakeLevel = 0;
             this.SimonLevel = 0;
             this.RPSLevel = 0;
-            this.PongLevel = 0;
-            this.FlappyLevel = 0;
             this.SpaceLevel = 0;
             this.PacmanLevel = 0;
             this.FillLevel = 0;
+            this.FDELevel = 0;
             this.SNLPos = 0;
         }
         public void copy(Player player) {
@@ -99,7 +98,7 @@ namespace WebApplication2.Models
         [Display(Name = "Advance")]
         public float Advance { get {
                 float adv = 0;
-                float totalLevels = MemoryLevel + TetrisLevel + SnakeLevel + SnakeNLaddersLevel + SimonLevel +RPSLevel+FillLevel;
+                float totalLevels = MemoryLevel + TetrisLevel + SnakeLevel + SnakeNLaddersLevel + SimonLevel + RPSLevel + FillLevel + FDELevel;
                 adv = totalLevels *10/100;
                 return adv;
             } set { } }
@@ -136,6 +135,18 @@ namespace WebApplication2.Models
                 {
                     games++;
                 }
+                if (this.FDELevel == 8)
+                {
+                    games++;
+                }
+                if (this.PacmanLevel == 1)
+                {
+                    games++;
+                }
+                if (this.SpaceLevel == 1)
+                {
+                    games++;
+                }
                 return games;
 
             }
@@ -154,7 +165,11 @@ namespace WebApplication2.Models
         [Display(Name = "Score")]
         public int SnakeScore { get; set; }
 
-
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Score")]
+        public int FDEScore { get; set; }
+        
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Score")]
@@ -251,12 +266,7 @@ namespace WebApplication2.Models
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Level")]
-        public int PongLevel { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "Level")]
-        public int FlappyLevel { get; set; }
+        public int FDELevel { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
