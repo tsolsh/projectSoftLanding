@@ -10,6 +10,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
 using System.Web.UI;
 
+/// <summary>
+/// firstController class
+/// a class that controls the functions of the client(view) and the function of our 
+/// player (server).
+/// </summary>
 namespace WebApplication2.Controllers
 {
     public class FirstController : Controller
@@ -20,8 +25,10 @@ namespace WebApplication2.Controllers
 
         public FirstController()
         {
+            //create users file
             string dirPath = Path.GetDirectoryName(
             System.Reflection.Assembly.GetExecutingAssembly().Location);
+            //create path to filename
             FileName = dirPath + FileName;
             if (!System.IO.File.Exists(FileName))
             {            
@@ -67,6 +74,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Login(Player p)
         {
+            //read from user file
             if (System.IO.File.Exists(FileName))
             {
                 Stream openFileStream = System.IO.File.OpenRead(FileName);
@@ -84,17 +92,17 @@ namespace WebApplication2.Controllers
                 return View();
             }
             bool user_exists = false;
-            //bool pass_right = false;
             int i = 0; 
             foreach (Player pl in playersList)
             {
+                //check if username exists
                 if(p.UserName == pl.UserName && p.Password == pl.Password) {
                     user_exists = true;
                     break;
                 }
                 i++;
             }
-
+            //if username not in the file
             if (!user_exists)
             {
                 ModelState.AddModelError("username", "username not found or matched");
@@ -112,6 +120,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Signup(Player p)
         {
+            //update our player
             Player newPlayer = new Player();
             newPlayer.UserName = p.UserName;
             newPlayer.Password = p.Password;
@@ -231,10 +240,11 @@ namespace WebApplication2.Controllers
 
         public ActionResult Matching1()
         {
+            //if score above 100 start from level 2,else level 1
             if (player.Score < 100) {
                 return View();
             }
-            if (player.Score > 100 && player.Score < 200)
+            if (player.Score >= 100 && player.Score < 200)
             {
                 return RedirectToAction("Matching2");
             }
@@ -246,6 +256,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void matching1_result(int id)
         {
+            //update scores and levels
             player.Score += id;
             player.MemoryScore += id;
             player.MemoryLevel = 1;
@@ -407,6 +418,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult FDE1()
         {
+            //read from data file the level number 
             string level;
             using (StreamReader file = new StreamReader(Server.MapPath("~/Games/FindTheErrors/data.txt"), true))
             {
@@ -452,6 +464,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult FDE9()
         {
+            //read from data file the level number 
             string level;
             using (StreamReader file = new StreamReader(Server.MapPath("~/Games/FindTheErrors/data.txt"), true))
             {
@@ -497,6 +510,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult FDE17()
         {
+            //read from data file the level number 
             string level;
             using (StreamReader file = new StreamReader(Server.MapPath("~/Games/FindTheErrors/data.txt"), true))
             {
@@ -546,7 +560,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void exitFDE(int id)
         {
-
+            //read from data file the level number 
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), false))
             {
                 for (int i = 0; i < 24; i++)
@@ -573,6 +587,7 @@ namespace WebApplication2.Controllers
         public ActionResult Fill1()
         {
             string level;
+            //read from data file the level number 
             using (StreamReader file = new StreamReader(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
             {
                 level = file.ReadLine();
@@ -617,6 +632,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Fill9()
         {
+            //read from data file the level number 
             string level;
             using (StreamReader file = new StreamReader(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
             {
@@ -662,6 +678,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Fill17()
         {
+            //read from data file the level number 
             string level;
             using (StreamReader file = new StreamReader(Server.MapPath("~/Games/completeTheCode/data.txt"), true))
             {
@@ -708,7 +725,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void exitFill(int id)
         {
-            
+            //read from data file the level number 
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/completeTheCode/data.txt"), false))
             {
                 for (int i = 0; i < 24; i++)
@@ -734,6 +751,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void exitTetris(int id)
         {
+            //read from data file the level number 
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/TetrisCode/data.txt"), false))
             {
                 for (int i = 0; i < 6; i++)
@@ -752,6 +770,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void exitSnake(int id)
         {
+            //read from data file the level number 
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/Snake/data.txt"), false))
             {
                 for (int i = 0; i < 6; i++)
@@ -784,6 +803,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void exitSimon(int id)
         {
+            //read from data file the level number 
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/Simon/data.txt"), false))
             {
                 for (int i = 0; i < 4; i++)
@@ -822,6 +842,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public void exitRPS(int id)
         {
+            //read from data file the level number 
             using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/RockPaperScissors/data.txt"), false))
             {
                 for (int i = 0; i < 6; i++)

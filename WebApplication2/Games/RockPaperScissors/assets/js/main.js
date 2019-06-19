@@ -154,7 +154,7 @@ function reset() {
 	
 }
 
-var level = 3;
+var level = 1;
 function initLevels() {
 	let solution = document.getElementById("solution");
 	solution.value = "void main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n}";

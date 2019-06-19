@@ -69,6 +69,7 @@ namespace WebApplication2.Models
         {
             get
             {
+                //sort players scores from the highest to lowest
                 int temp = 0;
                 for (int write = 0; write < pla.Count; write++)
                 {
@@ -97,6 +98,7 @@ namespace WebApplication2.Models
         [DataType(DataType.Text)]
         [Display(Name = "Advance")]
         public float Advance { get {
+                //evaluate progress by number of level passed
                 float adv = 0;
                 float totalLevels = MemoryLevel + TetrisLevel + SnakeLevel + SnakeNLaddersLevel + SimonLevel + RPSLevel + FillLevel + FDELevel;
                 adv = totalLevels *10/100;
