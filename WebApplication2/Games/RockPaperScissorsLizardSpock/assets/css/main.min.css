@@ -140,6 +140,20 @@ textarea {
 	border: 3px dashed white;
 	display:none;
 }
+a {
+	position: absolute;
+	background: black;
+	color: white;
+	top: 93%;
+	left: 7%;
+	width: 200px;
+	opacity:0.9;
+}
+a:Hover {
+	border: 3px solid blue;
+	cursor: pointer;
+	opacity:1;
+}
 .delay {
 	display:none;
 }

@@ -225,7 +225,7 @@ function readSolAndApply() {
 		do {
 			var i, k;
 			//cleaning all the spaces before the arg.
-			for(i = 0; solutionString[curLine].charAt(i) === ' '; ++i) {}
+			for(i = 0; solutionString[curLine].charAt(i) === ' ' || solutionString[curLine].charAt(i) === '\t'; ++i) {}
 			solutionString[curLine] = solutionString[curLine].replace(solutionString[curLine].substring(0, i), "");
 			//checking if the line is empty or a NOTE line. if yes, moving to next line.
 			if(solutionString[curLine] == "" || solutionString[curLine].substring(0, 2) == "//"){
@@ -249,19 +249,6 @@ function readSolAndApply() {
 					readSolAndApply();
 					return 0;
 				}
-				/*
-				while (i < solutionString[curLine].length){
-					if (solutionString[curLine].charAt(i) !== ' ' && solutionString[curLine].charAt(i) !== '\n'){
-						alert("please don't put anything after the '}' at line " + (curLine + 1) + ".");
-						return -1;
-					}
-					i++;
-				}
-				curLine++;
-				workingTable[workingTable.length] = "}";
-				readSolAndApply();
-				return 0;
-				*/
 			}
 			
 			//getting to end of first arg. it is till ' '(String, int etc) or ';'(break, cont...) or '(' (if(..), playMove(..))

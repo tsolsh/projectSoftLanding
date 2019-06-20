@@ -1,229 +1,187 @@
-﻿
-let order = [];
-let playerOrder = [];
-let flash;
-let turn;
-let good;
-let compTurn;
-let intervalId;
-let noise = true;
-let on = true;
-let win;
+$("textarea").keydown(function(e) {
+    if(e.keyCode === 9) { // tab was pressed
+        // get caret position/selection
+        var start = this.selectionStart;
+            end = this.selectionEnd;
 
-const turnCounter = document.querySelector("#turn");
-const topLeft = document.querySelector("#topleft");
-const topRight = document.querySelector("#topright");
-const bottomLeft = document.querySelector("#bottomleft");
-const bottomRight = document.querySelector("#bottomright");
-const startButton = document.querySelector("#start");
+        var $this = $(this);
 
-startButton.addEventListener('click', (event) => {
-    if (on || win) {
-        play();
+        // set textarea value to: text before caret + tab + text after caret
+        $this.val($this.val().substring(0, start)
+                    + "\t"
+                    + $this.val().substring(end));
+
+        // put caret at right position again
+        this.selectionStart = this.selectionEnd = start + 1;
+
+        // prevent the focus lose
+        return false;
     }
 });
 
-function play() {
-    win = false;
-    order = [];
-    playerOrder = [];
-    flash = 0;
-    intervalId = 0;
-    turn = 1;
-    turnCounter.innerHTML = 1;
-    good = true;
-    for (var i = 0; i < 20; i++) {
-        order.push(Math.floor(Math.random() * 4) + 1);
-    }
-    compTurn = true;
+var score = 0;          
+var hero = {
+	top: 534,
+	left: 648
+};
+var missiles = [];
+var enemies = [
+   /*{ left: 400, top: 100 },
+   { left: 500, top: 100 },
+   { left: 600, top: 100 },
+   { left: 700, top: 100 },
+   { left: 800, top: 100 },
+   { left: 900, top: 100 },
+   { left: 400, top: 175 },
+   { left: 500, top: 175 },
+   { left: 600, top: 175 },
+   { left: 700, top: 175 },
+   { left: 800, top: 175 },
+   { left: 900, top: 175 },
+   */
+];
 
-    intervalId = setInterval(gameTurn, 800);
+function setEnemiesAndHero() {
+	enemies = [
+	   { left: 400, top: 100 },
+	   { left: 500, top: 100 },
+	   { left: 600, top: 100 },
+	   { left: 700, top: 100 },
+	   { left: 800, top: 100 },
+	   { left: 900, top: 100 },
+	   { left: 400, top: 175 },
+	   { left: 500, top: 175 },
+	   { left: 600, top: 175 },
+	   { left: 700, top: 175 },
+	   { left: 800, top: 175 },
+	   { left: 900, top: 175 },
+   
+	];
+	hero = {
+		top: 534,
+		left: 390
+	};
+	moveHero();
 }
 
-function gameTurn() {
-    on = false;
-    if (flash === turn) {
-        clearInterval(intervalId);
-        compTurn = false;
-        clearColor();
-        on = true;
-		moveNextLevel();
-    }
+document.onkeydown = function (e) {
+	/*
+	if (e.keyCode === 37) {
+		console.log("LEFT");
+		hero.left -= 10;
+		moveHero();
 
-    if (compTurn) {
-        clearColor();
-        setTimeout(() => {
-			if (order[flash] === 1) one();
-			if (order[flash] === 2) two();
-			if (order[flash] === 3) three();
-			if (order[flash] === 4) four();
-			if (order[flash] != playerOrder[flash]) {
-				alert("you missed up at the "+ (flash +1) + "th color!, try Again.");
-			    clearInterval(intervalId);
-				compTurn = false;
-				clearColor();
-				on = true;
+	}
+	else if (e.keyCode === 39) {
+		console.log("RIGHT");
+		hero.left += 10;
+		moveHero();
+
+	}
+
+	else if (e.keyCode === 32) {
+		// space
+		/*
+		console.log("FIRE");
+		missiles.push({
+			left: hero.left + 15,
+			top: hero.top
+		})
+		console.log(missiles);
+		drawMissiles();
+		
+	}
+	*/
+}
+
+function moveHero() {
+	//moving the hero by changing the css left style.
+	document.getElementById('hero').style.left = hero.left + "px";
+}
+
+function drawMissiles() {
+	document.getElementById('missiles').innerHTML = "";
+	for (var missile = 0; missile < missiles.length; missile = missile + 1) {
+		document.getElementById('missiles').innerHTML +=
+		`<div class='missile' style='left:${missiles[missile].left}px; top:${missiles[missile].top}px;'></div>`;
+	}
+}
+
+function drawEnemies() {
+	document.getElementById('enemies').innerHTML = "";
+	for (var enemy = 0; enemy < enemies.length; enemy = enemy + 1) {
+		//learning something new, add the div class by putting the div inside of '`' and also $ --> gets value
+		document.getElementById('enemies').innerHTML +=
+		`<div class='enemy' style='left:${enemies[enemy].left}px; top:${enemies[enemy].top}px;'></div>`;
+	}
+}
+
+function moveMilssiles() {
+	for (var missile = 0; missile < missiles.length; missile = missile + 1) {
+		missiles[missile].top -= 5;
+	}
+}
+
+function moveEnemies() {
+	for (var enemy = 0; enemy < enemies.length; enemy = enemy + 1) {
+		enemies[enemy].top += 1;
+	}
+}
+
+function collisionDetection() {
+	for (var enemy = 0; enemy < enemies.length; enemy = enemy + 1) {
+		for (var missile = 0; missile < missiles.length; missile = missile + 1) {
+			if ((missiles[missile].top <= enemies[enemy].top + 50) &&
+				(missiles[missile].top >= enemies[enemy].top) &&
+				(missiles[missile].left >= enemies[enemy].left) &&
+				(missiles[missile].left <= enemies[enemy].left + 50)) {
+				console.log("HIT");
+				//the splice function is like this arrayName.splice(index, 0 or 1 (0 == insert, 1 == delete), if you put another elm here it will either insert it if(0) or replace it if(1).)
+				enemies.splice(enemy, 1);
+				missiles.splice(missile, 1);
+				//so the above splice function is just removing the given indexes...
+				score+= 10;
+				$("#score").text(`${score}`);                        
 			}
-            flash++;
-        }, 200);
-    }
+			if (enemies.length === 0) {
+				moveNextLevel();
+				//document.location.reload(true);
+			}
+		}
+	}
 }
 
-function one() {
-    if (noise) {
-        let audio = document.getElementById("clip1")
-        audio.play();
-    }
-    noise = true;
-    topLeft.style.backgroundColor = "lightgreen"
+function deathDetection() {
+	for (var enemy = 0; enemy < enemies.length; enemy = enemy + 1) {
+		if (enemies[enemy].top >= hero.top - 50) {
+			//alert("You Lose");
+			document.location.reload(true);
+		}
+	}
 }
-
-function two() {
-    if (noise) {
-        let audio = document.getElementById("clip2")
-        audio.play();
-    }
-    noise = true;
-    topRight.style.backgroundColor = "tomato"
+/*
+setTimeout(moveMilssiles,400);
+setTimeout(drawMissiles,400);
+//moveEnemies();
+setTimeout(drawEnemies,40);
+setTimeout(collisionDetection,400);
+setTimeout(deathDetection,400);      
+*/
+function gameLoop() {            
+	setTimeout(gameLoop, 40);
+	moveMilssiles();
+	drawMissiles();
+	//moveEnemies();
+	drawEnemies();
+	collisionDetection();
+	deathDetection();            
 }
-
-function three() {
-    if (noise) {
-        let audio = document.getElementById("clip3")
-        audio.play();
-    }
-    noise = true;
-    bottomLeft.style.backgroundColor = "yellow"
-}
-
-function four() {
-    if (noise) {
-        let audio = document.getElementById("clip4")
-        audio.play();
-    }
-    noise = true;
-    bottomRight.style.backgroundColor = "lightskyblue"
-
-}
-
-function clearColor() {
-    topLeft.style.backgroundColor = "darkgreen"
-    topRight.style.backgroundColor = "darkred"
-    bottomLeft.style.backgroundColor = "goldenrod"
-    bottomRight.style.backgroundColor = "darkblue"
-
-}
-
-function flashColor() {
-    topLeft.style.backgroundColor = "lightgreen"
-    topRight.style.backgroundColor = "tomato"
-    bottomLeft.style.backgroundColor = "yellow"
-    bottomRight.style.backgroundColor = "lightskyblue"
-
-}
-
-topLeft.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(1);
-        check();
-        one();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
-})
-
-topRight.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(2);
-        check();
-        two();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
-})
-
-bottomLeft.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(3);
-        check();
-        three();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
-})
-
-bottomRight.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(4);
-        check();
-        four();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
-})
-
-function check() {
-    if (playerOrder[playerOrder.length -1] !== order[playerOrder.length -1]) {
-        good = false;
-    }
-
-    if (playerOrder.length == 10 && good) {
-        winGame();
-    }
-
-    if(good == false) {
-        flashColor();
-        turnCounter.innerHTML = "NO!"
-        setTimeout(() => {
-            turnCounter.innerHTML = turn;
-            clearColor();
-            play();
-            
-           
-        }, 800)
-
-        noise = false;
-    }
-
-    if(turn == playerOrder.length && good && !win) {
-        turn++;
-        playerOrder = [];
-        compTurn = true;
-        flash = 0;
-        turnCounter.innerHTML = turn;
-        intervalId = setInterval(gameTurn, 800)
-    }
-       
-}
-
-function winGame() {
-    flashColor();
-    turnCounter.innerHTML = "WIN!";
-    on = false;
-    win = true;
-}
-
-
-
-
-
+gameLoop();
 
 
 
 var skipFirstLines = 1;
-var skipLastLines = 1;
+var skipLastLines = 2;
 var solutionString = "";
 var curLine = 0;
 
@@ -233,20 +191,23 @@ let varsDicIndex = 0;
 
 var workingTable = [];
 let listOfTypes = { "string":"declare", "int":"declare", "String":"declare",
-					"playRhythm":"func", "peek":"func", "if":"func", "else":"func", "else if":"func", "switch":"func", "play":"func",
+					"heroShoot":"func", "isAlienAhead":"func", "areThereEnemies":"func", "moveHero":"func","createInv":"func", "createHero":"func", "peek":"func", "if":"func", "else":"func", "else if":"func", "switch":"func",
 					"break":"word", "continue":"word",
 					"case":"case", "default":"case",
 					"Stack":"object", "Queue":"object",
 					"while":"loop", "for":"loop"
 				};
-let oneWordFuncs = {"playRhythm":"func", "play":"func"};
+
+let scopedFuncs = {"if":"func", "else":"func", "while":"func", "for":"func"};
+let semicolonFuncs = {"heroShoot":"func", "isAlienAhead":"func", "areThereEnemies":"func", "moveHero":"func", "createInv":"func", "createHero":"func"};
+let twoArgsFuncs = {"createInv":"func", "createHero":"func"};
 let objectFunctions = {"isNotEmpty": "boolean", "push":"Stack", "pop":"Stack",
 					   "enqueue":"Queue", "dequeue":"queue"};
 let boolChecking = ["==",">=","<=","!=",">","<"];
 let enumValues = {"moveColor":"justToCheckIfHePutEnumName","GREEN":1, "RED":2, "YELLOW":3, "BLUE":4};
 let emptyVal = "!@#";
 let isThereIf = false;
-let curlyBraceOpened = false;
+let curlyBraceOpened = 0;
 let funcCurlyBracesLine = 0;
 var winningStreak = 0;
 let reseted = 1;
@@ -260,21 +221,160 @@ function Switch() {
 	workingTable = [];
 	playerOrder = [];
 	namesToTypesDic = {};
-	curlyBraceOpened = false;
+	curlyBraceOpened = 0;
+	if (level == 2) {
+		writingFunctionsChecking();
+		checkLevelTwoConditions();
+		return;
+	}
 	let res = readSolAndApply();
 	if (res !== -1) {
 		$("#doneButton").css("pointerEvents","none");
 		playTheCode();
 	}
+	if($("#doneButton").css("pointerEvents").toLowerCase() != 'auto') {
+		$("#doneButton").css("pointerEvents","auto");
+	}
 }
 
+
+function checkLevelTwoConditions() {
+	if (noChangeToFuncName != 4) {
+		alert("please don't touch the already written code!");
+		return -1;
+	}
+	if (!rightMoveHeroFunc) {
+		alert("it seems you messed up at the moveHero function, and also please try to write minimum line of code there...");
+		return -1;
+	}
+	if (!rightForLoop) {
+		alert("you MUST use a for-loop only! and please use the given loop variable 'i', in case you used a for loop, please put correct condition and only add the value of the 'i' by 1 at a time...");
+		return -1;
+	}
+	if (!rightIfCondition) {
+		alert("you must use 'if' and put RIGHT condition inside in order to return the correct boolean");
+		return -1;
+	}
+	if (!heReturnedTrue) {
+		alert("missing a 'return true' on the function");
+		return -1;
+	}
+	if (!heReturnedfalse) {
+		alert("missing a 'return false' on the function");
+		return -1;	
+	}
+	//he passed all!
+	alert("AMAZING!, you declared the functions correctly! :)");
+	moveNextLevel();
+	return 0;
+}
+
+
+let noChangeToFuncName = 0;
+let rightMoveHeroFunc = false;
+let rightForLoop = false;
+let rightIfCondition = false;
+let heReturnedTrue = false;
+let heReturnedfalse = false;
+function writingFunctionsChecking() {
+	noChangeToFuncName = 0;
+	rightMoveHeroFunc = false;
+	rightForLoop = false;
+	rightIfCondition = false;
+	heReturnedTrue = false;
+	heReturnedfalse = false;
+	for (let i = 0; i < solutionString.length; i++) {
+		solutionString[i] =  removeAllSpacesNTabs(solutionString[i]);
+		if (solutionString[i] == "" || solutionString[i].substring(0,2) == "//") {
+			//in case it was empty line...only spaces and tabs...
+			continue;
+		}
+		//noChangeToFuncName must be 4 on level 2!.
+		if (solutionString[i] == "voidmoveHero(intdist){") {
+			noChangeToFuncName++;
+		}
+		if (solutionString[i] == "boolisAlienAhead(invaders[],hero){") {
+			noChangeToFuncName++;
+		}
+		if (solutionString[i] == "intsize=invaders.length;") {
+			noChangeToFuncName++;
+		}
+		if (solutionString[i] == "inti;//<--loopvariable!") {
+			noChangeToFuncName++;
+		}
+		
+		if (solutionString[i] == "hero.x+=dist;" || solutionString[i] == "hero.x=hero.x+dist;" || solutionString[i] == "hero.x=dist+hero.x;") {
+			rightMoveHeroFunc = true;
+		}
+		//all the shapes of the for-loop..
+		if (solutionString[i] == "for(i=0;i<size;i++){" || solutionString[i] == "for(i=0;i<=size-1;i++){"
+		 || solutionString[i] == "for(i=0;i<size;i+=1){" || solutionString[i] == "for(i=0;i<=size-1;i+=1){"
+		 || solutionString[i] == "for(i=0;i<size;i=i+1){" || solutionString[i] == "for(i=0;i<=size-1;i=i+1){"
+		 || solutionString[i] == "for(i=0;i<size;i=1+i){" || solutionString[i] == "for(i=0;i<=size-1;i=1+i){"
+		 || solutionString[i] == "for(i=0;i<size;++i){" || solutionString[i] == "for(i=0;i<=size-1;++i){"
+		|| solutionString[i] == "for(i=0;size>i;i++){" || solutionString[i] == "for(i=0;size-1>=i;i++){"
+		 || solutionString[i] == "for(i=0;size>i;++i){" || solutionString[i] == "for(i=0;size-1>=i;++i){"
+		 || solutionString[i] == "for(i=0;size>i;i+=1){" || solutionString[i] == "for(i=0;size-1>=i;i+=1){"
+		 || solutionString[i] == "for(i=0;size>i;i=i+1){" || solutionString[i] == "for(i=0;size-1>=i;i=i+1){"	
+		 || solutionString[i] == "for(i=0;size>i;i=1+i){" || solutionString[i] == "for(i=0;size-1>=i;i=1+i){"	
+		|| solutionString[i] == "for(i=0;i<invaders.length;i++){" || solutionString[i] == "for(i=0;i<=invaders.length-1;i++){"
+		 || solutionString[i] == "for(i=0;i<invaders.length;++i){" || solutionString[i] == "for(i=0;i<=invaders.length-1;++i){"
+		 || solutionString[i] == "for(i=0;i<invaders.length;i+=1){" || solutionString[i] == "for(i=0;<=invaders.length-1;i+=1){"
+		 || solutionString[i] == "for(i=0;i<invaders.length;i=i+1){" || solutionString[i] == "for(i=0;<=invaders.length-1;i=i+1){"	
+		 || solutionString[i] == "for(i=0;i<invaders.length;i=1+i){" || solutionString[i] == "for(i=0;<=invaders.length-1;i=1+i){"	
+		|| solutionString[i] == "for(i=0;invaders.length>i;i++){" || solutionString[i] == "for(i=0;invaders.length-1>=i;i++){"
+		 || solutionString[i] == "for(i=0;invaders.length>i;++i){" || solutionString[i] == "for(i=0;invaders.length-1>=i;++i){"
+		 || solutionString[i] == "for(i=0;invaders.length>i;i+=1){" || solutionString[i] == "for(i=0;invaders.length-1>=i;i+=1){"
+		 || solutionString[i] == "for(i=0;invaders.length>i;i=i+1){" || solutionString[i] == "for(i=0;invaders.length-1>=i;i=i+1){"	
+		 || solutionString[i] == "for(i=0;invaders.length>i;i=1+i){" || solutionString[i] == "for(i=0;invaders.length-1>=i;i=1+i){"	
+		) {
+			//he put a right for loop...
+			rightForLoop = true;
+		}
+		if (solutionString[i] == "if(invaders[i].x==hero.x){" || solutionString[i] == "if(hero.x==invaders[i].x){"
+		 || solutionString[i] == "if(invaders[i].x==hero.x)" || solutionString[i] == "if(hero.x==invaders[i].x)") {
+			//he put a right if...
+			rightIfCondition = true;
+		}
+		if (solutionString[i] == "returntrue;" || solutionString[i] == "return1;") {
+			heReturnedTrue = true;
+		}
+		if (solutionString[i] == "returnfalse;" || solutionString[i] == "return0;") {
+			heReturnedfalse = true;
+		}
+	}
+	return 0;
+}
+
+function removeAllSpacesNTabs(str) {
+	let j = 0;
+	for (let i = 0; i < str.length; i++) {
+		//saving start index...
+		j = i;
+		//is space or tab then skip over all of them...
+		if (str[i] == ' ' || str[i] == '\t') {
+			while (str[j] == ' ' || str[j] == '\t'){
+				j++;
+				if (j >= str.length) {
+					break;
+				}
+			}
+			//removing all spaces and tabs..
+			str = str.removeSubtring(i, j);
+		}
+	}
+	return str;
+}
+
+
+let stringArg = "";
 function readSolAndApply() {
 	if (solutionString.length - skipLastLines > curLine) {
-		var stringArg = "";
+		stringArg = "";
 		do {
 			var i, k, j;
 			//cleaning all the spaces before the arg.
-			for(i = 0; solutionString[curLine].charAt(i) === ' '; ++i) {}
+			for(i = 0; solutionString[curLine].charAt(i) === ' ' || solutionString[curLine].charAt(i) === '\t' ; ++i) {}
 			solutionString[curLine] = solutionString[curLine].replace(solutionString[curLine].substring(0, i), "");
 			//checking if the line is empty or a NOTE line. if yes, moving to next line.
 			if(solutionString[curLine] == "" || solutionString[curLine].substring(0, 2) == "//"){
@@ -287,7 +387,7 @@ function readSolAndApply() {
 					return -1;
 				}
 				workingTable[workingTable.length] = "endFunc";
-				curlyBraceOpened = false;
+				curlyBraceOpened--;
 				i = 0;
 				i++;
 				for(; solutionString[curLine].charAt(i) === ' '; ++i) {}
@@ -453,7 +553,7 @@ function readSolAndApply() {
 							j++;
 							j = skipSpaces(j);
 							//this break sends us to the end of do-while(0)...
-						    break;
+							break;
 						}
 					} else {
 						//it means that he didn't put an opening braces so it failed.
@@ -629,16 +729,6 @@ function readSolAndApply() {
 					varsDic[variableName] = solutionString[curLine].substring(i, j);
 					j++;
 				}
-				//j++;
-				//skipping spaces after nameOfVariable.
-				/*
-				for (;solutionString[curLine].charAt(j) === ' '; ++j) {
-					if (solutionString[curLine].length <= j) {
-						alert(" a semicolon ';' is expected at end of line ", + (curLine + 1) + ".");
-						return;
-					}
-				}
-				*/
 				j = skipSpaces(j);
 				i = j;
 				//checking if we reached a semi-colon.
@@ -773,18 +863,32 @@ function readSolAndApply() {
 								i++;
 								i = skipSpaces(i);
 								j = i;
+								//skipping till the end or a function...
 								while (solutionString[curLine].charAt(j) !== '(' 
-										&& solutionString[curLine].charAt(j) !== ' '){
+										&& solutionString[curLine].charAt(j) !== ' '
+										&& solutionString[curLine].charAt(j) !== ';'){
 									j++;
 									if (j >= solutionString[curLine].length) {
-										alert("no such value variable/function at line " + (curLine + 1) + ".");
+										alert("missing ';' at line" + (curLine + 1) + ".");
 										return -1;
 									}
 								}
+								//for the return-value functions!!!!!!!!!!!!!!!!!!!!
 								if (solutionString[curLine].substring(i,j) in listOfTypes) {
 									stringArg += solutionString[curLine].substring(i,j);
 									varsDic[nameOfVars[varsDicIndex]] = solutionString[curLine].substring(i, j);
 									j++;
+								} else if( !(solutionString[curLine].substring(i,j) in varsDic) && isNaN(solutionString[curLine].substring(i,j))) {
+									alert("no such value variable/function at line " + (curLine + 1) + ".");
+									return -1;
+								} else {
+									//it is a variable or a val...
+									stringArg += solutionString[curLine].substring(i,j);
+									varsDic[nameOfVars[varsDicIndex]] = solutionString[curLine].substring(i, j);
+									j++;
+									j = skipSpaces(j);
+									//going to the end of the do-while(0)... the value at the j must be ';'.
+									break;
 								}
 								j = skipSpaces(j);
 								if (solutionString[curLine].charAt(j) !== ')') {
@@ -839,13 +943,14 @@ function readSolAndApply() {
 				//this case was actually dealt with above,even before the if-statement.
 			} else if (listOfTypes[solutionString[curLine].substring(0, k)] == "func") {
 				var colonCurle;
-				if (solutionString[curLine].substring(0, k) in oneWordFuncs){
+				if (solutionString[curLine].substring(0, k) in semicolonFuncs){
 					colonCurle = ';'
 				} else {
 					colonCurle = '{';
 				}
 				//we have now : 'func,functionName,' we need the 'argument'.
 				stringArg += solutionString[curLine].substring(0, i) + ",";
+				
 				//else we have added in the aboveeeeee lines the :'func,two-words funcName,'.
 				//let j = i;
 				j = i;
@@ -857,7 +962,7 @@ function readSolAndApply() {
 					if (solutionString[curLine].charAt(h) === '{') {
 						//removing the ','
 						stringArg = stringArg.substring(0, stringArg.length - 1);
-						curlyBraceOpened = true;
+						curlyBraceOpened++;
 						breakItNow = true;
 						break;
 					}
@@ -907,7 +1012,31 @@ function readSolAndApply() {
 					}
 				}
 				i = j;
+				//passing the '('
 				i++;
+				if (solutionString[curLine].substring(0, k) in twoArgsFuncs){
+					if ((i = readAllPlusMinusMultAdd(i,',')) == -1 ) {
+						return -1;
+					}					
+					i++;
+					if ((i = readAllPlusMinusMultAdd(i,')')) == -1 ) {
+						return -1;
+					}
+					i++;
+					//skipping till ';'
+					i = skipSpaces(i);
+					break;
+				} else if (solutionString[curLine].substring(0, k) in semicolonFuncs) { 
+					//calculating everysing...~~ :)
+					if ((i = readAllPlusMinusMultAdd(i,')')) == -1 ) {
+						return -1;
+					}
+					i++;
+					//skipping till ';'
+					i = skipSpaces(i);
+					break;
+				
+				}
 				var argsEnded = false;
 				//skipping the spaces...
 				i = skipSpaces(i);
@@ -920,6 +1049,7 @@ function readSolAndApply() {
 						&& solutionString[curLine].charAt(j) !== '.'){ 
 					if (solutionString[curLine].charAt(j) == '(') {
 						numberBracesOpened++;
+						break;
 					}
 					++j;
 				}
@@ -939,7 +1069,7 @@ function readSolAndApply() {
 							numberBracesOpened++;
 							break;
 						}
- 						++j;
+						++j;
 					}
 				}
 				//we reached the end, is it whitespace or is it ')'
@@ -965,6 +1095,33 @@ function readSolAndApply() {
 					j = skipSpaces(j);
 					argsEnded = true;
 					//n then we skip everything and go to the while(numberBracesOpened)...
+				} else if (solutionString[curLine].substring(i, j) in semicolonFuncs) {
+					//a function that doesn't accept any arguments for now...
+					stringArg += solutionString[curLine].substring(i, j);
+					j++;
+					if ((j = skipSpaces(j, ')')) == -1) {
+						return -1;
+					}
+					//there were a 2 ')'
+					j++;
+					if ((j = skipSpaces(j, ')')) == -1) {
+						return -1;
+					}
+					j++;
+					if ((j = skipSpaces(j, '{')) == -1) {
+						return -1;
+					}
+					curlyBraceOpened++;
+					j++;
+					while (j < solutionString[curLine].length){
+						if (solutionString[curLine].charAt(j) !== ' ' && solutionString[curLine].charAt(j) !== '\n'){
+							alert("please don't put anything after the '" + colonCurle + "' at line " + (curLine + 1) + ".");
+							return -1;
+						}
+						j++;
+					}
+					//going to end of do-while(0)...
+					break;
 				} else {
 					let k = j;
 					k = skipSpaces(k);
@@ -1048,11 +1205,8 @@ function readSolAndApply() {
 					return -1;
 				}
 				if (colonCurle === '{'){
-					if (curlyBraceOpened) {
-						alert("please close the opened curly braces of the function above line " + (curLine + 1) + ".");
-						return -1;
-					}
-					curlyBraceOpened = true;
+					//...................................................................................................................................................................................................i guess i will need to delete the below line in order to allow nesting!.
+					curlyBraceOpened++;
 					funcCurlyBracesLine = curLine + 1;
 				}
 				j++;
@@ -1209,88 +1363,66 @@ function readSolAndApply() {
 				//loop, nameOfFunction, 
 				stringArg += solutionString[curLine].substring(0, i) + ",";
 				i = skipSpaces(i);
-				//getting into the the ( of the while (
-				if (solutionString[curLine].charAt(i) !== '(') {
-					alert("missing a opening braces '(' at line " + (curLine + 1) + ".");
-					return -1;					
-				}
-				i++;
-				//getting into the first argumet inside the loop...
-				i = skipSpaces(i);
-				j = i;
-				//on this game we are only allowed to put the function of the object which are booolean only..
-				for (; solutionString[curLine].charAt(j) !== '.'; j++){
-					if (j >= solutionString[curLine].length){
-						//it means that he put some other conditions?
-						alert("please don't use anything beside the specified functions for this level, line" + (curLine + 1) + ".");
+				//reads object and its 0-parameters function..in case failed returns -1.
+				if (solutionString[curLine].substring(0, k) == "while"){
+					if ( solutionString[curLine].charAt(i) !== '(') {
+						alert("missing a '(' at line " + (curLine + 1) + ".");
 						return -1;
 					}
-				}
-				//checking if the object is actually declared or no...
-				if (!(solutionString[curLine].substring(i, j) in varsDic)) {
-					alert("the object " + solutionString[curLine].substring(i, j) + ", at line " + (curLine + 1) + ", wasn't declared/allocated before.");
-					return -1;
-				}
-				//adding the name of the object.
-				stringArg += solutionString[curLine].substring(i, j) + ",";
-				//in case he put something like this q.   push()...
-				j = skipSpaces(j);
-				i = j + 1;
-				for (; solutionString[curLine].charAt(j) != '('; j++){
-					if (solutionString[curLine].charAt(j) == ' ') {
-						break;
+					//j = checkObject(i);
+					i++;
+					//skip till, but don't skip the spaces..
+					if((j = skipTill(i, '(')) == -1) {
+						return -1
 					}
-					var batta = solutionString[curLine].charAt(j);
-					if (j >= solutionString[curLine].length) {
-						//it means that he put some other conditions?
-						alert("please don't use anything beside the specified functions for this level, line" + (curLine + 1) + ".");
+					if (!solutionString[curLine].substring(i, j) in listOfTypes) {
+						alert("'" + solutionString[curLine].substring(i,k) + "' at line " + (curLine + 1) + " is not available on this level!");
 						return -1;
 					}
-				}
-				//checking if the function is actually an existant one.
-				if (!(solutionString[curLine].substring(i, j) in objectFunctions)) {
-					alert("no such function at line " + (curLine + 1) + ".");
-					return -1;
-				//checking if the function is a boolean - returning type.
-				} else if (objectFunctions[solutionString[curLine].substring(i, j)] != "boolean") {
-					alert("please put only boolean-returning function in the while loop at line " + (curLine + 1) + ".");
-					return -1;
-				}
-				//adding the name of the function in the while loop...
-				stringArg += solutionString[curLine].substring(i, j);
-				j = skipSpaces(j);
-				if (solutionString[curLine].charAt(j) !== '(') {
-					alert("missing a opening braces '(' at line " + (curLine + 1) + ".");
-					return -1;					
-				}
-				//cause we had a function one for function ')' and one for the while ')' so from 1 to -1 ==> 2 times.
-				let numberBracesOpened = 1;
-				j++;
-				//i did !== -1 because the loop includes the main one, but the numberBracesOpened doesn't!.
-				while (numberBracesOpened !== -1) {
-					j = skipSpaces(j);
-					i = j;
+					//adding the boolean function for the while as a condition...
+					stringArg += solutionString[curLine].substring(i, j);
+					j++;
+					if((j = skipSpaces(j)) == -1) {
+						return -1;
+					}
 					if (solutionString[curLine].charAt(j) !== ')') {
-						alert("missing ')' at line " + (curLine + 1) + ".");
+						alert("missing a ')' at line " + (curLine + 1) + ".");
 						return -1;
-					}					
+					}
+					
+					//there was two ')'
 					j++;
-					numberBracesOpened--;
-				}
-				j = skipSpaces(j);
-				if (solutionString[curLine].charAt(j) !== '{') {
-					alert("missing ')' at line " + (curLine + 1) + ".");
-					return -1;
-				}
-				//in order to make the line '}' pass.
-				curlyBraceOpened = true;
-				j++;
-				while (j < solutionString[curLine].length){
-					if (solutionString[curLine].charAt(j) !== ' '){
-						alert("please don't put anything after the semi-colon '{' at line " + (curLine + 1) + ".");
+					if((j = skipSpaces(j)) == -1) {
+						return -1;
+					}
+					if (solutionString[curLine].charAt(j) !== ')') {
+						alert("missing a ')' at line " + (curLine + 1) + ".");
 						return -1;
 					}
 					j++;
+					//skipping spaces also till '{', the second parameter is to tell what is missing...
+					if ((j = skipSpaces(j, '{')) == -1) {
+						return -1;
+					}
+					if (solutionString[curLine].charAt(j) !== '{') {
+						alert("missing a '{' at line " + (curLine + 1) + ".");
+						return -1;
+					}
+					curlyBraceOpened++;
+					j++;
+					//reading after the { ....... only spaces /tabs allowed..
+					while (j < solutionString[curLine].length) {
+						if (solutionString[curLine].charAt(j) != ' ' && solutionString[curLine].charAt(j) != '\t') {
+							alert("please don't put anything after the '{' at line " + (curLine + 1) + ".");
+							return -1;
+						}
+					}
+					//DONE.
+				} else if (solutionString[curLine].substring(0, k) == "for") {
+					j = forLoopRead(i);
+				}
+				if (j == -1) {
+					return -1;
 				}
 				//going to the end of do-while(0).
 				break;
@@ -1327,11 +1459,19 @@ function readSolAndApply() {
 String.prototype.replaceAt=function(index, replacement) {
 	return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
+String.prototype.removeSubtring=function(begin, end) {
+	return this.substr(0, begin) + this.substr(end);
+}
 
 let aiChoice = "";
 let namesToTypesDic = {};
 let arraySizes = {};
 function playTheCode() {
+	var doThirdScopeForLoop = 0;
+	//firstScopeString is a stack that has the info of the firstscope of the loop.
+	var firstScopeString = [];
+	//stack is a stack that has the line of the for-loops...
+	var stack = [];
 	//varsDicIndex = 0;
 	varsDic = {};
 	namesToTypesDic = {};
@@ -1342,6 +1482,7 @@ function playTheCode() {
 	 - enteredFunc =0 => false-statement.*/
 	var enteredFunc = 2;
 	for (let i = 0; i < workingTable.length; ++i){
+		curLine = i;
 		var arguments = workingTable[i].split(',');
 		if (arguments[0] == "endFunc" && enteredFunc === 1) {
 			//gotta skip all the else-if n else statements.
@@ -1447,20 +1588,91 @@ function playTheCode() {
 			} else if (listOfTypes[arguments[0]] == "func"){
 				//it was func,functionName,arguments...now it is functionName,functionName, arguments...
 				//it went that way because i made nameToType dictionary..
-				if (arguments[1] == "playRhythm") {
-					if ( level != 1 ) {
-						alert("you can not use the function 'playRhythm' on this level");	
-						$("#doneButton").css("pointerEvents","auto");
+				if (arguments[1] in twoArgsFuncs ) {
+					//name, name, args..., end, args2.., end,
+					let l = 2;
+					//converting all the variables to their numeric values.
+					for (; arguments[l] != "end"; l++) {
+						if (arguments[l] in varsDic){
+							arguments[l] = varsDic[arguments[l]];
+						}
+					}
+					//skipping over the first end;
+					l++;
+					//converting after the first end... 
+					for (; arguments[l] != "end"; l++) {
+						if (arguments[l] in varsDic){
+							arguments[l] = varsDic[arguments[l]];
+						}
+					}
+					//calculating all the numeric value...
+					let x = sumAllValues(arguments, 2, "end");
+					let ind;
+					for (ind = 2; arguments[ind] != "end"; ind++){}
+					ind++;
+					let y = sumAllValues(arguments, ind, "end");
+					if (x == -1 || y == -1) {
 						return -1;
 					}
-					playRhythm(arguments[2]);
-					return 0;
+					if (arguments[1] == "createInv"){
+						if (level != 1 ) {
+							alert("you can not use the function '" + arguments[1] + "' on this level");	
+							$("#doneButton").css("pointerEvents","auto");
+							return -1;
+						}
+						createInvader(x, y);
+						//return 0;
+					} else if (arguments[1] == "createHero") {
+						if (level != 1 ) {
+							alert("you can not use the function '" + arguments[1] + "' on this level");	
+							$("#doneButton").css("pointerEvents","auto");
+							return -1;
+						}
+						createHero(x, y);
+						//return 0;
+					}
+				} else if (arguments[1] == "moveHero") {
+					
+					let l = 2;
+					//converting all the variables to their numeric value..
+					for (; arguments[l] != "end"; l++) {
+						if (arguments[l] in varsDic){
+							arguments[l] = varsDic[arguments[l]];
+						}
+					}
+					//calculating the value of the step
+					let x = sumAllValues(arguments, 2, "end");
+					hero.left += x;
+					if (hero.left >= 1100 || hero.left <= 350) {
+						hero.left -= x;
+						if (missiles.length != 0 && missiles.length < enemies.length) {
+							alert("there are TWO invaders at same x-axis point!, so i guess shooting once isn't enough to kill them both!");
+							hero.left = 390;
+							moveHero();
+							return -1;
+						}
+					}
+					moveHero();
+				} else if (arguments[1] == "heroShoot") {
+					console.log("FIRE");
+					missiles.push({
+						left: hero.left + 15,
+						top: hero.top
+					})
+					console.log(missiles);
+					drawMissiles();
 				} else if (arguments[1] == "if") {
-					if (arguments[3] != "==") {
-						alert('the only avaiable boolean operator on this level is "=="');
+					if (arguments[2] != "isAlienAhead") {
+						alert('only the given boolean functions are allowed to be set as conditions on this level');
 						$("#doneButton").css("pointerEvents","auto");
 						return -1;
 					}
+					if(isEnemyAhead() == true) {
+						enteredFunc = 1;
+					} else {
+						enteredFunc = 0;
+					}
+					/*
 					if (arguments[2] in varsDic){
 						arguments[2] = varsDic[arguments[2]];
 					}
@@ -1473,6 +1685,7 @@ function playTheCode() {
 					} else {
 						enteredFunc = 0;
 					}
+					*/
 				} else if (arguments[1] == "else if") {
 					if (enteredFunc == 1){
 						continue;
@@ -1595,18 +1808,29 @@ function playTheCode() {
 				}
 				//objectName --> type ( stack, queue, list ... etc).
 				namesToTypesDic[arguments[1]] = arguments[0];
-			} else if (listOfTypes[arguments[0]] == "loop") {
+			} else if (arguments[0] == "while") {
 				var loopIndex = i;
+				stack.push(i);
 				//skip over the rest lines of the loop
-				if(arguments[3] == "isNotEmpty") {
-					if (varsDic[arguments[2]] == "") {
+				if (arguments[2] == "areThereEnemies") {
+					if (enemies.length <= missiles.length) {
+						stack.pop();
+						let numSkippings = 0;
 						do {
 							i++;
-							arguments = workingTable[i].split(',');		
-						} while(arguments[0] != "endFunc");
+							if (arguments[0] in scopedFuncs){
+								numSkippings++;
+							}
+							if (arguments[0] == "endFunc") {
+								numSkippings--;
+							}
+							arguments = workingTable[i].split(',');
+						} while(arguments[0] != "endFunc" && numSkippings != 0);
 					}
 					//else do nothing... just continue to next code-line...
 				} else {
+					alert("wrong AVAILABLE condition for the while-loop on this current level.");
+					return -1;
 					//while is empty...
 					if (varsDic[arguments[2]] != "") {
 						do {
@@ -1615,28 +1839,562 @@ function playTheCode() {
 						} while(arguments[0] != "endFunc");	
 					}
 				}
+				
+			} else if (arguments[0] == "for") {
+				stack.push(i);
+				//for,for,type Or not, variable , valToSet, firstScopeDone, var, booleanOper, var/num, secondScopeDone, var, val,op,val,op,val,op,val..,end,
+				var loopIndex = i;
+				let index = 2;
+				if(arguments[2] != "firstScopeDone") {
+					//it means first time entering for-loop...
+					let declareOrVar = ""
+					if (arguments[2] in listOfTypes){
+						declareOrVar = arguments[2];
+						//simply removing it....(we read the firstscope n delete directly...
+						arguments.splice(2,1);
+					} else {
+						declareOrVar = arguments[index];
+						if (!(arguments[index] in varsDic)) {
+							alert("the variable '" + declareOrVar + "' wasn't declared before...");
+							return -1;
+						}
+					}
+					//setting the declared var.. or the alr-existant var to the given value..
+					varsDic[arguments[index]] = arguments[index + 1];
+					//removing the val...
+					arguments.splice(index + 1,1);
+					//removing the var from the ARGUMENTS... for correct index val...
+					arguments.splice(index,1);
+					
+					let indexOfBeginOfFirstScope = workingTable[i].indexOf(declareOrVar);
+					//now we need the end index...
+					//NOTE: arguments[index] equals "firstScopeDone"
+					let indexOfEndFirstScope = workingTable[i].indexOf(arguments[index]);
+					//adding the gonna-be-deleted firstScope data from the working table to the firstScopeString stack!
+					firstScopeString.push(workingTable[i].substring(indexOfBeginOfFirstScope,indexOfEndFirstScope));
+					//removing the before firstScopeDone and after for,for,
+					workingTable[i] = workingTable[i].removeSubtring(indexOfBeginOfFirstScope,indexOfEndFirstScope);
+				}
+				
+				
+				let indexForThirdScope = index;
+				while(arguments[indexForThirdScope] != "secondScopeDone"){
+					indexForThirdScope++;
+				}
+				indexForThirdScope++;
+				//points to the values to be calculated .....
+				let searchMultDiv = indexForThirdScope + 1;
+				let noMultDiv = false;
+				if (doThirdScopeForLoop) {
+					doThirdScopeForLoop--;
+					//converting the variable names to their values.
+					arguments = convertToNumbers(arguments, searchMultDiv, "thirdScopeDone")
+					//getting back to beginning...
+					searchMultDiv = indexForThirdScope + 1;
+					varsDic[arguments[indexForThirdScope]] = (sumAllValues(arguments, searchMultDiv, "thirdScopeDone")).toString();
+					//DONE!!!!! HURRAYYY :).
+					if (varsDic[arguments[indexForThirdScope]] == -1) {
+						return -1;
+					}
+				}
+						
+				//skipping over to var in second scope.--->var, booleanOper, var/num, secondScopeDone
+				while(arguments[index] != "firstScopeDone"){
+					index++;
+				}
+				index++;
+				//converting to numbers........
+				if (arguments[index] in varsDic) {
+					arguments[index] = varsDic[arguments[index]];
+				}
+				if (arguments[index + 2] in varsDic) {
+					arguments[index + 2] = varsDic[arguments[index + 2]];
+				}
+				let keepLoop = checkSecondScopeOfFor(arguments[index], arguments[index + 1] , arguments[index + 2]);
+				//keepLoop --> the next time we loop over back to this loop or no!.
+				if (!keepLoop) {
+					//removing the loop from the stack....
+					let forLoopIndex = stack.pop();
+					let indexToInsert = workingTable[forLoopIndex].indexOf("firstScopeDone");
+					let firstScopeDecNvar = firstScopeString.pop();
+					//resetting that line to the same as it was before! :)...
+					workingTable[forLoopIndex] = workingTable[forLoopIndex].substring(0, indexToInsert) + firstScopeDecNvar + workingTable[forLoopIndex].substring(indexToInsert);
+					firstScopeDecNvar = firstScopeDecNvar.split(',');
+					//if the first element was "type" then we remove it from the varsDic...
+					if (listOfTypes[firstScopeDecNvar[0]] == "declare"){
+						delete varsDic[firstScopeDecNvar[1]];
+					}
+					//skip all the lines by ( stack...)
+					let numberOfEndFuncSkippings = 0;
+					while(1) {
+						i++;
+						arguments = workingTable[i].split(',');
+						if (arguments[0] == "endFunc" && numberOfEndFuncSkippings == 0) {
+							break;
+						}
+						if (listOfTypes[arguments[0]] == "loop") {
+							numberOfEndFuncSkippings++;
+						}
+						if (arguments[0] == "endFunc") {
+							numberOfEndFuncSkippings--;
+						}
+					}
+				} else {
+					
+				}
 			} else if (arguments[0] == "endFunc") {
 				//will enter here only if there was a for or a while before....
-				i = loopIndex - 1;
+				//i = loopIndex - 1;
+				i = stack.pop() - 1;
+				doThirdScopeForLoop++;
 			}
 		}
 	}
-	if (level != 1) {
-		playRhythm(playerOrder);
+	if (level == 1) {
+		if (checkLevelOneConditions() == -1) {
+			return -1;
+		}
+		moveNextLevel();
 	}
 	return 0;
 }
+function checkLevelOneConditions() {
+	if (enemies.length != 12){
+		alert("you must create exactly 12 space invaders!");
+		return -1;
+	}
+	for (let i = 0; i < enemies.length; i++) {
+		for (let j = 0; j < enemies.length; j++) {
+			if (i != j){
+				if (enemies[i]['left'] == enemies[j]['left']
+				 && enemies[i]['top'] == enemies[j]['top']) {
+					alert("there is at least two invaders that are on the same exact spot!");
+					return -1
+				}
+			}
+		}
+	}
+	return 0;
+}
+	
 
-let indexOfPlayArray = 0;
-function playColor(color) {
-	playerOrder[indexOfPlayArray] = color;
-	indexOfPlayArray++;
+
+/**
+	checkSecondScopeOfFor function returns true if the condition is true and the loop must BREAK, otherwise false.
+*/
+function checkSecondScopeOfFor(variable, operation, value) {
+	switch(operation) {
+		case "==":{
+			if (variable == value){
+				return true;
+			}
+			return false;
+		}
+		case ">":{
+			if (variable > value){
+				return true;
+			}
+			return false;
+		}
+		case "<":{
+			if (variable < value){
+				return true;
+			}
+			return false;
+		}
+		case ">=":{
+			if (variable >= value){
+				return true;
+			}
+			return false;
+		}
+		case "<=":{
+			if (variable <= value){
+				return true;
+			}
+			return false;
+		}
+		case "!=":{
+			if (variable != value){
+				return true;
+			}
+			return false;
+		}
+	}
 }
 
-function skipSpaces(j){
+
+function skipSpaces(j, theEndChar = ';'){
 	for (;solutionString[curLine].charAt(j) === ' '; ++j) {
 		if (solutionString[curLine].length <= j) {
-			alert(" a semicolon ';' is expected at end of line ", + (curLine + 1) + ".");
+			alert(" missing a '" + TheEndChar + "' at end of line ", + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	return j;
+}
+
+function createInvader(x, y) {
+	enemies.push({left: x, top:y});
+}
+function createHero(x, y) {
+	//enemy.push({x, y});
+}
+
+function convertToNumbers(arguments, index, stopString){
+	while(arguments[index] != stopString){
+		//converting all the variables to numbers only (in string numbers).
+		if (arguments[index] in varsDic) {
+			arguments[index] = varsDic[arguments[index]];
+		}
+		index++;
+	}
+	return arguments;
+}
+
+
+/**
+  checkObject: this function reads an object and its function (without parameters function).
+*/
+function checkObject(i) {
+	var j;
+	//getting into the the ( of the while (
+	if (solutionString[curLine].charAt(i) !== '(') {
+		alert("missing a opening braces '(' at line " + (curLine + 1) + ".");
+		return -1;					
+	}
+	i++;
+	//getting into the first argument inside the loop...
+	i = skipSpaces(i);
+	j = i;
+	//on this game we are only allowed to put the function of the object which are booolean only..
+	for (; solutionString[curLine].charAt(j) !== '.'; j++){
+		if (j >= solutionString[curLine].length){
+			//it means that he put some other conditions?
+			alert("please don't use anything beside the specified functions for this level, line" + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	//checking if the object is actually declared or no...
+	if (!(solutionString[curLine].substring(i, j) in varsDic)) {
+		alert("the object " + solutionString[curLine].substring(i, j) + ", at line " + (curLine + 1) + ", wasn't declared/allocated before.");
+		return -1;
+	}
+	//adding the name of the object.
+	stringArg += solutionString[curLine].substring(i, j) + ",";
+	//in case he put something like this q.   push()...
+	j = skipSpaces(j);
+	i = j + 1;
+	for (; solutionString[curLine].charAt(j) != '('; j++){
+		if (solutionString[curLine].charAt(j) == ' ') {
+			break;
+		}
+		var batta = solutionString[curLine].charAt(j);
+		if (j >= solutionString[curLine].length) {
+			//it means that he put some other conditions?
+			alert("please don't use anything beside the specified functions for this level, line" + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	//checking if the function is actually an existant one.
+	if (!(solutionString[curLine].substring(i, j) in objectFunctions)) {
+		alert("no such function at line " + (curLine + 1) + ".");
+		return -1;
+	//checking if the function is a boolean - returning type.
+	} else if (objectFunctions[solutionString[curLine].substring(i, j)] != "boolean") {
+		alert("please put only boolean-returning function in the while loop at line " + (curLine + 1) + ".");
+		return -1;
+	}
+	//adding the name of the function in the while loop...
+	stringArg += solutionString[curLine].substring(i, j);
+	j = skipSpaces(j);
+	if (solutionString[curLine].charAt(j) !== '(') {
+		alert("missing a opening braces '(' at line " + (curLine + 1) + ".");
+		return -1;					
+	}
+	//cause we had a function one for function ')' and one for the while ')' so from 1 to -1 ==> 2 times.
+	let numberBracesOpened = 1;
+	j++;
+	//i did !== -1 because the loop includes the main one, but the numberBracesOpened doesn't!.
+	while (numberBracesOpened !== -1) {
+		j = skipSpaces(j);
+		i = j;
+		if (solutionString[curLine].charAt(j) !== ')') {
+			alert("missing ')' at line " + (curLine + 1) + ".");
+			return -1;
+		}					
+		j++;
+		numberBracesOpened--;
+	}
+	j = skipSpaces(j);
+	if (solutionString[curLine].charAt(j) !== '{') {
+		alert("missing '{' after the ')' of the loop at line " + (curLine + 1) + ".");
+		return -1;
+	}
+	//in order to make the line '}' pass.
+	curlyBraceOpened++;
+	j++;
+	while (j < solutionString[curLine].length){
+		if (solutionString[curLine].charAt(j) !== ' '){
+			alert("please don't put anything after the semi-colon '{' at line " + (curLine + 1) + ".");
+			return -1;
+		}
+		j++;
+	}
+	return j;
+}
+
+/**
+ * the arguments are array of strings, index is begin index of all the arguments, stopString is when to stop in the arguments..
+ */
+function sumAllValues(arguments, index, stopString) {
+	let searchMultDiv = index;
+	let noMultDiv = false;
+	//now calculating first the * and the /
+	while(1){
+		while(arguments[searchMultDiv] != "*" && arguments[searchMultDiv] != "/" ){
+			searchMultDiv++;
+			if (arguments[searchMultDiv] == stopString){
+				noMultDiv = true;
+				break;
+			}
+		}
+		//there was a mult or div...
+		if (!noMultDiv) {
+			let firstNum;
+			let secondNum;
+			firstNum = parseInt(arguments[searchMultDiv - 1]);								
+			secondNum = parseInt(arguments[searchMultDiv + 1]);
+			if (isNaN(firstNum) || isNaN(secondNum)) {
+				alert("expected numbers before and after the operation ' " + arguments[searchMultDiv] + " ' at line " + (curLine + 1) + ".");
+				return -1;
+			}
+			if (arguments[searchMultDiv] == "*") {
+				firstNum *= secondNum;
+			} else {
+				firstNum /= secondNum;
+			}
+			//removing the second num
+			arguments.splice(searchMultDiv + 1,1);
+			//removing the * num
+			arguments.splice(searchMultDiv,1);
+			//removing the first num and inserting the new value.
+			arguments.splice(searchMultDiv - 1,1, firstNum.toString());
+			//going back to the next loop to cutOff the mult or div again...
+			searchMultDiv = index;
+			noMultDiv = false;
+		} else {
+			//breaking the multDiv loop...
+			break;
+		}
+	}
+	//now we need to do all the +, - values...
+	let totalVal = 0;
+	let op = "+";
+	searchMultDiv = index;
+	//now adding all the values together (adding the addition and minus)..
+	while(arguments[searchMultDiv] != stopString){
+		//is it an operation!?
+		if (arguments[searchMultDiv] == "+" || arguments[searchMultDiv] == "-") {
+			op = arguments[searchMultDiv];
+		} else {
+			//it was a number...
+			if (op == "+") {
+				totalVal += parseInt(arguments[searchMultDiv]);
+			} else {
+				//it was a MINUS!!! OMG.
+				totalVal -= parseInt(arguments[searchMultDiv]);
+			}
+			if (isNaN(totalVal)) {
+				alert("expected numbers before and after the operation '" + op + "' at line " + (curLine + 1) + ".");
+				return -1;
+			}
+		}
+		searchMultDiv++;
+	}
+	return totalVal;
+}
+
+
+
+function forLoopRead(i) {
+	//we are at the (
+	i++;
+	i = skipSpaces(i);
+	//if we stopped at ' ' it maybe that the user is trying to make a declaration actually....
+	var j = skipTill(i, '=');
+	theVarWasDeclared = false;
+	if (listOfTypes[solutionString[curLine].substring(i, j)] == "declare") {
+		stringArg += solutionString[curLine].substring(i, j) + ",";
+		theVarWasDeclared = true;
+	} else {
+		//it was settingVal to begin with so we call the func with the past i and with theVarWasDeclared as FALSE.
+		j = i;
+	}
+	i = skipSpaces(j);
+	j = settingValueToVar(i, theVarWasDeclared);
+	if (j === -1) {
+		//failed...
+		return -1;
+	}
+	//we are at the first ';'.
+	j++;
+	j = skipSpaces(j);
+	stringArg += "firstScopeDone,";
+	if ((j = readConditions(j)) === -1) {
+		return -1;
+	}
+	stringArg += "secondScopeDone,";
+	j++;
+	//reaching the name of the variable.......
+	j = skipSpaces(j);
+	i = j;
+	//+=, -=, ++ or --
+	j = addValueToVar(j, ')');
+	stringArg += "thirdScopeDone,";
+	// we were at ')', we checked it inside the past function so we move on...
+	j++;
+	if((j = skipTill(j, '{', 1)) === -1) {
+		return -1;
+	}
+	curlyBraceOpened++;
+	j++;
+	//checking if he put anything after the '{'
+	while (j < solutionString[curLine].length) {
+		if (solutionString[curLine].charAt(j) !== ' ') {
+			alert("please don't put anything after the '{' at line " + (curLine + 1) + ".");
+			return -1;
+		}
+		j++;
+	}
+	return j;
+}
+
+function settingValueToVar(j, newlyDeclaredVar) {
+	//this func goes like this >> var = value;
+	var i = j;
+	for (; solutionString[curLine].charAt(j) !== ' ' && solutionString[curLine].charAt(j) !== '='; ++j) {
+		if (j >= solutionString[curLine].length) {
+			alert("missing '=' at line " + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	//checking if the var was declared before.
+	if (solutionString[curLine].substring(i, j) in varsDic && newlyDeclaredVar) {
+		alert("the variable '" + solutionString[curLine].substring(i, j) + "' at line " + (curLine + 1) + " was declared before");
+		return -1;
+	}
+	varsDic[solutionString[curLine].substring(i, j)] = "";
+	stringArg += solutionString[curLine].substring(i, j) + ",";
+	j = skipSpaces(j);
+	//skipping over the '='
+	j++;
+	j = skipSpaces(j);
+	i = j;
+	j = skipTill(j, ';');
+	//adding the value...
+	stringArg += solutionString[curLine].substring(i, j) + ",";
+	j = skipSpaces(j);
+	//we are at the ';' now :)
+	return j;
+}
+
+function skipTill(j, charToReach, skipSpaceAlso = 0) {
+	for (; solutionString[curLine].charAt(j) !== charToReach; ++j) {
+		if (!skipSpaceAlso) {
+			if (solutionString[curLine].charAt(j) === ' ') {
+				break;
+			}
+		}
+		if (j >= solutionString[curLine].length) {
+			alert("missing '" + charToReach +"' at line " + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	return j;
+}
+
+function readConditions(j) {
+	var i = j;
+	j = skipTillBooleanOperator(j);
+	stringArg += solutionString[curLine].substring(i, j) + ",";
+	j = skipSpaces(j);
+	i = j;
+	j = readBooleanOperator(j);
+	j = skipSpaces(j);
+	i = j;
+	j = skipTill(j, ';');
+	//adding the variable or the number or whatever it is...
+	stringArg += solutionString[curLine].substring(i, j) + ",";
+	j = skipSpaces(j);
+	if (solutionString[curLine].charAt(j) !== ';') {
+		alert("missing ';' in the for loop at line " + (curLine + 1) + ".");
+		return -1;
+	}
+	return j;
+}
+
+function addValueToVar(j, stopChar) {
+	var i = j;
+	//reading till we meet '+' or  '-' they will be +
+	j = readTilPlusMinusEqual(j);
+	if (!(solutionString[curLine].substring(i, j) in varsDic)) {
+		alert("the variable '" + solutionString[curLine].substring(i, j) + "' wasn't declared before.");
+		return -1;
+	}
+	stringArg += solutionString[curLine].substring(i, j) + ",";
+	var k = j;
+	j = skipSpaces(j);
+	if (solutionString[curLine].substring(j, j + 2) == "+=" || solutionString[curLine].substring(j, j + 2) == "-=") {
+		stringArg += solutionString[curLine].substring(i, k) + "," + solutionString[curLine].charAt(j) + ",";
+		j = j + 2;
+		j = skipSpaces(j);
+		i = j;
+		//reading all the vals from +, - , *, / whatevah...
+		if((j = readAllPlusMinusMultAdd(j, stopChar)) == -1 ) {
+			return -1;
+		}
+		
+	} else if (solutionString[curLine].substring(j, j + 2) == "++" || solutionString[curLine].substring(j, j + 2) == "--") {
+		stringArg += solutionString[curLine].substring(i, k) + "," + solutionString[curLine].charAt(j + 1) + ",1,";
+		j = j + 2;
+		j = skipSpaces(j);
+		//we are at ')'
+	} else if (solutionString[curLine].charAt(j) === '=') {
+		//copy the above...
+		j++;
+		j = skipSpaces(j);
+		i = j;
+		//reading all the vals from +, - , *, / whatevah...
+		j = readAllPlusMinusMultAdd(j, stopChar);
+	} else {
+		alert("expected the operators '++, --, -=, +=' at line " + (curLine + 1) + ".");
+		return -1;
+	}
+	if (solutionString[curLine].charAt(j) !== ')') {
+		alert("missing ')' at line " + (curLine + 1) + ".");
+		return -1;
+	}
+	return j;
+}
+/**
+	this functions reads and determines the type of the operator...+=, ++, --
+*/
+function  readTilPlusMinusEqual(j) {
+	for (; solutionString[curLine].charAt(j) !== ' '; ++j) {
+		 if (solutionString[curLine].charAt(j) === '=') {
+			break;
+		} else if (solutionString[curLine].charAt(j) === '+'){
+			break;
+		} else if (solutionString[curLine].charAt(j) === '-') {
+			break;
+		} else if (solutionString[curLine].charAt(j) === '*') {
+			break;
+		} else if (solutionString[curLine].charAt(j) === '/') {
+			break;
+		}
+		if (j >= solutionString[curLine].length) {
+			alert("missing an operation on the 3rd scope of the for-loop at line " + (curLine + 1 )  + "." );
 			return -1;
 		}
 	}
@@ -1644,72 +2402,82 @@ function skipSpaces(j){
 }
 
 
-function playRhythm(array) {
-	indexOfPlayArray = 0;
-    win = false;
-	if(level === 1) {
-		order = [enumValues.BLUE, enumValues.BLUE, enumValues.GREEN, enumValues.RED, enumValues.YELLOW];
-		turn = 5;	
-		//the array-variable is actually the name of the array, and the value lies in the varsDic... 
-		let arrVals = (varsDic[array]).split('-');
-		if (order.length != arraySizes[array]) {
-			alert("the size of the array doesn't match up with the rhythm moves that are made for the current level");
-			$("#doneButton").css("pointerEvents","auto");
+function readAllPlusMinusMultAdd(j, stopChar) {
+	var k, i = j;
+	//we are at 'var x = -->| a + b+ c +41213;' we are at the place of -->|
+	for (;; ++j) {
+		k = j;
+		if (solutionString[curLine].charAt(j) === ' ') {
+			j = skipSpaces(j);
+		}
+		//if we skipped spaces n found a variable then we recurvsivele call it again.
+		if (solutionString[curLine].charAt(j) === '+' 
+		  ||solutionString[curLine].charAt(j) === '-'
+		  ||solutionString[curLine].charAt(j) === '*'
+		  ||solutionString[curLine].charAt(j) === '/'){
+			if (isNaN(solutionString[curLine].substring(i,k)) && !(solutionString[curLine].substring(i,k) in varsDic)) {
+					alert("'" + solutionString[curLine].substring(i,k) + "' at line " + (curLine + 1) + " is neither a value nor a declared variable");
+					return -1;
+			}			
+			//adding : 'varName,operation,'
+			stringArg += solutionString[curLine].substring(i,k) + "," + solutionString[curLine].charAt(j) + ",";
+			j++;
+			break;
+		} else if (solutionString[curLine].charAt(j) === stopChar) {
+			stringArg += solutionString[curLine].substring(i,k) + ",end,";
+			return j;
+		} else if (k != j) {
+			//means we skipped spaces but found something that is not operator! so call func again (to give the 'i' right val.
+			break;
+		}
+		if (j >= solutionString[curLine].length) {
+			alert("missing an operation on the 3rd scope of the for-loop at line " + (curLine + 1 )  + "." );
 			return -1;
 		}
-		//sorting the values of the array.
-		let curElm, temp;
-		for (let i = 0; i < arrVals.length; ++i) {
-			for (let j = 0; j < arrVals.length - 1 - i; ++j) {
-				var a = (arrVals[j].split('.'))[0]
-				var b = (arrVals[j + 1].split('.'))[0];
-				if (a > b) {
-					temp = arrVals[j];
-					arrVals[j] = arrVals[j + 1];
-					arrVals[j + 1] = temp;
-				}
-			}
-		}
-		let theValsArr;
-		for (let i = 0; i < arrVals.length; ++i) {
-			theValsArr = arrVals[i].split('.');
-			if (i != theValsArr[0]) {
-				alert("missing value for the element number " + i + " of the array");
-				$("#doneButton").css("pointerEvents","auto");						
-				return -1;
-			}
-			playerOrder[theValsArr[0]] = theValsArr[1];
-		}
-	
-	} else if (level === 2) {
-		order = [enumValues.BLUE, enumValues.RED , enumValues.YELLOW, enumValues.YELLOW, enumValues.GREEN];
-		turn = 5;
-		//we fill the playerOrder in the play-function...we call the play function when all the text-area code is read.
-	} else if (level === 3) {
-		order = [enumValues.BLUE, enumValues.RED , enumValues.YELLOW, enumValues.YELLOW, enumValues.GREEN];
-		turn = 5;
-		//we fill the playerOrder in the play-function...we call the play function when all the text-area code is read.	
 	}
-	turnCounter.innerHTML = 1;
-	flash = 0;
-	good = true;
-	compTurn = true;
-	//calling the function for the first time without the time delay of 800mseconds.
-	gameTurn();
-	intervalId = setInterval(gameTurn, 800);
+	return readAllPlusMinusMultAdd(j, stopChar);
 }
 
-function checkObject() {
-	//.
+/**
+	this functions reads and determines the type of the boolean operator...
+*/
+function readBooleanOperator(j) {
+	if (solutionString[curLine].substring(j, j + 2) == ">=") {
+		stringArg +=  ">=,";
+		return j + 2;
+	} else if (solutionString[curLine].substring(j, j + 2) == "<=") {
+		stringArg +=  "<=,";
+		return j + 2;
+	} else if (solutionString[curLine].substring(j, j + 2) == "==") {
+		stringArg +=  "==,";
+		return j + 2;
+	} else if (solutionString[curLine].charAt(j) == '>'){
+		stringArg +=  ">,";
+		return j + 1;	
+	} else if (solutionString[curLine].charAt(j) == '<'){
+		stringArg +=  "<,";
+		return j + 1;
+	} else if (solutionString[curLine].charAt(j) == '='){
+		alert("please put only boolean operators (==, >=, <=, >, <) in second-scope of the for-loop");
+		return -1;
+	}
+	alert("missing boolean operators (==, >=, <=, >, <) in second-scope of the for-loop");
+	return -1;
 }
-function checkVar() {
-	//in varsDic
+function skipTillBooleanOperator(j) {
+	for (; solutionString[curLine].charAt(j) !== ' '; ++j) {
+		if (solutionString[curLine].charAt(j) === '>'
+		 && solutionString[curLine].charAt(j) === '<'
+	 	 && solutionString[curLine].charAt(j) === '=') {
+			break;	
+		}
+		if (j >= solutionString[curLine].length) {
+			alert("missing boolean operator (<=, >=, ==, !=, >, <) at line " + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	return j;
 }
-function checkFunc() {
-	//
-}
-
-
 
 function popElmFrom(objectName) {
 	let c;
@@ -1725,6 +2493,17 @@ function popElmFrom(objectName) {
 	return fullElmPopped;
 }
 
+function isEnemyAhead() {
+	for (let i = 0; i < enemies.length; ++i) {
+		var hi = enemies[i]['left'];
+		//the enemy size is 50 so in middle is 25...
+		if (hero.left == enemies[i]['left']) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function dequeueElmFrom(objectName) {
 	let c;
 	let fullElmPopped = "";
@@ -1735,19 +2514,37 @@ function dequeueElmFrom(objectName) {
 		}
 		//removing the last char until we reach a '-' or ""
 		varsDic[objectName] = varsDic[objectName].substring(1, varsDic[objectName].length);			
-	} while (c !== '-' && varsDic[objectName].length != 0);
+	} while (c != '-' && varsDic[objectName].length != 0);
 	return fullElmPopped;
 }
 
 function moveNextLevel() {
 	level++;
-	flashColor();
-	setTimeout(clearColor, 1000);
 	$("#doneButton").fadeOut();
+	/*
 	$("textarea").fadeOut(1000, function() {
 		initLevels();
 		$("#doneButton").css("pointerEvents","auto");
 
+	});*/
+	$("#solution").animate({
+		height: '0px',
+	},800,function(){
+		$("#solution").animate({
+			width: '0px',
+			left: "+=13%"
+		},1200,function(){
+			initLevels();
+			$("#doneButton").css("pointerEvents","auto");
+		});
+	});
+	$("#operations").animate({
+		height: '0px',
+	},800,function(){
+		$("#operations").animate({
+			width: '0px',
+			left: "+=13%"
+		},1200);
 	});
 }
 
@@ -1756,35 +2553,56 @@ var beginLevel = 1;
 function initLevels() {
 	let solution = document.getElementById("solution");
 	solution.value = "void main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n}";
-	if (level === 1) {
+	if (level == 1) {
+		skipFirstLines = 1;
+		let operations = document.getElementById("operations");
+		operations.value = "\n                          EXPLANATION\nWelcome to Space Invaders Coding Game!, On this first level it seems that the space background is existant, but the Invaders and the hero's Spaceship are not!. So your very first task is to create 12 Invaders in TWO-LINES and create one hero SpaceShip!.\n\n                  FUNCTIONS AVAILABLE\n-Create the invaders and hero's spaceShip by the functions: createInv(x,y), createHero(x,y)\n-The only loop available is the FOR-loop\n\n                                  NOTES\n-The first invader starts at 400-x axis value and the distance between each invader is 100.\n-the invaders in first line lie at the value of 100 y-axis and the second line lie at value of 175.\n-The hero x and y are (534,648).";
+		let solution = document.getElementById("solution");
+		solution.value = "int main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    return 0;\n}";
+	} else if (level == 2) {
 		skipFirstLines = 5;
 		let operations = document.getElementById("operations");
-		operations.value = "\nEXPLANATION\nYou are shown 5 rhythm moves, BLUE,BLUE,GREEN,RED and YELLOW, now your GOAL is to make an array of ints and call the function playRhythm(arr) where arr is the array you declared. \n\nTASKS\nin order to pass the level, you must:\n-Declare an ARRAY of ints with size of the number of the rhythm-moves of this level EXACTLY.\n-The array must have the rhythm-moves within and in CORRECT ORDER.\n-Don't forget to use the enum variable shown in code to set your array values. \n\nABOUT ENUM\n here is an Example of how the enum used:\n int yellowColor = moveColor.YELLOW;";
+		operations.value = "\n			EXPLANATION\nNow that we have the Invaders and our Hero, we need now to create 2 functions!, those functions are called MoveHero and isAlienAhead functions\n\nmoveHero function accept one parameter 'step' and moves that hero by that step value\nisAlienAhead function returns boolean and accepts array of invaders and the hero, it tells if the hero and at least one alien is at same x-axis value!\n				TASK\n-Build the MoveHero, isAlienAhead functions!\n 				NOTE\nThe hero and the invaders each has x and y parameters, example of use:\n			  invader[0].x = 400;\n  			      hero.x = 534;\nTo get size of invaders use 'invaders.length;'";
 		let solution = document.getElementById("solution");
-		solution.value = "enum moveColor {\n   GREEN= 1, RED, YELLOW, BLUE\n}\n//the code above must not be changed\nvoid main() {\n    \n    \n    \n    \n    \n    \n   \n    \n    \n    \n    \n}";
-	} else if (level === 2) {
-		skipFirstLines = 5;
-		let operations = document.getElementById("operations");
-		operations.value = "\nEXPLANATION\non this level, you must create a QUEUE-object and put all the required-rhythm moves for this level which are (BLUE, RED, YELLOW, YELLOW AND GREEN).\n\nNOTES\n-The available functions for the QUEUE are: enqueue(element), dequeue() and isNotEmpty()\n\n-Elements in the Queue are TAKEN OUT (dequeued) in First In First Out (FIFO) manner.\n\n-On this level you can't use the function 'playRhythm', but, you can use another function called 'play(color)' in which the function plays one-color at a time.\n-you can only use -WHILE- as loop function";
-		let solution = document.getElementById("solution");
-		solution.value = "enum moveColor {\n    GREEN= 1, RED, YELLOW, BLUE\n}\n//the code above must not be changed\nvoid main() {\n    \n    \n    \n    \n    \n    \n   \n    \n    \n    \n    \n}";
+		solution.value = "void moveHero(int step) {\n    \n    \n}\n\nbool isAlienAhead(invaders[] , hero) {\n    int size = invaders.length;\n    int i;  // <-- loop variable!\n    \n    \n    \n    \n}";
 	} else if (level == 3){
-		skipFirstLines = 5;//On this level you can't use the function 'playRhythm', but, you can use another function called 'play(color)' in which the function plays one-color at a time.
+		setEnemiesAndHero();
+		skipFirstLines = 1;//On this level you can't use the function 'playRhythm', but, you can use another function called 'play(color)' in which the function plays one-color at a time.
 		let operations = document.getElementById("operations");
-		operations.value = "\nEXPLANATION\nThis is the last Level. Now, instead of creating a Queue object like on the past Level, you must create a STACK object, you must push all the required-rhythm moves for this level which are (BLUE, RED, YELLOW, YELLOW AND GREEN).\n\nNOTES\n-The available functions for the STACK are: push(element), pop() and isNotEmpty()\n\n-ELEMENTS in the stack are popped out in *Last In First Out* (LIFO) manner.\n\n-Like level 2, You can't use 'playRhythm' function, so instead use WHILE-LOOP and set one of the above functions as condition and use the 'play(color)' function.";
+		operations.value = "\n\t\t\tEXPLANATION\nthats Great!, we now have the Invaders, the hero and the functions: moveHero(step), bool isAlienAhead(). I guess it is about time we kill those invaders!, in order to do that, TWO new functions have been unlocked!, heroShoot() which makes the hero Shoot ONE-time, and the boolean areThereEnemies() function which tells if there are still enemies alive!. \n\n				TASKS\n-This time only WHILE loop is allowed!, use it and put ONE of the 4-given functions as condition for the while.\n-Move our hero step by step inside the loop...\n-Use another one of the 4-functions to determine if enemy is ahead of you!\n-Use the shoot function to kill that evil spirit!!\n-THERE are TWO invaders in each COLUMN!\n			GOOD LUCK Hero!";
 		let solution = document.getElementById("solution");
-		solution.value = "enum moveColor {\n    GREEN= 1, RED, YELLOW, BLUE\n}\n//the code above must not be changed\nvoid main() {\n    \n    \n    \n    \n    \n    \n   \n    \n    \n    \n    \n}";
+		solution.value = "int main() {\n    \n    \n    \n    \n    \n    \n   \n    \n    \n    \n    \n    return 0;\n}";
 	} else {
 		alert("CONGRATULATIONS!!!, you Completed all the Levels for this game! :)");
-		skipFirstLines = 5;//On this level you can't use the function 'playRhythm', but, you can use another function called 'play(color)' in which the function plays one-color at a time.
+		setEnemiesAndHero();
+		skipFirstLines = 1;//On this level you can't use the function 'playRhythm', but, you can use another function called 'play(color)' in which the function plays one-color at a time.
 		let operations = document.getElementById("operations");
-		operations.value = "\nEXPLANATION\nThis is the last Level. Now, instead of creating a Queue object like on the past Level, you must create a STACK object, you must push all the required-rhythm moves for this level which are (BLUE, RED, YELLOW, YELLOW AND GREEN).\n\nNOTES\n-The available functions for the STACK are: push(element), pop() and isNotEmpty()\n\n-ELEMENTS in the stack are popped out in *Last In First Out* (LIFO) manner.\n\n-Like level 2, You can't use 'playRhythm' function, so instead use WHILE-LOOP and set one of the above functions as condition and use the 'play(color)' function.";
+		operations.value = "\n\t\t\tEXPLANATION\nthats Great!, we now have the Invaders, the hero and the functions: moveHero(step), bool isAlienAhead(). I guess it is about time we kill those invaders!, in order to do that, TWO new functions have been unlocked!, heroShoot() which makes the hero Shoot ONE-time, and the boolean areThereEnemies() function which tells if there are still enemies alive!. \n\n				TASKS\n-This time only WHILE loop is allowed!, use it and put ONE of the 4-given functions as condition for the while.\n-Move our hero step by step inside the loop...\n-Use another one of the 4-functions to determine if enemy is ahead of you!\n-Use the shoot function to kill that evil spirit!!\n-THERE are TWO invaders in each COLUMN!\n			GOOD LUCK Hero!";
 		let solution = document.getElementById("solution");
-		solution.value = "enum moveColor {\n    GREEN= 1, RED, YELLOW, BLUE\n}\n//the code above must not be changed\nvoid main() {\n    \n    \n    \n    \n    \n    \n   \n    \n    \n    \n    \n}";
+		solution.value = "int main() {\n    \n    \n    \n    \n    \n    \n   \n    \n    \n    \n    \n    return 0;\n}";
 	}
-	if (level == beginLevel) {
-		$("textarea").hide();
-	}
-	$("textarea").slideDown(2000, function(){ $("#doneButton").fadeIn();});
+	
+	$("#operations").animate({
+		width: '340px',
+		left: "-=13%"
+	},800,function(){
+		$("#operations").animate({
+			height: '68vh',
+		},1200,function(){
+			$("#doneButton").fadeIn();
+		});
+	});
+	$("#solution").animate({
+		width: '340px',
+		left: "-=13%"
+	},800,function(){
+		$("#solution").animate({
+			height: '68vh',
+		},1200);
+	});
+	
 }
 initLevels();
+
+//gotta make the work on the for loop functioning adn after that i gotta declare a function that is called the createAlient,
+//in which that function accepts two parameters x and y and i gotta point out the 
