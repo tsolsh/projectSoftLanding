@@ -64,7 +64,7 @@ document.onkeydown = function (e) {
         if (map[pacman.y][pacman.x - 1] !== 1) {
             if (map[pacman.y][pacman.x - 1] === 2) {
                 score++;
-                $("#score").text(`${score}`);
+                $("#score").text("SCORE : " + `${score}`);
             }
             map[pacman.y][pacman.x] = 3;
             pacman.x -= 1;
@@ -78,7 +78,7 @@ document.onkeydown = function (e) {
         if (map[pacman.y][pacman.x + 1] !== 1) {
             if (map[pacman.y][pacman.x + 1] === 2) {
                 score++;
-                $("#score").text(`${score}`);
+                $("#score").text("SCORE : " + `${score}`);
             }
             map[pacman.y][pacman.x] = 3;
             pacman.x += 1;
@@ -92,7 +92,7 @@ document.onkeydown = function (e) {
         if (map[pacman.y - 1][pacman.x] !== 1) {
             if (map[pacman.y - 1][pacman.x] === 2) {
                 score++;
-                $("#score").text(`${score}`);
+                $("#score").text("SCORE : " + `${score}`);
             }
             map[pacman.y][pacman.x] = 3;
             pacman.y -= 1;
@@ -106,14 +106,17 @@ document.onkeydown = function (e) {
         if (map[pacman.y + 1][pacman.x] !== 1) {
             if (map[pacman.y + 1][pacman.x] === 2) {
                 score++;
-                $("#score").text(`${score}`);
+                $("#score").text("SCORE : " + `${score}`);
             }
             map[pacman.y][pacman.x] = 3;
             pacman.y += 1;
             map[pacman.y][pacman.x] = 5;
         }
     }
-
+	// pacman dies
+    if (map[pacman.y][pacman.x] === map[ghost1.y][ghost1.x]) {
+        document.location.reload(true);
+    }
     //ghost tries to go up
     if (map[ghost1.y - 1][ghost1.x] !== 1 && ghost1.lastMove !== 'd') {
         if (ghost1.onCoin === 'y') {

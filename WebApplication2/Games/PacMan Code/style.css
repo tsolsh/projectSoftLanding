@@ -1,0 +1,101 @@
+﻿
+
+ *{
+           /* outline: 1px dotted purple;*/
+        }
+#world {
+	text-align:center;
+	margin-top:100px;
+}
+
+.pacman {
+    height: 50px;
+    width: 50px;
+    background-image: url(pacman.png);
+    display: inline-block;
+}
+
+.ghost1 {
+    height: 50px;
+    width: 50px;
+    background-image: url(ghost1.png);
+    display: inline-block;
+}
+
+
+.wall {
+    height: 50px;
+    width: 50px;
+    background-image: url(wall.png);
+    display: inline-block;
+}
+
+.coin {
+    height: 50px;
+    width: 50px;
+    background-image: url(coin.png);
+    display: inline-block;
+}
+
+.ground {
+    height: 50px;
+    width: 50px;
+    background-image: url(bg.png);
+    display: inline-block;
+}
+
+#score {
+    color: palevioletred;
+    font-size: 60px;
+    margin: 15px;
+	position:absolute;
+	text-align:center;
+	top:10%;
+	left:39%;
+}
+
+ div {
+
+     /*line-height: 0px;*/
+     margin: -2px;
+     vertical-align: top;
+ }
+ 
+ #enterCode {
+	position: absolute;
+	top: 15%;
+	left: 73%;
+	font-size:25px;
+}
+#doneButton {
+	position: absolute;
+	background: gold;
+	color: white;
+	top: 93%;
+	left: 79%;
+	width: 200px;
+	opacity:0.9;
+	display:none;
+}
+#doneButton:hover {
+	border: 3px solid blue;
+	cursor: pointer;
+	opacity:1;
+}
+textarea {
+	background-color:rgba(0, 0, 0, 0.4);
+	position: absolute;
+	top: 44%;
+	left: 85%;
+	margin:0;
+	color: white;
+	font-family: 'Gloria Hallelujah';
+	font-size: 20px;
+	padding: 10px;
+	width:0px;
+	height: 0px;
+	border: 3px dashed white;
+}
+.delay {
+	display:none;
+}
