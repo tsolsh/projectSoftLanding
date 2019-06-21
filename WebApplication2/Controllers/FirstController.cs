@@ -857,6 +857,41 @@ namespace WebApplication2.Controllers
                 file.WriteLine(id.ToString()); // Write the file.
             }
         }
+
+
+        public ActionResult Space()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public void space_result(int id, int levelId)
+        {
+            player.Score += id;
+            player.SpaceScore += id;
+            player.SpaceLevel = levelId;
+
+        }
+
+        [HttpGet]
+        public void exitSpace(int id)
+        {
+            //read from data file the level number 
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/Space Invaders Code/data.txt"), false))
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/Space Invaders Code/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
+
     }
 
 

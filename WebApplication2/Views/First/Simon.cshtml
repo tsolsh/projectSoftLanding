@@ -250,11 +250,11 @@ function gameTurn() {
     if (compTurn) {
         clearColor();
         setTimeout(() => {
-			if (order[flash] === 1) one();
-			if (order[flash] === 2) two();
-			if (order[flash] === 3) three();
-			if (order[flash] === 4) four();
-			if (order[flash] !== playerOrder[flash]) {
+			if (order[flash] == 1) one();
+			if (order[flash] == 2) two();
+			if (order[flash] == 3) three();
+			if (order[flash] == 4) four();
+			if (order[flash] != playerOrder[flash]) {
 				alert("you missed up at the "+ (flash +1) + "th color!, try Again.");
 			    clearInterval(intervalId);
 				compTurn = false;
@@ -372,7 +372,7 @@ bottomRight.addEventListener('click', (event) => {
 })
 
 function check() {
-    if (playerOrder[playerOrder.length -1] !== order[playerOrder.length -1]) {
+    if (playerOrder[playerOrder.length -1] != order[playerOrder.length -1]) {
         good = false;
     }
 

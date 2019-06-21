@@ -615,11 +615,13 @@
     <Content Include="Games\Space Invaders Code\assets_basic\hero.png" />
     <Content Include="Games\Space Invaders Code\assets_basic\missile1.png" />
     <Content Include="Games\Space Invaders Code\assets_basic\missile2.png" />
+    <Content Include="Games\Space Invaders Code\data.txt" />
     <Content Include="Games\Space Invaders Code\index.html" />
     <Content Include="Games\Space Invaders Code\inp.txt" />
     <Content Include="Games\Space Invaders Code\scripts\index.js" />
     <Content Include="Games\Space Invaders Code\scripts\jquery-2.0.3.min.js" />
     <Content Include="Games\Space Invaders Code\style.css" />
+    <Content Include="Games\Space Invaders\data.txt" />
     <Content Include="Games\Space Invaders\index.html" />
     <Content Include="Games\Space Invaders\style.css" />
     <Content Include="Games\TetrisCode\data.txt" />
@@ -1071,6 +1073,7 @@
     <Content Include="Views\First\RPS2.cshtml" />
     <Content Include="Views\First\RPS1.cshtml" />
     <Content Include="Views\First\Simon.cshtml" />
+    <Content Include="Views\First\Space.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
