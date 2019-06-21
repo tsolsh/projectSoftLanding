@@ -892,6 +892,39 @@ namespace WebApplication2.Controllers
             }
         }
 
+
+        public ActionResult Pacman()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public void pacman_result(int id, int levelId)
+        {
+            player.Score += id;
+            player.PacmanScore += id;
+            player.PacmanLevel = levelId;
+
+        }
+
+        [HttpGet]
+        public void exitPacman(int id)
+        {
+            //read from data file the level number 
+            using (StreamWriter _testData = new StreamWriter(Server.MapPath("~/Games/PacMan Code/data.txt"), false))
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    _testData.Write(""); // change WriteLine with Write
+                }
+                _testData.Close();
+            }
+            using (StreamWriter file = new StreamWriter(Server.MapPath("~/Games/PacMan Code/data.txt"), true))
+            {
+
+                file.WriteLine(id.ToString()); // Write the file.
+            }
+        }
     }
 
 

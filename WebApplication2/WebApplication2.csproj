@@ -540,8 +540,20 @@
     <Content Include="Games\originalGames\Snake\snake.html" />
     <Content Include="Games\originalGames\Snake\snake.js" />
     <Content Include="Games\originalGames\Snake\snakecss.css" />
+    <Content Include="Games\PacMan Code\bg.png" />
+    <Content Include="Games\PacMan Code\coin.png" />
+    <Content Include="Games\PacMan Code\ghost1.png" />
+    <Content Include="Games\PacMan Code\ghost2.png" />
+    <Content Include="Games\PacMan Code\index.html" />
+    <Content Include="Games\PacMan Code\inp.txt" />
+    <Content Include="Games\PacMan Code\pacman.png" />
+    <Content Include="Games\PacMan Code\script.js" />
+    <Content Include="Games\PacMan Code\scripts\jquery-2.0.3.min.js" />
+    <Content Include="Games\PacMan Code\style.css" />
+    <Content Include="Games\PacMan Code\wall.png" />
     <Content Include="Games\PacMan\bg.png" />
     <Content Include="Games\PacMan\coin.png" />
+    <Content Include="Games\PacMan Code\data.txt" />
     <Content Include="Games\PacMan\ghost1.png" />
     <Content Include="Games\PacMan\ghost2.png" />
     <Content Include="Games\PacMan\index.html" />
@@ -1074,6 +1086,7 @@
     <Content Include="Views\First\RPS1.cshtml" />
     <Content Include="Views\First\Simon.cshtml" />
     <Content Include="Views\First\Space.cshtml" />
+    <Content Include="Views\First\Pacman.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
