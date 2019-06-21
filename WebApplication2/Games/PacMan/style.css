@@ -3,7 +3,10 @@
  *{
            /* outline: 1px dotted purple;*/
         }
-
+#world {
+	text-align:center;
+	margin-top:100px;
+}
 
 .pacman {
     height: 50px;
@@ -44,7 +47,11 @@
 #score {
     color: palevioletred;
     font-size: 60px;
-    margin: 15px;   
+    margin: 15px;
+	position:absolute;
+	text-align:center;
+	top:3%;
+	left:39%;
 }
 
  div {
