@@ -1392,12 +1392,12 @@ function playTheCode() {
 									varsDic[arguments[1]] += '-';
 								}
 								varsDic[arguments[1]] += arguments[3];
-							} else if (argument[2] == "pop" || arguments[2] == "denqueue") {
+							} else if (arguments[2] == "pop" || arguments[2] == "denqueue") {
 								//pops the last element from the object given as argument.
 								popElmFrom(argument[1]);
 							}
 						} else {
-							alert("can't use function '" + argument[2] +"' on object of type '" + namesToTypesDic[arguments[1]]+"'.");
+							alert("can't use function '" + arguments[2] +"' on object of type '" + namesToTypesDic[arguments[1]]+"'.");
 							$("#doneButton").css("pointerEvents","auto");
 							return -1;
 						}

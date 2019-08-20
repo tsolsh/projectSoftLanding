@@ -15,7 +15,7 @@ void main() {
             myChoice = "rock";
             break;
         default:
-	    //lizard poisons spock
+            //lizard poisons spock
             myChoice = "lizard";
     }
     play (myChoice);

@@ -98,6 +98,22 @@
                 color: #BBBBBB;
                 border-color: #BBBBBB;
             }
+
+        a {
+            position: absolute;
+            background: black;
+            color: white;
+            top: 93%;
+            left: 7%;
+            width: 200px;
+            opacity: 0.9;
+        }
+
+            a:Hover {
+                border: 3px solid blue;
+                cursor: pointer;
+                opacity: 1;
+            }
     </style>
 </head>
 <body>
@@ -144,18 +160,10 @@
         </form>
         <button id="doneButton" onClick="Switch()"> Done </button>
         <textarea style="left:2%; font-size:17px;text-align:center;" id="operations" rows="18" cols="33" readonly></textarea>
-        <div id="startPopup" class="overlay">
-            <div class="popup">
-                <h2>Are you ready?</h2>
-                <button class="button2" id="lets">
-                    Let's go!
-                </button>
-            </div>
-        </div>
+        <a style=" font-size:17px;text-align:center;" href="../../Games/RockPaperScissorsLizardSpock/FIUAIWEI7Q0TCUT.LARGE.jpg" target="_blank">RULES</a>
+
     </div>
     <script>
-        let modal = document.getElementById("startPopup");
-
         //getElemntby class name is returning all the items that has a word ,option, in it
 //meaning that if you go look at the index.html there are 3 divs that has the word
 // 'option' in it which are 'option rock', 'option paper', 'option scissors'.
@@ -234,12 +242,6 @@ function displayChoices(player, ai) {
 				//alert("Nice, you beat your rival, Moving to next Level!");
 				//level++;
 				//initLevels();
-                var URl = '@Url.Action("RPS_result", "First")';
-
-                $.ajax({
-                    url: URl,
-                    data: { id: score*10, levelId: level }
-                });
 				level++;
 				$(".game").children().slideUp(1000, function() {
 					initLevels();
@@ -256,22 +258,24 @@ function displayChoices(player, ai) {
 		$("#doneButton").css("pointerEvents","auto");
 		//removing the hide class from the button (to show the button).
     	reset_elem.classList.remove("hide");
-        if (winningStreak >= 3) {
-            var URl = '@Url.Action("RPS_result", "First")';
-
-                $.ajax({
-                    url: URl,
-                    data: { id: score*10, levelId: level }
-                });
+		if(winningStreak >= 3) {
 			level++;
+			$("textarea").slideUp(1000, function(){
+				$("textarea").slideDown(1000, function(){
+					$("#doneButton").fadeIn();
+				});
+			});
+
 			$(".game").children().slideUp(1000, function() {
-				initLevels();
-				reset();
 				$(".game").children().slideDown(1000, function(){
 					$("#reset").hide();
 				});
 				winningStreak = 0;
 				//reseted = 0;
+			});
+			$(".delay").toggle(1000, function() {
+				initLevels();
+				reset();
 			});
 		}
 	});
@@ -316,35 +320,8 @@ function reset() {
 	reseted = 1;
 
 }
-        var filetext = "";
-        function readFromFile() {
-            var file = "/../Games/RockPaperScissors/data.txt";
-            var rawFile = new XMLHttpRequest();
-            rawFile.open("GET", file);
-            rawFile.onreadystatechange = function () {
-                if (rawFile.readyState === 4) {
-                    if (rawFile.status === 200 || rawFile.status === 0) {
-                        filetext = rawFile.responseText;
-                        //alert(filetext);
-                    }
-                }
-            };
-            rawFile.send(null);
 
-        }
-        readFromFile();
-
-        //level = 1;
-
-        $("#lets").on("click", function () {
-            //document.getElementById("popup1").style.marginBottom= "50px";
-            modal.style.display = "none";
-            //modal.style.backgroundColor = "red";
-            level = 3;
-            initLevels();
-
-        });
-//var level = 3;
+var level = 3;
 function initLevels() {
 	let solution = document.getElementById("solution");
 	solution.value = "void main() {\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n}";
@@ -365,9 +342,12 @@ function initLevels() {
 		alert("CONGRATULATIONS!, You completely beat your opponent!");
 		let operations = document.getElementById("operations");
 		operations.value = "\n\nEXPLANATION\nYour opponent hasn't Given up!, he is challenging you again but this time the 'Lizard' and 'Spock' choices are added!\n\nTASK\n-Uncover your opponent's move by using the peek function.\n-Determine your Winning-Move by using the power of the 'Switch - case' statements!\n\nGOAL\n-BEAT your opponent 3 times in a row!\n\n\n\n\n GOOD LUCK!";
-	}
+        window.location = "/../First/singleGames";
+
+    }
 	$("textarea").slideDown(2000, function(){ $("#doneButton").fadeIn();});
 }
+initLevels();
 
 
 var skipFirstLines = 1;
@@ -421,7 +401,7 @@ function readSolAndApply() {
 		do {
 			var i, k;
 			//cleaning all the spaces before the arg.
-			for(i = 0; solutionString[curLine].charAt(i) === ' '; ++i) {}
+			for(i = 0; solutionString[curLine].charAt(i) === ' ' || solutionString[curLine].charAt(i) === '\t'; ++i) {}
 			solutionString[curLine] = solutionString[curLine].replace(solutionString[curLine].substring(0, i), "");
 			//checking if the line is empty or a NOTE line. if yes, moving to next line.
 			if(solutionString[curLine] == "" || solutionString[curLine].substring(0, 2) == "//"){
@@ -445,19 +425,6 @@ function readSolAndApply() {
 					readSolAndApply();
 					return 0;
 				}
-				/*
-				while (i < solutionString[curLine].length){
-					if (solutionString[curLine].charAt(i) !== ' ' && solutionString[curLine].charAt(i) !== '\n'){
-						alert("please don't put anything after the '}' at line " + (curLine + 1) + ".");
-						return -1;
-					}
-					i++;
-				}
-				curLine++;
-				workingTable[workingTable.length] = "}";
-				readSolAndApply();
-				return 0;
-				*/
 			}
 
 			//getting to end of first arg. it is till ' '(String, int etc) or ';'(break, cont...) or '(' (if(..), playMove(..))
@@ -1162,26 +1129,43 @@ function playTheCode() {
 	}
 }
 
+        var filetext = "";
+        function readFromFile() {
+            var file = "/../Games/RockPaperScissors/data.txt";
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status === 0) {
+                        filetext = rawFile.responseText;
+                        //alert(filetext);
+                    }
+                }
+            };
+            rawFile.send(null);
 
-    function skipSpaces(j){
-	    for (;solutionString[curLine].charAt(j) === ' '; ++j) {
-		    if (solutionString[curLine].length <= j) {
-			    alert(" a semicolon ';' is expected at end of line ", + (curLine + 1) + ".");
-			    return -1;
-		    }
-	    }
-	    return j;
         }
+        readFromFile();
 
-        $("#exit").on("click", function () {
-            var URl = '@Url.Action("exitRPS", "First")';
+        //level = 1;
 
-                $.ajax({
-                    url: URl,
-                    data: { id: level}
-            });
-            window.location = "/../First/singleGames";
+        $("#lets").on("click", function () {
+            //document.getElementById("popup1").style.marginBottom= "50px";
+            modal.style.display = "none";
+            //modal.style.backgroundColor = "red";
+            //level = Number(filetext);
+            initLevels();
+
         });
+function skipSpaces(j){
+	for (;solutionString[curLine].charAt(j) === ' '; ++j) {
+		if (solutionString[curLine].length <= j) {
+			alert(" a semicolon ';' is expected at end of line ", + (curLine + 1) + ".");
+			return -1;
+		}
+	}
+	return j;
+}
     </script>
 
 </body>

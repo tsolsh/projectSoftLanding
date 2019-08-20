@@ -94,14 +94,22 @@ function displayChoices(player, ai) {
     	reset_elem.classList.remove("hide");
 		if(winningStreak >= 3) {
 			level++;
+			$("textarea").slideUp(1000, function(){ 
+				$("textarea").slideDown(1000, function(){ 
+					$("#doneButton").fadeIn();
+				});
+			});
+			
 			$(".game").children().slideUp(1000, function() {
-				initLevels();
-				reset();
 				$(".game").children().slideDown(1000, function(){
 					$("#reset").hide();
 				});
 				winningStreak = 0;
 				//reseted = 0;
+			});
+			$(".delay").toggle(1000, function() {
+				initLevels();
+				reset();
 			});
 		}
 	});

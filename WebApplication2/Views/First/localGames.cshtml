@@ -73,7 +73,7 @@
         
     <div>
         <a class="close" href="~/first/Play">></a>
-        @{if (Model.TetrisLevel > 6)
+        @{if (Model.TetrisLevel >= 4)
             {
                 <div class="wrapper">
                     <a class="button" href="~/Games/Tetris/index.html">Tetris</a>
@@ -99,7 +99,7 @@
                 </div>
             }
         }
-        @{if (Model.SimonLevel > 3)
+        @{if (Model.SimonLevel >= 3)
             {
                 <div class="wrapper">
                     <a class="button" href="~/Games/originalGames/Simon/index.html">Simon</a>
@@ -139,7 +139,7 @@
                 </div>
             }
         }
-        @{if (Model.RPSLevel > 3)
+        @{if (Model.RPSLevel >= 3)
             {
                 <div class="wrapper">
                     <a class="button" href="~/Games/originalGames/RockPaperScissors/index.html">Rock Paper Scissors</a>
